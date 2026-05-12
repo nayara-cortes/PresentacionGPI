@@ -517,6 +517,182 @@
   .pk-cost .lbl { font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: .14em; color: var(--gold); text-transform: uppercase; }
 
 
+  /* ===========================================================
+     BLOCK 04 — Plantilla + Plan General + Plan Detallado
+     =========================================================== */
+  .plan-kpis { display: flex; gap: 24px; }
+  .plan-kpi {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 16px 22px; background: var(--paper-deep); border-radius: 12px; flex: 1;
+  }
+  .plan-kpi .kpi-num {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 44px; letter-spacing: -.03em; line-height: 1;
+    color: var(--brand); font-variant-numeric: tabular-nums;
+  }
+  .plan-kpi .kpi-label { font-size: 16px; color: var(--slate); font-weight: 500; }
+
+  .phase-card {
+    background: #fff; border-radius: 16px; padding: 24px;
+    border: 1px solid var(--line); box-shadow: 0 4px 12px rgba(15,23,41,.04);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .phase-card .phase-tag {
+    font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--brand); padding: 4px 10px;
+    background: var(--brand-soft); border-radius: 6px; align-self: flex-start;
+  }
+  .phase-card .phase-title {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 22px; letter-spacing: -.015em;
+  }
+  .phase-card .phase-hito {
+    font-family: var(--font-mono); font-size: 13px; color: var(--gold-deep); font-weight: 600;
+  }
+  .phase-card .phase-tasks {
+    font-size: 13px; line-height: 1.5; color: var(--slate); margin-top: 2px;
+  }
+
+  .note-box {
+    background: var(--gold-soft); color: var(--ink);
+    padding: 16px 22px; border-radius: 12px;
+    font-size: 15px; line-height: 1.5; font-style: italic;
+  }
+  .note-box.brand-bg {
+    background: var(--brand); color: #fff; font-style: normal;
+  }
+
+  .levels-row { display: flex; align-items: stretch; gap: 0; }
+  .level-card {
+    flex: 1; padding: 32px 28px; border-radius: 18px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .level-card.paper-bg { background: var(--paper-deep); border: 1px solid var(--paper-line); }
+  .level-card.navy-bg { background: var(--brand); color: #fff; }
+  .level-card.gold-bg { background: var(--gold); color: var(--ink); }
+  .level-card .level-tag {
+    font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .level-card.paper-bg .level-tag { color: var(--slate); }
+  .level-card.navy-bg .level-tag { color: var(--gold); }
+  .level-card.gold-bg .level-tag { color: var(--brand); }
+  .level-card .level-num {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 48px; letter-spacing: -.03em; line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .level-card.navy-bg .level-num { color: #fff; }
+  .level-card.gold-bg .level-num { color: var(--brand); }
+  .level-card .level-detail {
+    font-size: 15px; line-height: 1.5; display: flex; flex-direction: column; gap: 5px;
+  }
+  .level-card.navy-bg .level-detail { color: rgba(255,255,255,.78); }
+  .level-card.gold-bg .level-detail { color: var(--brand-deep); }
+  .level-card .level-desc {
+    font-size: 13px; line-height: 1.45; margin-top: auto; padding-top: 12px;
+    border-top: 1px solid rgba(128,128,128,.2); font-style: italic;
+  }
+  .level-arrow {
+    display: flex; align-items: center; justify-content: center;
+    width: 56px; flex-shrink: 0;
+    font-family: var(--font-display); font-weight: 700; font-size: 30px;
+    color: var(--gold-deep);
+  }
+
+  .timeline-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--paper-deep); border-radius: 12px; padding: 14px 32px;
+    position: relative;
+  }
+  .timeline-bar::after {
+    content: ''; position: absolute; top: 50%; left: 40px; right: 40px;
+    height: 3px; background: var(--brand-soft); transform: translateY(-50%); z-index: 0;
+  }
+  .timeline-mark {
+    position: relative; z-index: 1; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .timeline-mark .dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--brand); border: 3px solid var(--paper-deep);
+  }
+  .timeline-mark .date {
+    font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--brand);
+  }
+  .timeline-mark.deadline .dot { background: var(--alert); }
+  .timeline-mark.deadline .date { color: var(--alert); font-weight: 700; }
+
+  .compare-grid {
+    display: grid; grid-template-columns: 1fr 80px 1fr; gap: 0;
+    align-items: stretch; margin-top: 50px; height: 580px;
+  }
+  .compare-panel {
+    border-radius: 24px; padding: 44px 40px;
+    display: flex; flex-direction: column; gap: 22px;
+  }
+  .compare-panel.light { background: #fff; border: 1px solid var(--line); }
+  .compare-panel.navy { background: var(--brand); color: #fff; }
+  .compare-panel .cp-title {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 34px; letter-spacing: -.02em;
+  }
+  .compare-panel .cp-items { display: flex; flex-direction: column; gap: 20px; flex: 1; }
+  .compare-panel .cp-item {
+    font-size: 22px; line-height: 1.4; padding-left: 28px; position: relative;
+  }
+  .compare-panel .cp-item::before {
+    content: ''; position: absolute; left: 0; top: 13px; width: 16px; height: 2px;
+  }
+  .compare-panel.light .cp-item::before { background: var(--brand); }
+  .compare-panel.navy .cp-item::before { background: var(--gold); }
+  .compare-arrow {
+    display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px;
+  }
+  .compare-arrow .arrow-icon {
+    font-size: 40px; color: var(--gold-deep);
+    font-family: var(--font-display); font-weight: 800;
+  }
+  .compare-arrow .arrow-label {
+    font-size: 13px; font-weight: 700; color: var(--gold-deep);
+    text-transform: uppercase; letter-spacing: .1em;
+  }
+
+  .task-list { display: flex; flex-direction: column; gap: 0; }
+  .task-item {
+    display: grid; grid-template-columns: 36px 1fr 70px; gap: 14px;
+    padding: 9px 0; border-bottom: 1px solid var(--line); align-items: center;
+  }
+  .task-item:last-child { border-bottom: none; }
+  .task-item .task-n {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 600;
+    color: var(--brand); text-align: right;
+  }
+  .task-item .task-name { font-size: 18px; color: var(--ink); line-height: 1.3; }
+  .task-item .task-dur {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 600;
+    color: var(--gold-deep); text-align: right;
+  }
+
+  .milestone-box {
+    background: var(--brand); color: #fff; border-radius: 16px;
+    padding: 22px 28px; display: flex; align-items: center; gap: 18px;
+  }
+  .milestone-box .ms-icon { font-size: 32px; flex-shrink: 0; }
+  .milestone-box .ms-title {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 20px; letter-spacing: -.01em;
+  }
+  .milestone-box .ms-gold { color: var(--gold); }
+  .milestone-box .ms-desc { font-size: 16px; color: rgba(255,255,255,.78); margin-top: 4px; }
+
+  .deadline-box {
+    background: var(--gold); color: var(--ink); border-radius: 16px;
+    padding: 20px 32px; text-align: center;
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 21px; letter-spacing: -.01em;
+  }
+
 </style>
 <script type="application/json" id="speaker-notes">
 [
@@ -541,9 +717,14 @@
   "3.3 Planes de contingencia para los riesgos críticos.",
   "3.4 Mecanismos de seguimiento y control: indicadores por riesgo.",
   "Apertura del bloque 04: Planificación.",
-  "Plantilla del proyecto — captura pendiente.",
-  "Plan general — captura pendiente.",
-  "Plan detallado — captura pendiente.",
+  "Portada de sección: La Plantilla del Proyecto. La estructura base reutilizable sobre la que se construyen todos los planes.",
+  "Contenido de la plantilla: 91 tareas, 4 fases RUP, sin fechas ni recursos. Es el molde genérico que se rellena al crear cada plan.",
+  "Portada de sección: Plan General y Plan Detallado. De la estructura abstracta al calendario real de ContentFlow.",
+  "Tres niveles de planificación: plantilla genérica, plan general con fechas reales, plan detallado con personas, horas y precedencias.",
+  "Plan General: 4 fases, 5 iteraciones y 5 hitos de control. Período del 15 de abril al 8 de junio de 2026.",
+  "Plan Detallado: qué cambia respecto al general. Duraciones reales entre 2 y 20 horas, precedencias definidas y 6 recursos nominales asignados.",
+  "Iteración E1 como ejemplo del Plan Detallado: 13 tareas en 13,5 días hábiles. Desde refinamiento de requisitos hasta validación del prototipo con el cliente.",
+  "Cierre del bloque de planificación. 39 días hábiles, 134 tareas, 6 personas. Deadline: 14 mayo 2026.",
   "Cierre y agradecimientos."
 ]
 </script>
@@ -1324,9 +1505,72 @@
   <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
 </section>
 
+<!-- ===================== SLIDE 1/8 — Portada: La Plantilla ===================== -->
+<section class="dark">
+  <div class="pat-bg"></div>
+  <div class="frame-eyebrow">Agenda del Proyecto</div>
+  <div class="frame-counter">1 / 8</div>
+  <div style="position:absolute;top:50%;left:120px;right:120px;transform:translateY(-50%);">
+    <h1 class="h1 rule anim" style="--d:200ms; font-size: 92px;">La Plantilla del Proyecto</h1>
+    <p class="lead anim" style="--d:400ms; margin-top: 24px; color: rgba(255,255,255,.78); font-size: 28px; max-width: 900px;">La estructura base reutilizable sobre la que se construyen todos los planes</p>
+    <div class="anim" style="--d:600ms; margin-top: 36px; display:flex; gap: 16px; flex-wrap: wrap;">
+      <span class="tag info" style="background: rgba(255,255,255,.1); color: var(--gold); border: 1px solid rgba(255,255,255,.15);">Microsoft Project</span>
+      <span class="tag info" style="background: rgba(255,255,255,.1); color: var(--gold); border: 1px solid rgba(255,255,255,.15);">RUP</span>
+      <span class="tag info" style="background: rgba(255,255,255,.1); color: var(--gold); border: 1px solid rgba(255,255,255,.15);">4 fases</span>
+      <span class="tag info" style="background: rgba(255,255,255,.1); color: var(--gold); border: 1px solid rgba(255,255,255,.15);">91 tareas</span>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- ===================== SLIDE 2/8 — Contenido de la Plantilla ===================== -->
 <section>
-  <div class="frame-eyebrow">04 · Planificación · 4.1 Plantilla</div>
-  <div class="frame-counter">25 / 27</div>
+  <div class="frame-eyebrow">Plantilla · Estructura RUP genérica</div>
+  <div class="frame-counter">2 / 8</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 30px; font-size: 52px;">91 tareas, 4 fases, sin fechas ni recursos — <span style="color:var(--brand);">estructura pura</span></h1>
+
+  <div class="plan-kpis anim" style="--d:280ms; margin-top: 24px;">
+    <div class="plan-kpi"><div class="kpi-num">91</div><div class="kpi-label">tareas en la plantilla</div></div>
+    <div class="plan-kpi"><div class="kpi-num">4</div><div class="kpi-label">fases — Inicio · Elaboración · Construcción · Transición</div></div>
+    <div class="plan-kpi"><div class="kpi-num">1<span style="font-size:24px;font-weight:500;color:var(--slate);margin-left:4px;">día</span></div><div class="kpi-label">duración asignada a todas las tareas (placeholder)</div></div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 20px; gap: 20px;">
+    <div class="phase-card anim" style="--d:380ms;">
+      <div class="phase-tag">Fase de Inicio · IX</div>
+      <div class="phase-title">Fase de Inicio</div>
+      <div class="phase-hito">Hito IX</div>
+      <div class="phase-tasks">Reunión de inicio · Identificar Stakeholders · Definir Requerimientos Funcionales y No Funcionales · Definir Restricciones · Estimar Costes · Identificar Riesgos · Definir Plan de Contingencia · Validar Requerimientos con el Cliente</div>
+    </div>
+    <div class="phase-card anim" style="--d:460ms;">
+      <div class="phase-tag">Fase de Elaboración · EX</div>
+      <div class="phase-title">Fase de Elaboración</div>
+      <div class="phase-hito">Hito EX</div>
+      <div class="phase-tasks">Refinar Requerimientos · Definir Casos de Uso · Diseñar Arquitectura · Diseñar Modelo de Datos · Diseñar Interfaz de Usuario · Implementar Prototipo · Realizar Pruebas de Arquitectura · Evaluar Riesgos Técnicos</div>
+    </div>
+    <div class="phase-card anim" style="--d:540ms;">
+      <div class="phase-tag">Fase de Construcción · CX</div>
+      <div class="phase-title">Fase de Construcción</div>
+      <div class="phase-hito">Hito CX</div>
+      <div class="phase-tasks">Implementar Lógica de Negocio · Implementar Acceso a Datos · Integrar Componentes · Pruebas Unitarias y de Integración · Corregir Errores · Gestionar Control de Versiones · Actualizar Documentación Técnica</div>
+    </div>
+    <div class="phase-card anim" style="--d:620ms;">
+      <div class="phase-tag">Fase de Transición · TX</div>
+      <div class="phase-title">Fase de Transición</div>
+      <div class="phase-hito">Hito TX</div>
+      <div class="phase-tasks">Integrar Sistema Completo · Pruebas del Sistema y Aceptación · Preparar Documentación de Usuario y Técnica · Desplegar Sistema · Formar Usuarios · Recoger Feedback</div>
+    </div>
+  </div>
+
+  <div class="note-box anim" style="--d:750ms; margin-top: 16px;">La plantilla es genérica: todas las duraciones son de 1 día y no hay recursos ni fechas reales asignadas. Es el molde que se rellena al crear cada plan específico del proyecto.</div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<section>
+  <div class="frame-eyebrow">Plantilla · Captura Microsoft Project</div>
+  <div class="frame-counter">2b / 8</div>
   <h1 class="h1 rule anim" style="--d:100ms; margin-top: 40px;">Plantilla del proyecto.</h1>
   <p class="lead anim" style="--d:300ms; margin-top:10px;">Diagrama Gantt genérico del modelo RUP — fases, iteraciones y estructura de tareas.</p>
   <div class="anim scale-in" style="--d:450ms; margin-top: 30px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(15,23,41,.08); background: #fff;">
@@ -1335,20 +1579,225 @@
   <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
 </section>
 
+<!-- ===================== SLIDE 3/8 — Portada: Plan General y Plan Detallado ===================== -->
+<section class="dark">
+  <div class="pat-bg"></div>
+  <div class="frame-eyebrow">Agenda del Proyecto</div>
+  <div class="frame-counter">3 / 8</div>
+  <div style="position:absolute;top:50%;left:120px;right:120px;transform:translateY(-50%);">
+    <h1 class="h1 rule anim" style="--d:200ms; font-size: 92px;">Plan General y Plan Detallado</h1>
+    <p class="lead anim" style="--d:400ms; margin-top: 24px; color: rgba(255,255,255,.78); font-size: 28px; max-width: 1000px;">De la estructura abstracta al calendario real de ContentFlow</p>
+    <div class="anim" style="--d:600ms; margin-top: 36px; display:flex; gap: 16px; flex-wrap: wrap;">
+      <span class="tag info" style="background: rgba(255,255,255,.1); color: var(--gold); border: 1px solid rgba(255,255,255,.15);">Microsoft Project</span>
+      <span class="tag info" style="background: rgba(255,255,255,.1); color: var(--gold); border: 1px solid rgba(255,255,255,.15);">134 tareas</span>
+      <span class="tag info" style="background: rgba(255,255,255,.1); color: var(--gold); border: 1px solid rgba(255,255,255,.15);">39 días hábiles</span>
+      <span class="tag info" style="background: rgba(255,255,255,.1); color: var(--gold); border: 1px solid rgba(255,255,255,.15);">6 personas</span>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- ===================== SLIDE 4/8 — Tres niveles de planificación ===================== -->
 <section>
-  <div class="frame-eyebrow">04 · Planificación · 4.2 Plan general</div>
-  <div class="frame-counter">26 / 27</div>
+  <div class="frame-eyebrow">De lo genérico a lo concreto</div>
+  <div class="frame-counter">4 / 8</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 40px; font-size: 56px;">Tres niveles de planificación: <span style="color:var(--brand);">refinamiento progresivo</span></h1>
+
+  <div class="levels-row anim" style="--d:350ms; margin-top: 44px;">
+    <div class="level-card paper-bg">
+      <div class="level-tag">Plantilla</div>
+      <div class="level-num">91</div>
+      <div style="font-size:16px;font-weight:600;color:var(--slate);">tareas</div>
+      <div class="level-detail">
+        <span>Duración: 1 día (todas)</span>
+        <span>Sin fechas reales</span>
+        <span>Sin recursos asignados</span>
+        <span>Fases: IX · EX · CX · TX</span>
+      </div>
+      <div class="level-desc">Estructura base reutilizable para cualquier proyecto RUP</div>
+    </div>
+
+    <div class="level-arrow anim" style="--d:500ms;">→</div>
+
+    <div class="level-card navy-bg">
+      <div class="level-tag">Plan General</div>
+      <div class="level-num">134</div>
+      <div style="font-size:16px;font-weight:600;color:rgba(255,255,255,.6);">tareas</div>
+      <div class="level-detail">
+        <span>15 abr → 26 may 2026</span>
+        <span>30 días hábiles</span>
+        <span>Fechas reales asignadas</span>
+        <span>5 hitos de control</span>
+      </div>
+      <div class="level-desc" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.6);">Visión macro: fases, iteraciones e hitos reales para ContentFlow</div>
+    </div>
+
+    <div class="level-arrow anim" style="--d:650ms;">→</div>
+
+    <div class="level-card gold-bg">
+      <div class="level-tag">Plan Detallado</div>
+      <div class="level-num">134</div>
+      <div style="font-size:16px;font-weight:600;color:var(--brand-deep);">tareas</div>
+      <div class="level-detail">
+        <span>15 abr → 8 jun 2026</span>
+        <span>39 días hábiles</span>
+        <span>Duraciones reales (2h – 20h)</span>
+        <span>6 recursos nominales asignados</span>
+      </div>
+      <div class="level-desc" style="border-color:rgba(15,26,74,.2);color:var(--brand-deep);">Granularidad total: personas, horas y precedencias reales</div>
+    </div>
+  </div>
+
+  <div class="anim" style="--d:800ms; margin-top: 28px; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--gold-deep); letter-spacing: .02em;">
+    Refinamiento progresivo →
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- ===================== SLIDE 5/8 — Plan General: fases, iteraciones e hitos ===================== -->
+<section>
+  <div class="frame-eyebrow">Plan General · ContentFlow</div>
+  <div class="frame-counter">5 / 8</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 30px; font-size: 52px;">4 fases · 5 iteraciones · <span style="color:var(--brand);">5 hitos de control</span></h1>
+
+  <div class="timeline-bar anim" style="--d:300ms; margin-top: 28px;">
+    <div class="timeline-mark"><div class="dot"></div><div class="date">15 abr</div></div>
+    <div class="timeline-mark"><div class="dot"></div><div class="date">28 abr</div></div>
+    <div class="timeline-mark"><div class="dot"></div><div class="date">13 may</div></div>
+    <div class="timeline-mark deadline"><div class="dot"></div><div class="date">14 may — Entrega</div></div>
+    <div class="timeline-mark"><div class="dot"></div><div class="date">26 may</div></div>
+    <div class="timeline-mark"><div class="dot"></div><div class="date">8 jun</div></div>
+  </div>
+
+  <table class="t anim" style="--d:480ms; margin-top: 16px; font-size: 19px;">
+    <thead><tr>
+      <th style="width:14%;">Fase</th>
+      <th style="width:10%;">Iteración</th>
+      <th style="width:20%;">Período</th>
+      <th>Hito de cierre</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><b>Inicio</b></td><td class="id">I1</td><td>15 abr – 28 abr</td><td>Plan General, costes, riesgos y requerimientos completados</td></tr>
+      <tr><td><b>Elaboración</b></td><td class="id">E1</td><td>29 abr – 13 may</td><td>Arquitectura definida + prototipo interfaz (Usuarios, Clientes, Proveedores)</td></tr>
+      <tr><td><b>Elaboración</b></td><td class="id">E2</td><td>14 may – 26 may</td><td>Prototipo completo ContentFlow + Plan Detallado de C1 y C2</td></tr>
+      <tr><td><b>Construcción</b></td><td class="id">C1 + C2</td><td colspan="1">En paralelo con Elaboración</td><td>Sistema ContentFlow funcional y completo</td></tr>
+      <tr><td><b>Transición</b></td><td class="id">T1</td><td>Cierre</td><td>Entrega final del producto al cliente</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note-box anim" style="--d:650ms; margin-top: 14px; font-style: normal; background: var(--brand); color: #fff;">
+    <span style="color: var(--gold); font-weight: 700;">Cada hito es un punto de control:</span> si no se cumple, se renegocia el alcance del proyecto
+  </div>
+  <div class="anim" style="--d:750ms; margin-top: 8px; font-size: 14px; color: var(--slate); font-style: italic;">
+    En el Plan General todas las tareas tienen duración de 1 día — el esfuerzo real se especifica en el Plan Detallado
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<section>
+  <div class="frame-eyebrow">Plan General · Captura Microsoft Project</div>
+  <div class="frame-counter">5b / 8</div>
   <h1 class="h1 rule anim" style="--d:100ms; margin-top: 40px;">Plan general.</h1>
-  <p class="lead anim" style="--d: 300ms; margin-top: 10px;">Vista cronológica con fases e hitos macro del proyecto ContentFlow.</p>
-  <div class="anim scale-in" style="--d: 450ms; margin-top: 30px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(15,23,41,.08); background: #fff;">
+  <p class="lead anim" style="--d:300ms; margin-top:10px;">Vista cronológica con fases e hitos macro del proyecto ContentFlow.</p>
+  <div class="anim scale-in" style="--d:450ms; margin-top: 30px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(15,23,41,.08); background: #fff;">
     <img src="img/general.jpeg" alt="Plan general — vista cronológica" style="display:block; width: 100%; height: auto;">
   </div>
   <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
 </section>
 
+<!-- ===================== SLIDE 6/8 — Plan Detallado: qué cambia ===================== -->
 <section>
-  <div class="frame-eyebrow">04 · Planificación · 4.3 Plan detallado</div>
-  <div class="frame-counter">27 / 27</div>
+  <div class="frame-eyebrow">Plan Detallado · Diferencias clave</div>
+  <div class="frame-counter">6 / 8</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 50px; font-size: 56px;">Del 1 día genérico a las <span style="color:var(--brand);">horas reales</span></h1>
+
+  <div class="compare-grid">
+    <div class="compare-panel light anim" style="--d:350ms;">
+      <div class="cp-title">Plan General</div>
+      <div class="cp-items">
+        <div class="cp-item">Todas las tareas: duración <b>1 día</b></div>
+        <div class="cp-item">Sin precedencias definidas</div>
+        <div class="cp-item">Sin recursos asignados por nombre</div>
+        <div class="cp-item">Período: <b>30 días hábiles</b></div>
+      </div>
+    </div>
+
+    <div class="compare-arrow anim fade" style="--d:500ms;">
+      <div class="arrow-icon">→</div>
+      <div class="arrow-label">Refinamiento</div>
+    </div>
+
+    <div class="compare-panel navy anim" style="--d:650ms;">
+      <div class="cp-title" style="color:#fff;">Plan Detallado</div>
+      <div class="cp-items">
+        <div class="cp-item" style="color:rgba(255,255,255,.92);">Duraciones reales: entre <b style="color:var(--gold);">2h y 20h</b> por tarea</div>
+        <div class="cp-item" style="color:rgba(255,255,255,.92);">Precedencias definidas entre tareas</div>
+        <div class="cp-item" style="color:rgba(255,255,255,.92);">6 recursos nominales: <b style="color:var(--gold);">Christian · Santi · Nayara · Fran · Enrique · Adrián</b></div>
+        <div class="cp-item" style="color:rgba(255,255,255,.92);">Período: <b style="color:var(--gold);">39 días hábiles</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="anim" style="--d:800ms; margin-top: 14px; font-size: 14px; color: var(--slate); font-style: italic;">
+    Las fases C1, C2 y T1 mantienen duraciones de 1 día: se detallarán al completar la Elaboración, conforme al ciclo iterativo de RUP
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- ===================== SLIDE 7/8 — Iteración E1 como ejemplo ===================== -->
+<section>
+  <div class="frame-eyebrow">Plan Detallado · Iteración E1</div>
+  <div class="frame-counter">7 / 8</div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 30px;">
+    <div>
+      <h1 class="h1 rule anim" style="--d:100ms; font-size: 48px;">E1: el ciclo completo en <span style="color:var(--brand);">13,5 días hábiles</span></h1>
+      <p class="lead anim" style="--d:250ms; margin-top: 10px;">24 abril → 13 mayo 2026</p>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 16px;">
+    <div class="task-list anim" style="--d:350ms;">
+      <div class="task-item"><div class="task-n">01</div><div class="task-name">Refinamiento de requisitos — Usuarios, Clientes y Proveedores</div><div class="task-dur">6h</div></div>
+      <div class="task-item"><div class="task-n">02</div><div class="task-name">Gestión de cambios y validación de requisitos</div><div class="task-dur">20h</div></div>
+      <div class="task-item"><div class="task-n">03</div><div class="task-name">Definición de casos de uso principales</div><div class="task-dur">6h</div></div>
+      <div class="task-item"><div class="task-n">04</div><div class="task-name">Diseño de arquitectura del sistema</div><div class="task-dur">14h</div></div>
+      <div class="task-item"><div class="task-n">05</div><div class="task-name">Identificación de componentes</div><div class="task-dur">8h</div></div>
+      <div class="task-item"><div class="task-n">06</div><div class="task-name">Diseño del modelo de datos</div><div class="task-dur">10h</div></div>
+      <div class="task-item"><div class="task-n">07</div><div class="task-name">Diseño de interfaz de usuario</div><div class="task-dur">10h</div></div>
+    </div>
+    <div>
+      <div class="task-list anim" style="--d:450ms;">
+        <div class="task-item"><div class="task-n">08</div><div class="task-name">Implementación del prototipo arquitectónico</div><div class="task-dur">14h</div></div>
+        <div class="task-item"><div class="task-n">09</div><div class="task-name">Integración de componentes iniciales</div><div class="task-dur">8h</div></div>
+        <div class="task-item"><div class="task-n">10</div><div class="task-name">Pruebas de arquitectura</div><div class="task-dur">6h</div></div>
+        <div class="task-item"><div class="task-n">11</div><div class="task-name">Evaluación de riesgos técnicos</div><div class="task-dur">4h</div></div>
+        <div class="task-item"><div class="task-n">12</div><div class="task-name">Validación del prototipo con el cliente</div><div class="task-dur">5h</div></div>
+        <div class="task-item"><div class="task-n">13</div><div class="task-name">Actualización de costes y planificación</div><div class="task-dur">4h</div></div>
+      </div>
+
+      <div class="milestone-box anim" style="--d:600ms; margin-top: 20px;">
+        <div class="ms-icon">🏁</div>
+        <div>
+          <div class="ms-title"><span class="ms-gold">Hito E1</span> — 13 mayo 2026</div>
+          <div class="ms-desc">Arquitectura definida y prototipo de interfaz de Usuarios, Clientes y Proveedores</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<section>
+  <div class="frame-eyebrow">Plan Detallado · Captura Microsoft Project</div>
+  <div class="frame-counter">7b / 8</div>
   <h1 class="h1 rule anim" style="--d:100ms; margin-top: 40px;">Plan detallado.</h1>
   <p class="lead anim" style="--d:300ms; margin-top:10px;">Lista completa de tareas, duraciones, dependencias y asignación de recursos.</p>
   <div class="anim scale-in" style="--d:450ms; margin-top: 30px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(15,23,41,.08); background: #fff;">
@@ -1356,6 +1805,43 @@
   </div>
   <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
 </section>
+
+<!-- ===================== SLIDE 8/8 — Cierre del bloque ===================== -->
+<section>
+  <div class="frame-eyebrow">Resumen · Agenda del Proyecto</div>
+  <div class="frame-counter">8 / 8</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 50px; font-size: 56px;">De la plantilla al producto: <span style="color:var(--brand);">tres niveles, un proyecto</span></h1>
+
+  <div class="grid-3" style="margin-top: 44px;">
+    <div class="card gold anim scale-in" style="--d:300ms; text-align: center; padding: 40px 32px;">
+      <div class="card-num" style="color: var(--brand);">39</div>
+      <div style="font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--brand-deep);margin-top:8px;">días hábiles</div>
+      <div class="card-foot" style="color:var(--brand-deep);">Duración total — Plan Detallado</div>
+    </div>
+    <div class="card brand anim scale-in" style="--d:420ms; text-align: center; padding: 40px 32px;">
+      <div class="card-num" style="color: #fff;">134</div>
+      <div style="font-family:var(--font-display);font-weight:600;font-size:20px;color:rgba(255,255,255,.7);margin-top:8px;">tareas</div>
+      <div class="card-foot">4 fases · 5 iteraciones · 5 hitos</div>
+    </div>
+    <div class="card anim scale-in" style="--d:540ms; text-align: center; padding: 40px 32px; border: 2px solid var(--brand);">
+      <div class="card-num" style="color: var(--brand);">6</div>
+      <div style="font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--slate);margin-top:8px;">personas</div>
+      <div class="card-foot">Christian · Santi · Nayara · Fran · Enrique · Adrián</div>
+    </div>
+  </div>
+
+  <p class="body anim" style="--d:680ms; margin-top: 36px; text-align: center; max-width: 1200px; margin-left: auto; margin-right: auto; font-size: 22px; line-height: 1.55; color: var(--slate);">
+    La plantilla definió la estructura. El plan general fijó las fechas y los hitos. El plan detallado asignó personas, horas y precedencias reales. Los tres juntos son la hoja de ruta de ContentFlow.
+  </p>
+
+  <div class="deadline-box anim scale-in" style="--d:820ms; margin-top: 28px; max-width: 800px; margin-left: auto; margin-right: auto;">
+    📅 Deadline: 14 mayo 2026 · Hito T1 · Entrega del producto final ContentFlow
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
 
 <section class="dark" data-deck-last-visible="">
   <div class="pat-bg"></div>
