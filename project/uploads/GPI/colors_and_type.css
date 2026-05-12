@@ -1,0 +1,255 @@
+/* ============================================
+   ContentFlow — Colors & Type
+   Tokens base + estilos semánticos
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ---------- Color tokens ---------- */
+
+  /* Brand */
+  --coral: #F25C3F;
+  --coral-dark: #D44829;
+  --coral-soft: #FBD4C7;
+  --coral-15: color-mix(in srgb, var(--coral) 15%, transparent);
+
+  /* Ink (texto principal y fondos oscuros) */
+  --ink: #0F1729;
+  --ink-90: color-mix(in srgb, var(--ink) 90%, transparent);
+  --ink-70: color-mix(in srgb, var(--ink) 70%, transparent);
+  --ink-50: color-mix(in srgb, var(--ink) 50%, transparent);
+  --ink-30: color-mix(in srgb, var(--ink) 30%, transparent);
+  --ink-10: color-mix(in srgb, var(--ink) 10%, transparent);
+  --ink-05: color-mix(in srgb, var(--ink) 5%, transparent);
+
+  /* Cream (fondos principales) */
+  --cream: #FAF6F0;
+  --cream-deep: #F2EBE0;
+  --paper: #FFFFFF;
+
+  /* Semánticos */
+  --lime: #A8D86F;
+  --lime-deep: #6B9B3A;
+  --lime-soft: #E5F1D2;
+
+  --amber: #F2B33F;
+  --amber-deep: #C28B22;
+  --amber-soft: #FBE8C0;
+
+  --alert: #D43F3A;
+  --alert-deep: #A52E2A;
+  --alert-soft: #F4D2D0;
+
+  /* Neutrales */
+  --slate: #5A6478;
+  --slate-light: #8A93A5;
+  --line: color-mix(in srgb, var(--ink) 10%, transparent);
+  --line-strong: color-mix(in srgb, var(--ink) 18%, transparent);
+
+  /* Foreground / background semánticos */
+  --fg-1: var(--ink);
+  --fg-2: var(--slate);
+  --fg-3: var(--slate-light);
+  --fg-on-ink: var(--cream);
+  --fg-on-coral: var(--cream);
+
+  --bg-1: var(--cream);
+  --bg-2: var(--cream-deep);
+  --bg-3: var(--paper);
+  --bg-ink: var(--ink);
+  --bg-coral: var(--coral);
+
+  /* ---------- Typography tokens ---------- */
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --fs-hero: clamp(64px, 6vw, 112px);
+  --fs-display: clamp(48px, 4.5vw, 80px);
+  --fs-h1: clamp(40px, 3.5vw, 64px);
+  --fs-h2: clamp(28px, 2.4vw, 44px);
+  --fs-h3: clamp(22px, 1.8vw, 30px);
+  --fs-body-lg: 22px;
+  --fs-body: 18px;
+  --fs-body-sm: 15px;
+  --fs-caption: 13px;
+  --fs-eyebrow: 12px;
+
+  --lh-tight: 1.05;
+  --lh-snug: 1.18;
+  --lh-normal: 1.45;
+  --lh-relaxed: 1.6;
+
+  --tracking-tight: -0.02em;
+  --tracking-snug: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.12em;
+
+  /* ---------- Spacing ---------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+  --s-24: 96px;
+  --s-32: 128px;
+
+  /* ---------- Radii ---------- */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ---------- Shadows ---------- */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 41, 0.05), 0 1px 3px rgba(15, 23, 41, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 41, 0.06), 0 2px 4px rgba(15, 23, 41, 0.04);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 41, 0.10), 0 6px 12px rgba(15, 23, 41, 0.05);
+  --shadow-focus: 0 0 0 3px var(--coral-15);
+
+  /* ---------- Slide layout ---------- */
+  --slide-w: 1920px;
+  --slide-h: 1080px;
+  --slide-pad-x: 120px;
+  --slide-pad-y: 100px;
+}
+
+/* ============================================
+   Semantic styles
+   ============================================ */
+
+html, body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+.font-mono    { font-family: var(--font-mono); }
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  margin: 0;
+  text-wrap: balance;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-1);
+  margin: 0;
+  text-wrap: balance;
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-1);
+  margin: 0;
+}
+
+.hero {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+p, .p {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-1);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.body-lg {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+}
+
+.body-sm {
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-normal);
+  color: var(--fg-2);
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-normal);
+  color: var(--fg-2);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--coral);
+}
+
+code, .code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--ink-05);
+  padding: 2px 6px;
+  border-radius: var(--r-sm);
+  color: var(--ink);
+}
+
+.num-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Inverse (sobre fondo ink) */
+.on-ink {
+  color: var(--fg-on-ink);
+}
+.on-ink h1, .on-ink h2, .on-ink h3, .on-ink p {
+  color: var(--fg-on-ink);
+}
+.on-ink .body-sm, .on-ink .caption {
+  color: color-mix(in srgb, var(--cream) 70%, transparent);
+}
+.on-ink .eyebrow {
+  color: var(--coral);
+}

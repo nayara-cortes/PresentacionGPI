@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>body{margin:0;padding:28px;background:var(--cream);font-family:var(--font-body);}
+.label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--slate);margin-bottom:14px;}
+.grid{display:flex;gap:18px;flex-wrap:wrap;}
+.cell{display:flex;flex-direction:column;align-items:center;gap:8px;width:74px;}
+.box{width:54px;height:54px;background:#fff;border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--ink);}
+.cap{font-family:var(--font-mono);font-size:10px;color:var(--slate);}
+</style></head>
+<body>
+<div class="label">Iconografía · Lucide · stroke 1.75</div>
+<div class="grid">
+  <div class="cell"><div class="box"><i data-lucide="layout-dashboard"></i></div><div class="cap">dashboard</div></div>
+  <div class="cell"><div class="box"><i data-lucide="receipt"></i></div><div class="cap">receipt</div></div>
+  <div class="cell"><div class="box"><i data-lucide="users"></i></div><div class="cap">users</div></div>
+  <div class="cell"><div class="box"><i data-lucide="briefcase"></i></div><div class="cap">briefcase</div></div>
+  <div class="cell"><div class="box"><i data-lucide="trending-up"></i></div><div class="cap">trend</div></div>
+  <div class="cell"><div class="box"><i data-lucide="alert-triangle"></i></div><div class="cap">alert</div></div>
+  <div class="cell"><div class="box"><i data-lucide="file-text"></i></div><div class="cap">file</div></div>
+  <div class="cell"><div class="box"><i data-lucide="settings"></i></div><div class="cap">settings</div></div>
+</div>
+<script>lucide.createIcons({attrs:{'stroke-width':1.75}});</script>
+</body></html>

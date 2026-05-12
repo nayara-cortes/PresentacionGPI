@@ -1,0 +1,2705 @@
+“ContentFlow”
+DOCUMENTO DE
+PLANIFICACIÓN
+Palabras clave:
+Palabra1 - Palabra2 - Palabra3 - Palabra4 - Palabra5
+Gestión de Proyectos Informáticos (Curso 2025-26)
+Grupo: J11-4
+Profesor: Carlos José Villagrá Arnedo
+Versión: 2
+Componentes:
+● Nayara Paloma Cortés Quesada
+● Santiago Redondo De La Rica
+● Enrique Cuesta Quintana
+● Adrián José Guerra Castro
+● Christian Campello Cornejo
+● Francisco Navarro Martínez
+
+-- 1 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+INDICE
+1. INTRODUCCIÓN 	3
+1.1. OBJETIVOS GENERALES 	3
+1.2. REQUERIMIENTOS FUNCIONALES DEL PROYECTO 	3
+1.3. REQUERIMIENTOS NO FUNCIONALIDADES DEL PROYECTO 	3
+1.4. RESTRICCIONES DEL PROYECTO 	3
+2. ESTIMACIÓN DE COSTES 	4
+2.1. LEY DE PARKINSON 	4
+2.2. PRICING TO WIN 	4
+2.3. PUNTOS OBJETO 	4
+2.4. COMPARACIÓN Y DISCUSIÓN DE LOS VALORES OBTENIDOS 	4
+3. ANÁLISIS DE RIESGOS 	5
+3.1. IDENTIFICACIÓN DE RIESGOS 	5
+3.2. PRIORIDADES DE LOS RIESGOS 	5
+3.3. PLANES DE CONTINGENCIA 	5
+3.4. MECANISMOS DE SEGUIMIENTO Y CONTROL 	5
+4. ORGANIZACIÓN DE RECURSOS HUMANOS. 	6
+5. AGENDA DEL PROYECTO 	7
+5.1. RELACIÓN DE ACTIVIDADES Y PRECEDENCIAS 	7
+5.2. HITOS DEL PROYECTO 	7
+5.3. ASIGNACIÓN DE TIEMPO Y RECURSOS A ACTIVIDADES 	7
+5.4. ASIGNACIÓN DE RECURSOS HUMANOS 	7
+5.5. CÁLCULO DE HOLGURAS Y DURACIÓN DEL PROYECTO 	7
+5.6. AGENDA CON FECHAS TEMPRANAS Y TARDÍAS (ACTIVIDADES) 	7
+5.7. AGENDA SEGÚN RECURSOS 	7
+60
+
+-- 2 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+1. Introducción
+1.1. 	Objetivos generales
+El objetivo principal es diseñar y desarrollar una aplicación web orientada a
+autónomos del sector de creadores de contenido, permitiendo consultar y administrar
+la información económica, fiscal y administrativa derivada de su actividad profesional.
+Esta especialización sectorial permite adaptar el sistema a las particularidades reales
+del negocio digital, ofreciendo una experiencia más precisa, intuitiva y alineada con sus
+necesidades.
+En concreto, deberá:
+● Facilitar el control de clientes y proveedores.
+● Centralizar la información de marcas, patrocinadores y colaboradores.
+● Gestionar el proceso de presupuestos y facturación.
+● Registrar y controlar ingresos y gastos.
+● Supervisar cobros y pagos.
+● Generar informes económicos y fiscales.
+● Incorporar métricas de rendimiento básicas.
+● Facilitar futuras ampliaciones del sistema.
+● Garantizar la seguridad de la información.
+● Proporcionar documentación y soporte al usuario.
+En este contexto, identificamos como clientes principales a marcas, empresas,
+emprendedores y pequeños negocios que contratan al usuario para publicidad o
+promoción; agencias de marketing, que intermedian entre marcas y creadores; y
+seguidores en caso de suscripciones de pago, membresías, donaciones y compra de
+productos digitales (tales como ebooks, cursos, plantillas, etc). Los proveedores,
+aquellos que ofrecen servicios o recursos al creador, en este contexto resultan ser
+principalmente plataformas digitales (plataformas de streaming o de monetización).
+1.2. 	Requerimientos funcionales del proyecto
+Nombre
+funcionalidad
+Identificador 	Nombre
+subfuncionalidad.
+Descripción
+Gestión de
+usuarios
+(USR)
+USR_REG 	Registro de
+usuario
+Permite a un
+nuevo usuario
+crear una cuenta
+en el sistema
+introduciendo sus
+datos
+identificativos y
+profesionales
+necesarios para el
+60
+
+-- 3 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+uso de la
+aplicación.
+USR_INI 	Inicio de sesión 	Permite iniciar
+sesión mediante
+correo y
+contraseña, o
+mediante Google.
+USR_CIE 	Cierre de sesión
+USR_REC 	Recuperación de
+contraseña
+Permite restablecer
+la contraseña en
+caso de olvido.
+USR_SES 	Recordar sesión Permite mantener
+la sesión iniciada
+en el dispositivo.
+Gestión del
+perfil
+(PERFIL)
+PERFIL_VER 	Ver perfil 	Consultar los
+datos personales y
+profesionales.
+PERFIL_EDIT 	Editar perfil 	Permite modificar
+los datos asociados
+a la cuenta.
+PERFIL_PREF 	Preferencias 	Permite configurar
+ajustes
+personalizados del
+sistema.
+Roles y
+permisos
+(ROL)
+ROL_USR 	Usuario 	Rol estándar con
+acceso a
+funcionalidades
+básicas.
+ROL_ADMIN 	Administrador Rol con permisos
+avanzados de
+gestión.
+ROL_ACC 	Control de acceso Restringe
+funcionalidades
+según el rol
+asignado.
+Tabla 1. Tabla con las funcionalidades del USUARIO.
+60
+
+-- 4 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Nombre
+funcionalidad
+identificador 	Nombre
+subfuncionalidad
+Descripción
+Gestión del
+cliente (CLI)
+CLI_REG 	Registrar un
+cliente
+Permite registrar
+un cliente
+introduciendo
+datos como
+nombre, NIF/CIF,
+tipo (marca,
+agencia,
+suscriptor), correo
+electrónico,
+domicilio fiscal y
+moneda habitual.
+CLI_ACT 	Modificar cliente. Permite modificar
+los datos
+previamente
+registrados de un
+cliente.
+CLI_BOR 	Borrar cliente 	Permite eliminar
+un cliente del
+sistema.
+CLI_VALID 	Validar
+eliminación de
+cliente
+Impide eliminar
+un cliente si tiene
+facturas o cobros
+asociados, para
+mantener la
+integridad de
+datos.
+Informe Cliente
+(INF_CLI)
+INF_LISTA_CLI Muestra el listado
+de clientes
+INF_BUSCA_CLI 	Muestra
+información
+según la variable
+deseada
+Muestra listado de
+clientes que
+cumple con la
+variable buscada.
+EXPORT_CLI 	Exportar listado
+de clientes
+Permite exportar
+clientes en PDF o
+Excel para
+contabilidad o
+informes fiscales.
+IMP_CLI 	Importar clientes Permite importar
+clientes desde
+archivos CSV o
+Excel.
+PAYCLI_REG 	Registrar un
+cobro
+Registra una
+condición de cobro
+de un cliente con
+su identificación,
+60
+
+-- 5 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Gestión de
+cobros
+(PAYCLI)
+tipo de pago, fecha
+de vencimiento…
+PAYCLI_MODIF 	Modificar una
+condición de
+cobro
+Modifica los datos
+de una condición
+de cobro.
+PAYCLI_BORR 	Eliminar
+condición de
+cobro
+Elimina una
+condición de cobro
+que había sido
+registrada.
+Alertas clientes
+(ALERT)
+ALERT_PAGO 	Aviso de cobros
+pendientes
+Genera avisos
+cuando un cliente
+tiene pagos
+vencidos.
+ALERT_CONT 	Aviso de
+contrato/campañ
+a
+Notifica cuando
+una colaboración
+con el cliente está
+próxima a
+finalizar.
+Historial de
+operaciones
+(HISCLI)
+HISCLI_FACT 	Historial de
+facturas
+Muestra todas las
+facturas,
+presupuestos e
+ingresos
+vinculados a un
+cliente.
+HISCLI_COLAB 	Historial de
+colaboraciones
+Permite consultar
+campañas o
+colaboraciones
+realizadas con el
+cliente.
+Tabla 2. Tabla con las funcionalidades de Clientes.
+Nombre
+funcionalidad
+identificador 	Nombre
+subfuncionalidad
+Descripción
+Gestión del
+proveedor
+(PROV)
+PROV_REG 	Registrar un
+proveedor
+Registra un
+proveedor
+añadiendo toda la
+información
+relevante (NIF,
+domicilio fiscal,
+tipo, moneda
+habitual…)
+PROV_BORR 	Eliminar un
+proveedor
+Elimina un
+proveedor de la
+app
+60
+
+-- 6 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+PROV_ACT 	Editar información
+de un proveedor
+Edita los datos de
+los proveedores
+registrados.
+PROV_EXPORT Exportar listado de
+proveedores
+Permite exportar
+proveedores en
+PDF o Excel para
+contabilidad o
+informes fiscales.
+PROV_IMPORT 	Importar
+proveedores
+Permite importar
+proveedores desde
+archivos CSV o
+Excel.
+Informe de
+proveedores
+(INF)
+INFPROV_LISTA
+Muestra el listado
+de los proveedores
+Muestra un listado
+de los proveedores
+con sus datos y
+condiciones de
+pagos asociados.
+INFPROV_BUSCA 	Muestra
+información según
+la variable deseada
+Muestra listado de
+proveedores que
+cumple con la
+variable buscada.
+Gestión de
+pagos
+(PAY)
+PAYPROV_REG
+Registra una
+condición de pago
+Registra una
+condición de pago
+con su
+identificación, tipo,
+fecha de
+vencimiento…
+PAYPROV_ACT 	Modifica una
+condición de pago
+Modifica los datos
+de una condición
+de pago.
+PAYPROV_BORR Elimina condición
+de pago
+Elimina una
+condición de pago
+que había sido
+registrada.
+Tabla 3. Tabla con las funcionalidades de Proveedores.
+60
+
+-- 7 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Nombre
+funcionalidad
+Identificador 	Nombre
+subfunciona
+lidad
+Descripción
+Gestión de
+presupuestos
+(PRES)
+PRES_REG 	Registrar
+presupuesto
+Crea un nuevo presupuesto
+asociado a un cliente,
+indicando los servicios
+ofertados, base imponible,
+impuestos aplicables y
+fecha de validez.
+PRES_LIST 	Listado de
+servicios
+Permite al usuario escoger,
+de entre todos los servicios
+que oferta, aquellos que
+quiere añadir a un
+presupuesto.
+PRES_ACT 	Editar
+presupuesto
+Permite modificar los datos
+de un presupuesto siempre
+que no haya sido aceptado
+ni convertido.
+PRES_BORR 	Eliminar
+presupuesto
+Elimina un presupuesto del
+sistema siempre que no
+haya derivado en factura.
+PRES_CONV 	Convertir
+presupuesto
+en factura
+Genera automáticamente
+una factura emitida a partir
+de un presupuesto
+aceptado, heredando todos
+sus datos.
+FACT_E_REG
+Registrar
+factura
+emitida
+Registra una factura
+emitida a un cliente con
+numeración correlativa
+obligatoria, datos fiscales
+del emisor y receptor,
+desglose de base imponible,
+tipo de IVA, retenciones y
+60
+
+-- 8 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Gestión de
+facturas
+emitidas
+(FACT_E)
+total. Cumple con la
+normativa VERIFACTU.
+FACT_E_RECT
+Emitir
+factura
+rectificativa
+Genera una factura
+rectificativa vinculada a
+una factura original
+emitida, sin permitir la
+modificación directa de la
+misma.
+FACT_E_VER 	Verificar
+integridad
+VERIFACTU
+Valida que cada factura
+emitida cumple con los
+requisitos de la normativa
+VERIFACTU antes de su
+registro definitivo.
+FACT_E_LIST 	Listar
+facturas
+emitidas
+Muestra el listado de
+facturas emitidas con sus
+estados y datos fiscales,
+correspondiente al libro de
+facturas expedidas.
+Gestión de
+facturas
+recibidas
+(FACT_R)
+FACT_R_REG 	Registrar
+factura
+recibida
+Registra una factura
+recibida de un proveedor
+con sus datos fiscales,
+importe, tipo de IVA
+soportado y retenciones.
+FACT_R_ACT 	Editar
+factura
+recibida
+Permite corregir los datos
+de una factura recibida
+antes de su contabilización
+definitiva.
+FACT_R_BORR 	Eliminar
+factura
+recibida
+Elimina una factura
+recibida siempre que no
+esté vinculada a un pago
+registrado.
+60
+
+-- 9 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+FACT_R_LIST 	Listar
+facturas
+recibidas
+Muestra el listado de
+facturas recibidas,
+correspondiente al libro de
+facturas recibidas.
+Cobros y pagos
+(COBPAG)
+COBPAG_REG_CO
+B
+Registrar
+cobro
+Registra el cobro de una
+factura emitida, indicando
+importe, fecha y forma de
+pago, actualizando su
+estado.
+COBPAG_REG_PA
+G
+Registrar
+pago
+Registra el pago de una
+factura recibida, indicando
+importe, fecha y forma de
+pago, actualizando su
+estado.
+COBPAG_ESTADO
+Gestionar
+estados
+Permite visualizar y
+actualizar el estado de una
+factura entre los valores:
+pendiente, pagado y
+vencido.
+COBPAG_ALERT 	Alertas de
+vencimiento
+Genera avisos automáticos
+cuando una factura emitida
+o recibida alcanza su fecha
+de vencimiento sin haber
+sido cobrada o pagada.
+Libros
+contables (LIB)
+LIB_MAYOR 	Consultar
+libro mayor
+Genera el libro mayor con
+el registro cronológico de
+todos los movimientos
+contables del período
+seleccionado.
+LIB_FACT_EXP 	Consultar
+libro de
+facturas
+expedidas
+Genera el libro de facturas
+emitidas del período, con
+todos los datos fiscales
+60
+
+-- 10 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+requeridos por la
+normativa.
+LIB_FACT_REC 	Consultar
+libro de
+facturas
+recibidas
+Genera el libro de facturas
+recibidas del período, con
+todos los datos fiscales
+requeridos por la
+normativa.
+LIB_EXPORT 	Exportar
+libros
+contables
+Permite exportar cualquiera
+de los libros contables en
+formato PDF o CSV para su
+presentación o archivo.
+Ejercicio
+contable
+(EJERC)
+EJERC_APERT 	Apertura de
+ejercicio
+Inicializa un nuevo ejercicio
+fiscal, configurando el
+período contable activo.
+EJERC_CIERR 	Cierre de
+ejercicio
+Realiza el cierre del ejercicio
+activo, consolidando todos
+los registros contables del
+período y bloqueando su
+modificación.
+Tabla 4. Tabla con las funcionalidades del bloque Finanzas.
+Nombre
+funcionalidad
+Identificador 	Nombre
+subfuncionalidad
+Descripción
+ANL_DASH 	Visualizar
+dashboard
+Muestra un panel
+de control con los
+indicadores clave
+de rendimiento
+(KPIs) y gráficos
+resumen del
+negocio.
+ANL_KPI_INGM
+ES
+Ver ingresos del
+mes
+Muestra el total de
+ingresos del mes
+actual y permite
+visualizar su
+60
+
+-- 11 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Panel de
+Control (ANL)
+evolución respecto
+a meses anteriores.
+ANL_KPI_TOPC
+LI
+Ver top clientes 	Muestra un
+ranking de los
+clientes (marcas,
+agencias) que
+generan mayores
+ingresos.
+ANL_KPI_GASC
+CAT
+Ver gastos por
+categoría
+Muestra un
+desglose de los
+gastos agrupados
+por categorías
+(plataformas,
+herramientas,
+profesionales)
+mediante gráficos.
+ANL_KPI_PEND
+COB
+Ver cobros
+pendientes
+Muestra el importe
+total de facturas
+pendientes de
+cobro y facturas
+pendientes de
+pago.
+Informes
+generales
+(INFG)
+ANL_INFG_TER Generar informe
+de operaciones
+Genera un informe
+detallado de las
+operaciones
+realizadas con un
+cliente o
+proveedor
+específico.
+ANL_INFG_RA
+NK
+Generar ranking
+de marcas
+Genera un informe
+con el ranking de
+marcas y
+patrocinadores
+según volumen de
+facturación.
+ANL_INFG_PYG
+SIMPLE
+Generar informe
+de pérdidas y
+ganancias
+Genera un informe
+simplificado de
+pérdidas y
+ganancias
+contrastando
+ingresos y gastos
+totales de un
+período.
+ANL_EXP_PDF Exportar informe a
+PDF
+Exporta el informe
+o gráfico actual a
+un archivo en
+formato PDF con
+60
+
+-- 12 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Exportación de
+datos (EXP)
+formato limpio y
+profesional.
+ANL_EXP_CSV Exportar datos a
+CSV
+Exporta los datos
+de las tablas
+(facturas, ingresos,
+gastos, etc.) a un
+archivo en formato
+CSV.
+Visualización y
+filtros
+ANL_FILT_FEC
+HA
+Filtrar por fechas 	Aplica un filtro
+por rango de
+fechas
+personalizado a
+todos los informes,
+KPIs y gráficas
+mostrados.
+ANL_FILT_ENTI
+DAD
+Filtrar por cliente o
+proveedor
+Aplica un filtro
+para acotar los
+datos mostrados
+por cliente,
+proveedor o
+estado de factura.
+ANL_GRAPH 	Visualizar
+evolución
+temporal
+Muestra la
+evolución de
+ingresos y gastos a
+lo largo del tiempo
+mediante un
+gráfico de líneas
+interactivo.
+Tabla 5. Tabla con las funcionalidades del Análisis de Datos (ANL).
+Nombre
+funcionalida
+d
+Identificador 	Nombre
+subfuncionalidad
+Descripción
+Gestión IVA
+(IVA)
+IVA_REG_OPER 	Registrar
+operación con IVA
+Registra ingresos y
+gastos con
+desglose de base
+imponible, tipo de
+IVA aplicado y
+cuota resultante.
+IVA_RESUMEN 	Resumen IVA por
+periodo
+Calcula
+automáticamente
+IVA repercutido,
+soportado y
+resultado del
+60
+
+-- 13 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+periodo (a ingresar
+o compensar).
+IVA_LIBRO_VENT 	Libro de IVA
+repercutido
+Genera el libro de
+ventas con todas
+las facturas
+emitidas y su
+detalle fiscal.
+Retenciones
+(RET)
+RET_APLICAR 	Aplicar retención a
+factura
+Permite aplicar
+automáticamente
+una retención
+(IRPF u otras)
+sobre la base
+imponible de una
+factura.
+RET_RESUMEN 	Resumen de
+retenciones por
+periodo
+Agrupa y calcula
+el total de
+retenciones
+practicadas o
+soportadas en un
+periodo
+determinado.
+RET_LISTADO 	Listado detallado
+de retenciones
+Muestra el detalle
+por factura (fecha,
+tercero, porcentaje
+e importe
+retenido).
+Tabla 7. Tabla con las funcionalidades del bloque Fiscal.
+1.3. 	Requerimientos no funcionales del proyecto
+Nombre
+requerimiento no
+funcional
+Identificador 	Nombre
+subrequerimien
+to no funcional
+Descripción
+REND_TMP_RESP 	Tiempo de
+respuesta
+El sistema deberá
+cargar cualquier
+interfaz (dashboard,
+listados, informes)
+en menos de 3
+segundos en
+condiciones
+normales de
+operación.
+60
+
+-- 14 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+RENDIMIENTO
+(REND)
+REND_GEN_INFO
+Generación de
+informes
+La generación de
+informes fiscales o
+de análisis con un
+volumen de datos de
+hasta 12 meses no
+deberá exceder los 5
+segundos de proceso.
+REND_CRUD 	Operaciones
+CRUD
+Las operaciones de
+creación, lectura,
+actualización y
+borrado de registros
+(facturas, clientes,
+proveedores)
+deberán ejecutarse
+en menos de 2
+segundos.
+Tabla 7. Tabla con los requerimientos no funcionales del proyecto de RENDIMIENTO.
+Identificador 	Nombre
+requerimient
+o no
+funcional
+Nombre
+subrequerimient
+o no funcional
+Descripción
+ESCALABILIDAD
+(ESC)
+ESC_DATOS
+Escalabilidad de
+datos
+La aplicación
+deberá ser capaz
+de gestionar un
+volumen creciente
+de registros
+(clientes, facturas,
+cobros,
+colaboraciones)
+hasta 5 años de
+historial sin
+pérdida de
+rendimiento.
+ESC_CONCU Concurrencia de
+usuarios
+La aplicación
+deberá soportar al
+menos 50 usuarios
+concurrentes
+(tiempo de
+respuesta inferior a
+5 segundos).
+ESC_INF 	Escalabilidad de
+informes
+La generación de
+informes con
+grandes
+volúmenes de
+datos (múltiples
+60
+
+-- 15 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+clientes y
+periodos) deberá
+ejecutarse en
+menos de 10
+segundos.
+ESC_MOD Escalabilidad de
+módulos
+El sistema deberá
+permitir añadir
+nuevos módulos o
+funcionalidades
+(por ejemplo
+métricas
+avanzadas,
+integraciones con
+nuevas
+plataformas) sin
+afectar al
+rendimiento de los
+módulos
+existentes.
+ESC_SERV Escalabilidad del
+servidor
+La arquitectura
+deberá permitir
+aumentar recursos
+(CPU, RAM,
+almacenamiento)
+de manera vertical
+u horizontal sin
+interrumpir el
+servicio.
+Tabla 8. Tabla con los requerimientos no funcionales del proyecto de
+ESCALABILIDAD
+Nombre
+requerimiento no
+funcional
+Identificador 	Nombre
+subrequerimiento
+no funcional
+Descripción
+SECU_AUTH 	Autenticación
+segura
+El sistema deberá
+requerir
+autenticación
+mediante usuario
+y contraseña
+cifrada. Las
+contraseñas se
+almacenarán en
+formato hash
+seguro.
+SECU_ROLES Control de acceso
+por roles
+El acceso a
+funcionalidades
+estará restringido
+60
+
+-- 16 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+SEGURIDAD
+(SECU)
+según el rol
+asignado (usuario
+/ administrador),
+evitando accesos
+no autorizados.
+SECU_ENCR 	Cifrado de
+comunicaciones
+La comunicación
+entre cliente y
+servidor se
+realizará mediante
+protocolo seguro
+HTTPS (TLS),
+garantizando
+confidencialidad
+de los datos
+transmitidos.
+SECU_LOG 	Registro de
+auditoría
+El sistema
+almacenará logs de
+acceso y acciones
+críticas (login,
+modificación de
+datos fiscales,
+eliminación de
+registros) para
+trazabilidad.
+SECU_BACK 	Protección de
+datos sensibles
+Los datos fiscales y
+financieros estarán
+protegidos
+mediante permisos
+internos y no serán
+accesibles
+directamente
+desde consultas no
+autorizadas.
+SECU_SESSIO
+N
+Gestión segura de
+sesión
+Las sesiones
+tendrán expiración
+automática tras un
+periodo de
+inactividad y se
+invalidarán tras el
+cierre de sesión.
+Tabla 9. Tabla con los requerimientos no funcionales del proyecto de SEGURIDAD.
+60
+
+-- 17 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Nombre
+requerimiento no
+funcional
+Identificador 	Nombre
+subrequerimiento
+no funcional
+Descripción
+DISPONIBILIDAD
+(DISP)
+DISP_UPTIM
+E
+Disponibilidad del
+servicio
+El sistema deberá estar
+accesible para los
+usuarios al menos el
+99% del tiempo,
+excluyendo
+mantenimientos
+planificados.
+DISP_MANT 	Mantenimiento
+planificado
+El sistema permitirá
+ventanas de
+mantenimiento
+planificadas,
+informando al usuario
+cuando aplique.
+DISP_HOR 	Horario de
+operación
+El sistema estará
+disponible 24/7 salvo
+mantenimientos
+programados.
+DISP_INC 	Comunicación de
+incidencias
+En caso de caída del
+servicio, se notificará al
+usuario la existencia de
+una incidencia.
+Tabla 10. Tabla con los requerimientos no funcionales del proyecto de
+DISPONIBILIDAD.
+Nombre
+funcionalidad
+identificador 	Nombre
+subfuncionalidad
+Descripción
+FIABILIDAD
+(FIAB)
+FIAB_DATOS Integridad y manejo
+de datos
+El sistema se tiene que
+ocupar de que los datos
+nunca queden
+corruptos
+FIAB_RECU 	Recuperación y
+persistencia ante
+fallos
+El sistema se encargará
+de recuperarse ante
+fallos mediante
+backups automáticos,
+guardados automáticos
+tras operación crítica,
+recuperación sin
+pérdida de información
+confirmada.
+FIAB_TOL 	Tolerancia a fallos 	Si el sistema falla, el
+sistema tiene que ser
+60
+
+-- 18 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+capaz de funcionar
+buscamos un 99,5% de
+operaciones
+completadas sin
+intervención manual.
+FIAB_CONS 	Consistencia de
+cálculos financieros
+El sistema no puede
+dar resultados distintos
+para la misma
+información, se buscará
+0 número de
+operaciones con
+inconsistencias en
+producción.
+Tabla 11. Tabla con los requerimientos no funcionales de FIABILIDAD.
+Identificador 	Nombre
+requerimien
+to no
+funcional
+Nombre
+subrequerimient
+o no funcional
+Descripción
+USABILIDAD
+(USA)
+USA_INT 	Interfaz intuitiva 	La interfaz deberá seguir
+principios de diseño
+coherentes (jerarquía visual,
+agrupación de elementos
+relacionados y terminología
+consistente), de modo que un
+usuario sin formación técnica
+pueda localizar y ejecutar las
+funcionalidades principales
+sin necesidad de ayuda
+externa.
+USA_APR 	Facilidad de
+aprendizaje
+Un usuario nuevo deberá ser
+capaz de realizar las
+operaciones básicas del
+sistema (registrar un cliente,
+emitir una factura y consultar
+un informe) en un tiempo
+máximo de 30 minutos desde
+el primer acceso, sin haber
+recibido formación previa.
+USA_ERR 	Gestión de
+errores y
+validaciones
+El sistema deberá mostrar
+mensajes de error claros,
+descriptivos y en lenguaje no
+técnico ante entradas
+incorrectas o acciones no
+permitidas, indicando al
+60
+
+-- 19 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+usuario el motivo del error y
+la acción correctiva
+recomendada.
+USA_RES 	Diseño
+responsivo
+La aplicación deberá
+adaptarse correctamente a
+distintos tamaños de pantalla
+(escritorio, tablet y móvil),
+garantizando que todas las
+funcionalidades sean
+accesibles y utilizables
+independientemente del
+dispositivo empleado.
+USA_ACC 	Accesibilidad
+básica
+La interfaz deberá cumplir
+con los criterios de
+conformidad de nivel AA de
+las pautas WCAG 2.1,
+incluyendo contraste de color
+suficiente, navegación por
+teclado y etiquetado
+adecuado de elementos
+interactivos.
+USA_MAN 	Manual de
+usuario
+El sistema deberá incluir un
+manual de usuario completo
+y accesible desde la propia
+aplicación, con instrucciones
+claras para todas las
+funcionalidades principales,
+ejemplos de uso y resolución
+de dudas frecuentes.
+USA_INS 	Soporte de
+instalación
+Se proporcionarán al cliente
+los soportes de instalación
+necesarios junto con una guía
+de instalación paso a paso,
+garantizando que el proceso
+pueda realizarse sin
+conocimientos técnicos
+avanzados.
+USA_FED 	Retroalimentació
+n del sistema
+El sistema deberá informar al
+usuario del resultado de cada
+acción mediante mensajes de
+confirmación, indicadores de
+progreso o notificaciones de
+éxito/error, de forma que el
+usuario tenga en todo
+momento conciencia del
+60
+
+-- 20 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+estado de la operación
+realizada.
+Tabla 12. Tabla con los requerimientos no funcionales del proyecto.
+60
+
+-- 21 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+1.4. 	Restricciones del proyecto
+Aquí nos referiremos a las posibles restricciones de coste, tiempo, y otras que
+afecten al desarrollo del mismo
+La principal restricción del proyecto es el alcance del mismo, a nivel de
+personalización de las necesidades de cada creador de contenido, ya que al ser un
+sector, que de forma contraintuitiva, es muy amplio el rango de actividad de los
+mismos, ya que muchos de estos, a parte de ofrecer sus servicios como plataforma
+publicitaria, también pueden ofrecer merchandising, eventos, formaciones.
+1.4.1 Personal.
+Tamaño del equipo: El equipo de desarrollo está compuesto inicialmente por 6
+personas, lo que limita la cantidad de trabajo que puede abordarse en paralelo y la
+velocidad de desarrollo.
+Perfiles técnicos: Al ser un equipo formado exclusivamente por estudiantes, existe una
+restricción en cuanto a la experiencia previa en desarrollo profesional, lo que puede
+implicar curvas de aprendizaje en tecnologías específicas.
+Disponibilidad horaria: Al compatibilizar el proyecto con las obligaciones académicas,
+la dedicación horaria no es completa, lo que restringe el avance semanal del proyecto.
+Necesidad de asesoramiento externo: Dada la complejidad del ámbito fiscal y
+contable, puede ser necesario contar con un asesor externo (experto en fiscalidad para
+autónomos) para validar los requerimientos, lo que supone una restricción de
+disponibilidad y coordinación con agentes externos al equipo.
+Conocimiento del dominio: El equipo parte de un conocimiento limitado sobre las
+necesidades específicas de los creadores de contenido (relación con marcas, agencias,
+plataformas, etc.), lo que puede requerir investigación adicional y validación con
+potenciales usuarios.
+1.4.2 Tiempo.
+El proyecto está sujeto a una restricción temporal determinada por el calendario
+académico de la asignatura, estableciéndose como fecha límite de entrega el último día
+del período de prácticas del curso 2025/2026 (14 de mayo del 2026). Dicha fecha
+constituye el deadline definitivo para la finalización del desarrollo, las pruebas y la
+documentación asociada al sistema.
+Esta restricción condiciona directamente el alcance funcional del proyecto, obligando al
+equipo a priorizar las funcionalidades de mayor valor para el usuario final y a diferir
+aquellas de carácter opcional o de mejora futura, como la generación automática de los
+modelos 300, 130 y 115 para la Agencia Tributaria.
+Asimismo, la restricción temporal se ve agravada por la necesidad de compatibilizar el
+desarrollo del proyecto con las obligaciones académicas del equipo, lo que reduce la
+60
+
+-- 22 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+disponibilidad horaria semanal efectiva y obliga a una planificación rigurosa de las
+tareas para garantizar el cumplimiento de los hitos intermedios establecidos en la
+agenda del proyecto.
+En consecuencia, cualquier desviación significativa en la planificación deberá
+gestionarse mediante una renegociación del alcance, priorizando siempre la entrega de
+un sistema funcional y estable dentro del plazo establecido sobre la incorporación de
+funcionalidades adicionales.
+1.4.3 Presupuesto.
+El proyecto estará condicionado por un presupuesto máximo aún en fase de
+estimación. Dado que se trata de una solución orientada a autónomos, el coste de
+desarrollo deberá mantenerse dentro de un rango que permita ofrecer posteriormente
+un modelo de suscripción competitivo en el mercado. Así pues, en esta fase preliminar
+el presupuesto definitivo se determinará tras la estimación del esfuerzo (horas de
+desarrollo), recursos humanos necesarios, infraestructura tecnológica y posibles
+servicios externos (APIs, hosting, facturación electrónica, entre otros).
+Asimismo, el presupuesto deberá garantizar la viabilidad económica del proyecto y su
+sostenibilidad a medio y largo plazo, equilibrando coste de desarrollo, mantenimiento
+y valor aportado al cliente final.
+1.4.4 Restricciones adicionales.
+Aspectos legales:
+Protección de datos personales: El sistema tratará con datos identificativos, fiscales y
+económicos de usuarios y terceros por lo que queda sujeta:
+● Reglamento (UE) 2016/679 (RGPD)
+● Ley Orgánica 3/2018 de Protección de datos y Garantía de Derechos
+Digitales (LOPDGDD).
+El sistema deberá de implementar: un consentimiento explícito para el tratamiento de
+datos, posibilidad de ejercer derechos ARSULIPO (acceso, identificación, supresión,
+limitación, portabilidad y oposición), registro de actividad del tratamiento, eliminación
+segura de cuentas y datos asociados, cifrado de contraseñas y datos sensibles,
+aislamiento de datos, notificación de brechas de seguridad y política de privacidad
+accesible desde la propia app.
+Legislación fiscal y contable: El sistema hará la gestión de facturas y libros contables,
+por lo que tiene que cumplir con:
+● Ley 58/2003 General Tributaria
+● Reglamento de facturación (Real Decreto 1619/2012)
+● Normativa del IVA (Ley 37/1992)
+● Requisitos de facturación electrónica
+● Normativa de conservación de documentos (mínimo 4 años)
+60
+
+-- 23 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+El sistema deberá de: generar facturas con numeración correlativa obligatoria, impedir
+modificaciones en facturas ya emitidas (solo rectificativas), registro de la fecha de
+expedición obligatoria, guardar histórico de facturas sin borrado físico, mantener
+registros fiscales durante al menos 4 años, permitir el cálculo correcto de IVA, IRPF y
+operaciones intracomunitarias, permitir exportación de datos para Hacienda.
+Comercio electrónico y servicios digitales: Al poder gestionarse suscripciones,
+servicios digitales o productos onlines se aplicará:
+● Ley 34/2002 de Servicios de la Sociedad de la Información (LSSI-CE)
+La aplicación deberá permitir al usuario: mostrar datos fiscales obligatorios en
+documentos, generar términos y condiciones descargables, informar sobre precios con
+impuestos incluidos, registrar aceptación de condiciones.
+Seguridad de la información: Como se tratan datos económicos y fiscales, el sistema
+deberá aplicar medidas de seguridad de nivel medio-alto según RGPD:
+● Cifrado HTTPS obligatorio
+● Control de accesos por roles
+● Registro de accesos (logs)
+● Copias de seguridad automáticas
+● Protección contra accesos no autorizados
+Propiedad intelectual y contenido digital: Como los usuarios tienen la capacidad de
+registrar ingresos por contenido digital, se respetará la Ley de Propiedad Intelectual, no
+se almacenará contenido protegido sin consentimiento y sólo se almacenarán
+metadatos económicos.
+Restricciones técnicas:
+Compatibilidad de navegadores web:La aplicación debe ser accesible desde
+navegadores web modernos (Chrome, Edge, Firefox, Safari) en distintos dispositivos,
+garantizando que todas las funcionalidades se visualicen y operen correctamente. Esto
+limita la elección de tecnologías web y librerías a aquellas compatibles con todos los
+navegadores soportados.
+Limitaciones de infraestructura web: El sistema se alojará en servidores web y bases
+de datos dentro de los recursos disponibles del equipo. Esto condiciona la arquitectura
+y obliga a priorizar soluciones ligeras, optimizadas y escalables, capaces de soportar el
+crecimiento de usuarios y datos sin afectar al rendimiento.
+Uso de tecnologías conocidas:Al ser un equipo compuesto por estudiantes, las
+tecnologías web elegidas (HTML, CSS, JavaScript, frameworks frontend y backend,
+bases de datos) deben coincidir con el conocimiento del grupo. Se evita el uso de
+frameworks o herramientas avanzadas que requieran experiencia profesional
+específica, aunque se podrá incluir aprendizaje previo si se necesita.
+60
+
+-- 24 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Integración con servicios externos vía web:El sistema debe conectarse con APIs
+externas (plataformas de pago, redes sociales, facturación electrónica) mediante
+protocolos web seguros (HTTPS). Esto implica restricciones en la autenticación,
+número de llamadas concurrentes y disponibilidad de servicios de terceros.
+Pruebas y mantenimiento web: Todas las decisiones técnicas deben facilitar pruebas
+automatizadas, depuración de errores y actualización de componentes en el entorno
+web sin interrumpir el servicio para los usuarios. Esto limita la elección de tecnologías
+que compliquen estas tareas.
+Escalabilidad y modularidad web: La aplicación debe permitir futuras ampliaciones
+(nuevos módulos, más usuarios, incremento de datos) sin afectar funcionalidades
+existentes. Esto obliga a seguir buenas prácticas de diseño web y arquitectura modular
+desde el inicio.
+Restricciones tecnológicas
+Tecnologías seleccionadas:
+El desarrollo del proyecto se realizará utilizando tecnologías web que el equipo ya
+conoce (HTML, CSS, JavaScript y un backend compatible). Esto limita el uso de
+herramientas más avanzadas o menos conocidas, ya que el tiempo disponible no
+permite una curva de aprendizaje muy elevada.
+Arquitectura web obligatoria:
+La aplicación deberá desarrollarse como aplicación web accesible desde navegador.
+Esto implica descartar aplicaciones de escritorio o móviles nativas y obliga a asegurar
+compatibilidad con los principales navegadores.
+Dependencia de servicios externos:
+Al integrar posibles APIs externas (como pasarelas de pago o servicios fiscales), el
+proyecto queda condicionado a su disponibilidad, límites de uso y cambios técnicos
+que puedan surgir durante el desarrollo.
+Infraestructura limitada:
+El sistema deberá poder alojarse en un servidor web estándar. Esto restringe el uso de
+arquitecturas demasiado complejas o tecnologías que requieran infraestructura
+avanzada.
+60
+
+-- 25 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+2. ESTIMACIÓN DE COSTES
+2.1. Componentes de Coste
+En este apartado se identifican y estiman los distintos componentes de coste asociados
+al desarrollo del proyecto. Para ello se analizan tanto los recursos humanos como los
+recursos tecnológicos e infraestructuras necesarias para diseñar, implementar,
+desplegar y mantener el sistema durante el periodo de desarrollo.
+Con el objetivo de obtener una visión más completa del coste del proyecto, se plantean
+dos escenarios diferenciados. Por un lado, un supuesto académico, que representa el
+contexto real en el que se desarrolla esta práctica, donde el sistema es implementado
+por estudiantes dentro del marco de la asignatura y, por tanto, no se consideran costes
+salariales. Por otro lado, se plantea un supuesto empresarial, que simula el desarrollo
+del mismo sistema dentro de una empresa tecnológica real.
+En el caso del supuesto empresarial, se asume que la empresa ya se encuentra
+constituida y operativa, contando con una estructura organizativa básica, procesos de
+desarrollo definidos y cierta infraestructura tecnológica previa. Sin embargo, para la
+estimación del proyecto se consideran los costes directos asociados al equipo de
+desarrollo, la infraestructura necesaria para el despliegue del sistema y los servicios
+tecnológicos requeridos durante el periodo de implementación.
+Supuesto ACADÉMICO
+Concepto 	Descripción 	Tipo 	Referencia 	Coste
+Matrícula
+GPI
+Coste asociado a la
+matrícula de la
+asignatura de GPI para
+los 6 integrantes del
+equipo.
+Cuatrimest
+ral
+Universidad
+de Alicante.
+(2026). Doble
+grado en
+Ingeniería
+Informática y
+Administració
+n y Dirección
+de Empresas
+(I2ADE).
+17,34*6*6 =
+624,24€
+Transporte a
+la
+universidad
+Gasto derivado de los
+desplazamientos
+necesarios para asistir a
+las sesiones
+presenciales de
+prácticas, reuniones de
+coordinación del
+Mensual 	85*4*6 =
+2040€
+60
+
+-- 26 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+equipo, donde se
+planifica, revisa y
+valida el desarrollo del
+sistema.
+Hosting
+servidor
+web
+(entorno
+pruebas)
+Servicio de alojamiento
+necesario para
+desplegar la aplicación
+web en cualquier
+navegador. Hosting
+compartido.
+Mensual 	Hostinger.
+(2026). Precios
+de hosting web.
+12,19*4=48,7
+6€
+Dominio
+web
+Registro de un dominio
+que permite acceder al
+sistema mediante una
+dirección web propia.
+Facilita la
+configuración segura
+(HTTPS) y la posible
+integración con APIs
+externas (OAuth o
+pasarelas de pago).
+Dominio simple o incluso
+subdominio.
+Anual 	IONOS.
+(2026).
+Registro de
+dominios y
+precios.
+12€
+Base de
+datos cloud
+Servicio de bases de
+datos alojado en la
+nube para almacenar
+de forma persistente la
+información del
+sistema (clientes,
+proveedores, facturas
+emitidas y recibidas,
+registros de ingresos y
+gastos, libros contables,
+retenciones y datos
+fiscales).
+Mensual 	Amazon Web
+Services.
+(2026).
+Amazon RDS
+Free Tier.
+Gratuito con
+límites.
+Sistema de
+copias de
+seguridad
+externas
+Servicio externo
+destinado a realizar
+copias automáticas de
+la base de datos y
+archivos críticos del
+sistema.
+Anual 	Amazon Web
+Services.
+(2026).
+Amazon RDS
+Free Tier.
+Gratuito con
+límites.
+IDEs y
+herramienta
+s de
+desarrollo
+(visual
+Entornos de desarrollo
+y herramientas
+utilizadas para la
+implementación del
+sistema.
+Mensual 	GitHub.
+(2026).
+Pricing.
+Plan
+educativo
+gratuito.
+60
+
+-- 27 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+studio,
+github free)
+Inteligencia
+Artificial
+(Asistentes
+de
+desarrollo)
+Uso de herramientas de
+IA generativa como
+ChatGPT o Claude
+como apoyo al
+desarrollo del sistema.
+Nota: cada componente
+paga el plan individual,
+por eso es más caro que en
+el supuesto empresa.
+Mensual 	OpenAI.
+(2026).
+ChatGPT
+pricing.
+Anthropic.
+(2026). Elegir
+un plan de
+Claude.
+23*4*3 +
+20*4*3 =515€
+Librerías
+generación
+PDF
+(facturas e
+informes)
+Librerías o frameworks
+empleados para
+generar documentos
+oficiales en formato
+PDF (facturas emitidas,
+recibidas, libros
+contables, informes y
+reportes fiscales). En
+entorno académico se
+usarán librerías open
+source.
+Mensual 	FolioJS. (2025,
+30 de agosto).
+PDFKit
+(versión más
+reciente).
+Gratuito.
+APIs
+externas
+Servicios externos con
+los que el sistema
+puede integrarse (como
+la autenticación OAuth,
+pasarelas de pago o
+servicios relacionados
+con la facturación
+electrónica).
+Mensual 	Google
+Cloud. (2026).
+Precios de
+Identity
+Platform.
+Stripe. (2026).
+Precios de
+Stripe.
+0€
+Equipos
+informático
+s
+Amortización de los
+ordenadores personales
+utilizados por los
+miembros del equipo
+para el desarrollo del
+proyecto.
+Anual 	Fleet. (2026).
+Amortización
+de ordenadores:
+cómo calcularla
+y cuánto dura
+un equipo
+informático.
+1225*0,333*6
+= 450€
+Electricidad Consumo eléctrico
+asociado al uso
+continuado de equipos
+informáticos durante el
+desarrollo.
+Mensual 	Naturgy.
+(2025).
+¿Cuánto
+consume un
+ordenador?
+8,57*4*6 =
+205,68€
+Conexión a Servicio de conexión a Mensual 	Phone House. 30*⅓*4*6=24
+60
+
+-- 28 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Internet 	Internet necesario para
+el desarrollo.
+(2026).
+Comparativa
+de tarifas
+convergentes
+(móvil + fibra).
+0€
+Sistema de
+logs y
+monitorizac
+ión
+Herramientas
+destinadas al registro
+de accesos, acciones
+críticas (login,
+modificación de datos
+fiscales, eliminación de
+registros…) y
+monitorización del
+estado del sistema.
+Mensual 	Grafana Labs.
+(2026).
+Grafana Cloud
+pricing.
+16,22*4 =
+64,88€
+SUMA
+MENSUAL
+por
+componente
+671,30€/4
+=
+167,83€
+14 	TOTAL
+por
+componente
+4027,80€/6
+=
+671,30€
+1 Para estimar este coste hemos hecho lo siguiente:
+- Obtenemos la media de lo que le costó a cada integrante su equipo informático (900€).
+- Dado que la amortización de esta clase de equipos informáticos (portátiles) es de 4 años, dividimos la media
+entre esos 4 años (225€).
+- A continuación, multiplicamos por el plazo del que disponemos para completar el proyecto (4/12 meses) y
+por los integrantes (6).
+60
+
+-- 29 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Supuesto EMPRESA
+Concepto 	Descripción 	Tipo 	Referencia 	Coste
+Salarios 	Coste asociado a la
+contratación del equipo
+profesional encargado
+del desarrollo del
+proyecto. Incluye
+desarrolladores
+frontend y backend y
+un responsable de
+proyecto (PM), así
+como las cargas
+sociales y costes
+empresariales
+asociados.
+Mensual 	Instituto
+Nacional de
+Estadística.
+(2025, 16 de
+diciembre).
+Encuesta
+Trimestral de
+Coste Laboral
+(ETCL). Tercer
+trimestre 2025.
+3.111,76*4*6
+= 74682,24€
+Oficina 	Coste derivado del uso
+de un espacio físico de
+trabajo para el equipo
+de desarrollo,
+incluyendo alquiler,
+mobiliario y servicios
+generales.
+Mensual 	Idealista.
+(2026).
+Alquiler de
+oficinas en
+Alicante
+800*4=3.200€
+Hosting
+profesional
+Infraestructura cloud
+escalable destinada a
+alojar la aplicación en
+producción,
+garantizando alta
+disponibilidad,
+seguridad, rendimiento
+y capacidad de
+soportar múltiples
+usuarios concurrentes.
+Hosting cloud dedicado o
+escalable.
+Mensual 	Amazon Web
+Services.
+(2026).
+Amazon EC2
+pricing.
+80*4=320€
+Dominio +
+SSL
+empresarial
+Registro de dominio
+corporativo junto con
+certificado SSL de nivel
+empresarial que
+garantiza
+comunicaciones
+cifradas, autenticidad
+del servidor y
+cumplimiento de
+buenas prácticas.
+Dominio corporativo
+Anual 	IONOS.
+(2026).
+Registro de
+dominios y
+precios.
+DigiCert.
+(2026). SSL
+certificate
+pricing.
+(15+200)*4/1
+2 = 71€
+60
+
+-- 30 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+propio.
+Base de
+datos
+gestionada
+Servicio de bases de
+datos administrado por
+proveedor cloud que
+ofrece alta
+disponibilidad, copias
+automáticas,
+replicación y
+escalabilidad. Permite
+almacenar de forma
+segura información
+crítica como facturas,
+registros fiscales, datos
+bancarios y libros
+contables.
+Mensual 	Amazon Web
+Services.
+(2026).
+Amazon RDS
+pricing.
+70*4=280€
+Sistema de
+copias de
+seguridad
+externas
+Servicio profesional de
+backup automatizado
+que permite realizar
+copias periódicas de la
+base de datos y
+archivos del sistema,
+asegurando
+recuperación ante
+desastres y
+cumplimiento de
+normativas de
+conservación de
+información fiscal.
+Mensual 	Amazon Web
+Services.
+(2026).
+Amazon S3
+pricing.
+20*4=80€
+GitHub
+Team
+Licencia profesional del
+sistema de control de
+versiones que incluye
+gestión avanzada de
+permisos, revisión de
+código, integración
+continua y colaboración
+estructurada entre
+desarrolladores.
+Mensual 	GitHub.
+(2026).
+Pricing.
+21*4*6 =
+504€
+Licencia
+PDF
+comercial
+Licencia empresarial de
+una librería profesional
+para generación de
+documentos PDF,
+necesaria para emitir
+facturas y libros
+contables con garantías
+legales, soporte técnico
+y cumplimiento
+Anual 	PDF
+Generator
+API. (2026).
+Pricing.
+260*4/12=68
+,67€
+60
+
+-- 31 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+normativo en entorno
+comercial.
+Inteligencia
+Artificial
+(Asistentes
+de
+desarrollo)
+Suscripciones
+profesionales a
+herramientas de IA
+generativa como
+ChatGPT o Claude
+como apoyo al
+desarrollo del sistema.
+Mensual 	OpenAI.
+(2026).
+ChatGPT
+pricing.
+Anthropic.
+(2026). Elegir
+un plan de
+Claude.
+30*6*4=720€
+APIs
+externas
+Servicios externos con
+los que el sistema
+puede integrarse (como
+la autenticación OAuth,
+pasarelas de pago o
+servicios relacionados
+con la facturación
+electrónica).
+Mensual 	Google
+Cloud. (2026).
+Precios de
+Identity
+Platform.
+15*4=60€
+Equipos
+informático
+s
+Adquisición y
+amortización de
+equipos profesionales
+de desarrollo utilizados
+por el equipo técnico
+para la
+implementación,
+pruebas y despliegue
+del sistema.
+Anual 	Dell
+Technologies.
+(2026).
+Portátiles
+empresariales.
+1.500*6*4/36
+meses =
+1000€
+Electricidad Consumo eléctrico
+asociado al uso
+continuado de equipos
+informáticos durante el
+desarrollo.
+Mensual 	Red Eléctrica
+de España.
+(2026). Precio
+medio de la
+electricidad en
+España.
+150€*4=600€
+Conexión a
+Internet
+Servicio de conexión
+corporativa de alta
+velocidad.
+Mensual 	Movistar
+Empresas.
+(2026). Fibra
+para empresas.
+60*4 = 240€
+Sistema de
+auditoría y
+trazabilidad
+Herramientas
+empresariales
+destinadas al registro
+de accesos, acciones
+críticas (login,
+modificación de datos
+Mensual 	Grafana Labs.
+(2026).
+Grafana Cloud
+pricing.
+19*4=76€
+60
+
+-- 32 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+fiscales, eliminación de
+registros…) y
+monitorización.
+SUMA
+MENSUAL
+por
+componente
+13.650,32€/4
+=
+3.412,58€
+14 	TOTAL
+por
+componente
+81.901,91€/6
+=
+13.650,32€
+2.2. Ley de Parkinson
+La Ley de Parkinson establece que el trabajo tiende a expandirse hasta ocupar todo el
+tiempo disponible para su realización. En gestión de proyectos, este principio se utiliza
+para estimar el esfuerzo necesario en función del tiempo disponible y los recursos
+asignados. En este proyecto se ha aplicado este criterio para calcular la dedicación del
+equipo durante el periodo comprendido entre el 2 de febrero y el 14 de mayo de 2026.
+Para estimar el esfuerzo necesario para el desarrollo del proyecto se ha realizado un cálculo
+aproximado basado en el número de integrantes del equipo, el periodo disponible para su
+realización y la dedicación media estimada de cada participante.
+Modelo Académico
+El proyecto es desarrollado por un equipo compuesto por seis estudiantes. Para la
+estimación del esfuerzo se ha considerado una duración aproximada de cuatro meses, que
+corresponde al periodo estimado de desarrollo del proyecto dentro del curso académico.
+Dado que se trata de un proyecto académico realizado en paralelo con la actividad lectiva,
+se ha estimado una dedicación media de 4 horas diarias por estudiante durante los días
+laborables. Considerando un estándar aproximado de 20 días laborables por mes, el
+número total de días laborables durante cuatro meses sería de 80 días.
+A partir de esta estimación se puede calcular el esfuerzo total del equipo en horas-persona.
+El cálculo del esfuerzo total es el siguiente:
+4 horas/día × 80 días × 6 personas = 1920 horas
+Por tanto, el esfuerzo total estimado para la realización del proyecto es de 1.920 horas.
+60
+
+-- 33 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Para expresar este esfuerzo en una unidad habitual de planificación de proyectos, se
+convierte el valor obtenido a personas-mes. Considerando un estándar de 160 horas por
+persona y mes (equivalente a una jornada laboral de 40 horas semanales), el esfuerzo total
+del proyecto se puede estimar de la siguiente forma:
+1920 / 160 = 12 personas-mes
+En consecuencia, el esfuerzo total requerido para el desarrollo del proyecto se estima en
+aproximadamente 12 personas-mes.
+Modelo Empresarial
+El proyecto es desarrollado por un equipo compuesto por cinco desarrolladores (frontend
+y backend) y un project manager, sumando un total de seis miembros.
+Para la estimación de costes se ha considerado un modelo empresarial basado en una
+duración aproximada de cuatro meses, que representa el tiempo estimado necesario para
+el desarrollo completo del proyecto en un entorno profesional.
+Dado que se trata de un proyecto empresarial con trabajadores especializados, se estima
+una dedicación de jornada completa, equivalente a 8 horas diarias por trabajador.
+Considerando un estándar de 160 horas de trabajo por persona y mes, el esfuerzo total del
+proyecto se calcula de la siguiente forma:
+160 horas/mes × 4 meses × 6 personas = 3840 horas
+Por tanto, el esfuerzo total estimado para la realización del proyecto es de 3840 horas.
+Para estimar el coste económico del proyecto, se ha considerado un coste medio mensual
+por trabajador de 3.111,76 €. Teniendo en cuenta una jornada estándar de 160 horas
+mensuales, el coste por hora se calcula de la siguiente manera:
+3111,76 € / 160 horas = 19,45 €/hora
+A partir de este valor, el coste total del proyecto se obtiene multiplicando el número total
+de horas estimadas por el coste por hora:
+3840 horas × 19,45 €/hora = 74.688 €
+Para expresar este esfuerzo en una unidad habitual de planificación de proyectos, se
+convierte el valor obtenido a personas-mes:
+3840 / 160 = 24 personas-mes
+En consecuencia, el esfuerzo total requerido para el desarrollo del proyecto se estima en
+3840 horas-persona, lo que equivale aproximadamente a 24 personas-mes, con un coste
+total estimado de 74.688 €.
+60
+
+-- 34 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+2.3. Pricing to Win
+1. Fundamentación del método
+El método Pricing to Win consiste en fijar el precio del producto en función del
+mercado y de lo que el cliente está dispuesto a pagar, ajustando posteriormente el
+alcance del proyecto y los recursos necesarios para hacerlo viable económicamente.
+A diferencia de otras técnicas basadas exclusivamente en el esfuerzo técnico, este
+enfoque parte del análisis competitivo y del posicionamiento estratégico del producto.
+En el caso de ContentFlow, al tratarse de una aplicación SaaS dirigida a autónomos
+creadores de contenido, resulta especialmente adecuado aplicar este método, ya que el
+éxito comercial depende directamente del precio aceptado por el mercado.
+2. Estudio de mercado
+Se han analizado plataformas similares orientadas a autónomos y pequeñas empresas,
+tales como:
+-Holded
+-Quipu
+-Anfix
+-SoftwareGEST
+Estas herramientas ofrecen funcionalidades de facturación digital, gestión de ingresos y
+gastos cálculo de impuestos informes contables
+Los precios observados en el mercado se sitúan aproximadamente en los siguientes
+rangos:
+- Planes básicos: 9,90 € – 19,90 € / mes
+- Planes intermedios: 29 € – 59 € / mes
+- Planes avanzados/premium: 99 € – 199 € / mes
+Dado que ContentFlow ofrece una especialización dirigida al sector de creadores
+digitales (gestión de marcas, patrocinadores, colaboraciones y métricas específicas), se
+considera viable posicionarse dentro del rango medio del mercado.
+3. Estrategia de Tarificación de ContentFlow
+Se proponen tres planes de suscripción:
+- Plan Standard Tarifa: 14,99 €/mes
+Dirigido a: Autónomos digitales con bajo volumen de facturación
+Incluye:
+Hasta 500 facturas/año
+Gestión de clientes y proveedores
+Registro de ingresos y gastos
+60
+
+-- 35 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Dashboard básico
+Reportes básicos de IVA
+- Plan PRO Tarifa: 49,99 €/mes
+Dirigido a: Autónomos consolidados o pequeñas agencias
+Incluye:
+Hasta 3.000 facturas/año
+Gestión avanzada de proyectos y colaboraciones
+Informes fiscales detallados
+Análisis de métricas
+Soporte prioritario
+- Plan Enterprise Tarifa: 129,99 €/mes
+Dirigido a: Creadores de alto volumen o equipos
+Incluye:
+Facturación ilimitada
+Multiusuario
+Informes financieros completos
+Exportación avanzada
+Soporte dedicado
+4. Relación con la Estimación de Costes
+El coste total estimado del proyecto asciende aproximadamente a 4027,80 €
+Aplicando el método Pricing to Win, calculamos cuántas licencias serían necesarias
+para recuperar dicha inversión en el primer año.
+Suponiendo un precio medio ponderado aproximado de 30 €/mes:
+Precio anual medio por usuario = 30 € × 12 = 360 €
+Número de licencias necesarias: 4027,80 € / 360 € ≈ 12 usuarios
+Por tanto, bastaría con aproximadamente 12 usuarios activos durante el primer año
+para cubrir los costes académicos estimados.
+En el escenario empresarial, el coste total estimado del proyecto asciende
+aproximadamente a 81.901,91€ para un desarrollo de 4 meses con un equipo
+profesional.
+Aplicando el método Pricing to Win y considerando un precio medio estimado de 30 €
+mensuales por usuario, serían necesarios aproximadamente 228 usuarios activos
+durante el primer año para alcanzar el punto de equilibrio.
+60
+
+-- 36 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Distribución de Clientes
+Si asumimos una distribución realista de mercado:
+- 70% Plan Standard
+- 20% Plan PRO
+- 10% Plan Enterprise
+Con 15 usuarios totales, la distribución sería:
+- 10 usuarios Standard
+- 3 usuarios PRO
+- 2 usuarios Enterprise
+Este escenario permitiría recuperar la inversión inicial e iniciar una fase de crecimiento
+sostenible.
+2.4. Puntos Objeto
+2.4.1. Fundamento Metodológico
+Los Puntos de Objeto (PO) constituyen una métrica de tamaño funcional orientada a
+sistemas desarrollados con lenguajes de cuarta generación (4GL), entornos visuales o
+frameworks de alto nivel. A diferencia de las Líneas de Código (LOC), los Puntos de
+Objeto son independientes del lenguaje de implementación y pueden calcularse en
+fases tempranas del ciclo de vida, lo que los hace especialmente adecuados para el
+nivel de prototipado inicial de COCOMO 2.
+En la metodología de clase, los elementos del sistema se clasifican en tres categorías
+con los siguientes pesos de complejidad:
+Tipo de Elemento 	Simple 	Medio 	Complejo
+Pantallas / Formularios 	1 	2 	3
+Informes 	2 	5 	8
+Módulos 3GL 	— 	— 	10 (fijo)
+Tabla PO-0. Tabla de pesos por tipo y complejidad (metodología de clase).
+60
+
+-- 37 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+El esfuerzo se calcula mediante la fórmula de COCOMO 2 para el nivel de prototipado
+inicial:
+PM = (NOP × (1 − %reuse / 100)) / PROD
+Siendo: NOP = Número de Puntos de Objeto totales; %reuse = porcentaje de
+reutilización (0 % en este proyecto, al ser desarrollo nuevo desde cero); PROD =
+productividad del equipo en PO/mes (valor nominal: 13, correspondiente a
+experiencia media y herramientas CASE estándar).
+2.4.2. Identificación y Clasificación de Pantallas / Formularios
+Se identifican como pantallas todos los formularios de entrada de datos y vistas de
+gestión directa. Los criterios de complejidad aplicados son: Simple — formulario con
+1-3 campos y una acción principal; Medio — formulario con 4-8 campos, validaciones o
+flujo en dos pasos; Complejo — formulario con más de 8 campos, lógica condicional
+avanzada, cumplimiento normativo (VERIFACTU, IVA, IRPF) o integración con otros
+módulos.
+Identificador 	Nombre de la Pantalla /
+Formulario
+Complejida
+d
+Peso
+PO
+USR_REG 	Registro de usuario 	Simple 	1
+USR_INI 	Inicio de sesión 	Simple 	1
+USR_CIE 	Cierre de sesión 	Simple 	1
+USR_REC 	Recuperación de contraseña 	Simple 	1
+USR_SES 	Recordar sesión 	Simple 	1
+PERFIL_VER 	Ver perfil 	Simple 	1
+60
+
+-- 38 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+PERFIL_EDIT 	Editar perfil 	Medio 	2
+PERFIL_PREF 	Preferencias de usuario 	Medio 	2
+CLI_REG 	Registrar cliente 	Medio 	2
+CLI_ACT 	Modificar cliente 	Medio 	2
+CLI_BOR 	Borrar cliente (con
+validación)
+Medio 	2
+PAYCLI_REG 	Registrar cobro de cliente 	Medio 	2
+PAYCLI_MODIF 	Modificar condición de cobro 	Medio 	2
+PAYCLI_BORR 	Eliminar condición de cobro 	Simple 	1
+PROV_REG 	Registrar proveedor 	Medio 	2
+PROV_ACT 	Editar proveedor 	Medio 	2
+PROV_BORR 	Eliminar proveedor 	Simple 	1
+PAYPROV_REG 	Registrar condición de pago 	Medio 	2
+PAYPROV_ACT 	Modificar condición de pago 	Medio 	2
+PAYPROV_BORR 	Eliminar condición de pago 	Simple 	1
+PRES_REG 	Registrar presupuesto 	Complejo 	3
+60
+
+-- 39 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+PRES_ACT 	Editar presupuesto 	Medio 	2
+PRES_BORR 	Eliminar presupuesto 	Simple 	1
+PRES_CONV 	Convertir presupuesto en
+factura
+Medio 	2
+FACT_E_REG 	Registrar factura emitida 	Complejo 	3
+FACT_E_RECT 	Emitir factura rectificativa 	Complejo 	3
+FACT_R_REG 	Registrar factura recibida 	Complejo 	3
+FACT_R_ACT 	Editar factura recibida 	Medio 	2
+FACT_R_BORR 	Eliminar factura recibida 	Simple 	1
+CONT_ING 	Registrar ingreso 	Medio 	2
+CONT_GAS 	Registrar gasto 	Medio 	2
+CONT_CAT 	Gestionar categorías
+contables
+Medio 	2
+COBPAG_REG_COB 	Registrar cobro de factura 	Medio 	2
+COBPAG_REG_PAG 	Registrar pago de factura 	Medio 	2
+COBPAG_ESTADO 	Gestionar estados de factura 	Medio 	2
+60
+
+-- 40 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+ANL_DASH 	Dashboard / Panel de
+control
+Complejo 	3
+EJERC_APERT 	Apertura de ejercicio
+contable
+Medio 	2
+EJERC_CIERR 	Cierre de ejercicio contable 	Complejo 	3
+IVA_REG_OPER 	Registrar operación con IVA 	Complejo 	3
+RET_APLICAR 	Aplicar retención a factura 	Medio 	2
+TOTAL 	Simple: 11 · Medio: 22 ·
+Complejo: 7
+76
+Tabla PO-1. Clasificación y pesos de pantallas / formularios. Total: 76 PO.
+2.4.3. Identificación y Clasificación de Informes
+Se consideran informes todos los listados, libros contables, exportaciones y cuadros de
+mando que el sistema genera a partir de los datos almacenados. Los criterios de
+complejidad son: Simple — listado con datos planos de una entidad; Medio — informe
+con filtros, agrupaciones o exportación a un formato; Complejo — informe fiscal/legal
+(libro IVA, libro mayor, ranking), con múltiples fuentes de datos, cálculos derivados o
+exportación multipágina.
+Identificador 	Nombre del Informe 	Complejidad 	Peso PO
+INF_LISTA_CLI 	Listado de clientes 	Simple 	2
+INF_BUSCA_CLI 	Búsqueda/filtro de clientes 	Medio 	5
+60
+
+-- 41 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+EXPORT_CLI 	Exportar clientes PDF/Excel 	Medio 	5
+INFPROV_LISTA 	Listado de proveedores 	Simple 	2
+INFPROV_BUSCA 	Búsqueda/filtro de proveedores 	Medio 	5
+FACT_E_LIST 	Libro de facturas expedidas 	Complejo 	8
+FACT_R_LIST 	Libro de facturas recibidas 	Complejo 	8
+LIB_MAYOR 	Libro mayor contable 	Complejo 	8
+LIB_FACT_EXP 	Exportar libro facturas expedidas 	Complejo 	8
+LIB_FACT_REC 	Exportar libro facturas recibidas 	Complejo 	8
+LIB_EXPORT 	Exportar libros contables PDF/CSV 	Medio 	5
+IVA_RESUMEN 	Resumen IVA por periodo 	Complejo 	8
+IVA_LIBRO_VENT 	Libro de IVA repercutido 	Complejo 	8
+RET_RESUMEN 	Resumen de retenciones por periodo 	Medio 	5
+RET_LISTADO 	Listado detallado de retenciones 	Medio 	5
+ANL_KPI_INGMES 	Informe KPI: ingresos del mes 	Medio 	5
+ANL_KPI_TOPCLI 	Informe KPI: top clientes 	Medio 	5
+60
+
+-- 42 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+ANL_KPI_GASCAT 	Informe KPI: gastos por categoría 	Medio 	5
+ANL_KPI_PENDCOB Informe KPI: cobros pendientes 	Medio 	5
+ANL_INFG_TER 	Informe de operaciones por tercero 	Complejo 	8
+ANL_INFG_RANK 	Ranking de marcas por facturación 	Complejo 	8
+ANL_INFG_PYGSIMP
+LE
+Informe de pérdidas y ganancias 	Complejo 	8
+ANL_GRAPH 	Gráfico evolución temporal ingresos/gast 	Medio 	5
+ANL_EXP_PDF 	Exportar informes a PDF 	Medio 	5
+ANL_EXP_CSV 	Exportar datos a CSV 	Medio 	5
+TOTAL 	Simple: 2 ·
+Medio: 13 ·
+Complejo: 10
+149
+Tabla PO-2. Clasificación y pesos de informes. Total: 149 PO.
+2.4.4. Identificación de Módulos 3GL
+Los módulos 3GL representan componentes de lógica de negocio crítica que no pueden
+implementarse únicamente con las capacidades declarativas del framework o 4GL,
+requiriendo código imperativo de backend: motores de alertas, módulos de seguridad
+y autenticación, motores de filtrado dinámico, verificación VERIFACTU e importación
+masiva de datos. Cada módulo 3GL recibe un peso fijo de 10 PO.
+Identificador 	Descripción del Módulo 3GL 	Peso PO
+60
+
+-- 43 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+FACT_E_VER 	Verificación VERIFACTU (integridad fiscal) 	10
+ALERT_PAGO 	Motor de alertas: cobros vencidos 	10
+ALERT_CONT 	Motor de alertas: contratos próximos a vencer 	10
+COBPAG_ALERT 	Motor de alertas: vencimiento facturas 	10
+SECU_AUTH 	Módulo de autenticación segura (hash + JWT) 	10
+SECU_ENCR 	Capa cifrado HTTPS/TLS y gestión de sesiones 	10
+SECU_LOG 	Sistema de logs y auditoría de acciones 	10
+ANL_FILT_FECHA 	Motor de filtrado dinámico por fechas 	10
+ANL_FILT_ENTIDAD Motor de filtrado dinámico por entidad 	10
+IMP_CLI 	Importación masiva clientes CSV/Excel 	10
+TOTAL 	100
+Tabla PO-3. Módulos 3GL identificados. Total: 100 PO.
+2.4.5. Resumen y Total de Puntos de Objeto (NOP)
+Tipo de Elemento 	Nº Elementos 	Σ Pesos PO 	Observaciones
+Pantallas / Formularios 	40 	76 	Simple(×1): 11 |
+Medio(×2): 22 |
+60
+
+-- 44 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Complejo(×3): 7
+Informes 	25 	149 	Simple(×2): 2 | Medio(×5):
+13 | Complejo(×8): 10
+Módulos 3GL 	10 	100 	Peso fijo ×10 por unidad
+TOTAL PUNTOS DE
+OBJETO (NOP)
+75 	325 	—
+Tabla PO-4. Resumen de Puntos de Objeto por categoría. NOP total = 325 PO.
+2.4.6. Cálculo del Esfuerzo mediante COCOMO 2
+Aplicando la fórmula del nivel de prototipado inicial de COCOMO 2, con los
+parámetros justificados a continuación:
+Parámetro 	Valor 	Justificación
+Puntos de Objeto (NOP) 	325 	Suma total de la tabla de
+resumen
+% Reutilización (%reuse) 	0 % 	Proyecto nuevo, sin
+componentes reutilizables
+NOP efectivos (NOP × (1−0/100)) 	325 	NOP × 1 = NOP
+Productividad (PROD) 	13 NOP/mes 	Capacidad nominal;
+herramientas CASE
+estándar
+Esfuerzo estimado (PM = NOP /
+PROD)
+25 personas-mes 	325 / 13 = 25
+60
+
+-- 45 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Tabla PO-5. Aplicación de la fórmula COCOMO 2 — nivel prototipado inicial.
+El resultado de 25 personas-mes equivale, para un equipo de 6 personas trabajando a
+jornada completa, a una duración estimada de aproximadamente 4.17 meses (≈ 18
+semanas). Esta cifra es coherente con el marco temporal del proyecto (4 meses),
+validando la viabilidad del alcance definido, si bien confirma que será necesario
+mantener un ritmo de trabajo sostenido durante todo el período.
+2.4.7. Conversión a Coste Monetario (Supuesto Empresa)
+Para traducir el esfuerzo estimado a coste monetario en el escenario empresarial, se
+utiliza el salario mensual definido en el apartado 2.1 del presente documento, extraído
+de la Encuesta Trimestral de Coste Laboral del INE (3T 2025):
+Concepto 	Valor 	Cálculo
+Esfuerzo estimado (PM) 	25 personas-mes 	COCOMO 2 — nivel
+prototipado
+Coste mensual por persona (empresa) 	3.111,76 €/mes 	Sueldo medio INE
+(ETCl 3T 2025)
+COSTE TOTAL ESTIMADO
+(PUNTOS OBJETO)
+77.794,00 €
+Tabla PO-6. Conversión del esfuerzo en personas-mes a coste monetario.
+El coste estimado de 77.794,00 € representa exclusivamente el coste de recursos
+humanos derivado de la estimación por Puntos de Objeto. Deberá sumarse al resto de
+componentes de coste detallados en el apartado 2.1 (infraestructura, licencias, oficina,
+etc.) para obtener el presupuesto total del proyecto en el supuesto empresarial.
+2.4.8. Notas Metogmdológicas y Limitaciones
+60
+
+-- 46 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+La estimación mediante Puntos de Objeto presenta las siguientes consideraciones:
+(1) Subjetividad inherente: la asignación de complejidad depende del criterio del
+estimador. Para minimizar este sesgo, se han aplicado criterios documentados de forma
+explícita en el apartado 2.4.2 y 2.4.3.
+(2) Valor de PROD: el valor nominal de 13 NOP/mes asume desarrolladores con
+capacidad y experiencia media y herramientas CASE estándar. Dado que el equipo es
+de perfil junior (estudiantes), un valor más conservador de PROD = 7 (Low) elevaría el
+esfuerzo estimado a 46.43 personas-mes, lo que el equipo debe tener en cuenta al
+planificar la agenda.
+(3) Alcance del cálculo: el 0 % de reutilización asumido es una hipótesis conservadora.
+Si durante el desarrollo se reutilizan componentes de librerías o frameworks
+(autenticación OAuth, generación PDF), el NOP efectivo se reduciría, disminuyendo el
+esfuerzo final.
+(4) Comparación con otras técnicas: la cifra obtenida deberá contrastarse con los
+resultados de la Ley de Parkinson (apartado 2.2) y Pricing to Win (apartado 2.3) en el
+apartado de comparación y discusión (2.6).
+2.5 Juicio Experto
+Con el objetivo de complementar las estimaciones obtenidas mediante modelos
+analíticos, se ha realizado una valoración adicional basada en el método de juicio de
+experto. Este método consiste en estimar la duración y el esfuerzo del proyecto a
+partir de la experiencia profesional de una persona con conocimiento directo en la
+gestión de proyectos tecnológicos.
+En este caso, la estimación ha sido realizada tomando como referencia la valoración de
+Gonzalo Redondo, Director de Operaciones (Chief Operations Officer) en
+Necomplus, empresa especializada en soluciones tecnológicas y operativas para el
+sector de medios de pago. En su posición es responsable de la coordinación de equipos
+técnicos, implantación de plataformas digitales, integraciones con sistemas financieros
+y planificación de proyectos tecnológicos.
+Tras analizar el alcance funcional del sistema Content Flow, que incluye módulos de
+gestión de usuarios y roles, clientes y proveedores, presupuestos, facturación emitida y
+recibida, control de ingresos y gastos, gestión de cobros y pagos, generación de
+informes contables y fiscales, dashboards analíticos y mecanismos de seguridad y
+auditoría, se ha realizado la siguiente estimación.
+60
+
+-- 47 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Escenario académico
+En el contexto académico, el equipo está compuesto por seis estudiantes que
+desarrollan el proyecto en paralelo con su actividad lectiva, lo que implica una
+disponibilidad parcial de tiempo y una experiencia profesional limitada en el
+desarrollo de sistemas empresariales complejos.
+Además, durante el desarrollo del proyecto es habitual que el equipo tenga que dedicar
+parte del tiempo a:
+● investigación sobre tecnologías o librerías necesarias
+● comprensión del dominio fiscal y contable
+● coordinación del equipo
+● aprendizaje durante el propio proceso de desarrollo
+Teniendo en cuenta estos factores, y considerando el alcance funcional del sistema, el
+juicio experto estima que un equipo con dedicación parcial necesitaría
+aproximadamente entre 5 y 7 meses de trabajo en calendario para desarrollar una
+versión funcional del sistema con un nivel razonable de estabilidad.
+Sin embargo, dado que el proyecto debe ajustarse al calendario académico de la
+asignatura, será necesario priorizar las funcionalidades principales y limitar el
+alcance de ciertas características avanzadas con el fin de completar una primera
+versión funcional dentro del periodo disponible.
+Escenario empresarial
+En un entorno empresarial real, con un equipo formado por 5 desarrolladores y un
+responsable de proyecto trabajando a jornada completa, el desarrollo de una aplicación
+web con las características definidas en ContentFlow requeriría habitualmente entre 5 y
+6 meses de trabajo para alcanzar una primera versión estable del producto (MVP).
+Esta estimación incluye no solo el desarrollo técnico, sino también actividades
+habituales en proyectos profesionales como:
+● análisis y refinamiento de requisitos
+● diseño de arquitectura del sistema
+● desarrollo iterativo de los módulos principales
+● integración entre componentes
+● pruebas funcionales e integración
+● corrección de incidencias y estabilización del sistema
+En consecuencia, desde una perspectiva profesional, el juicio experto considera que
+una duración aproximada de 5–6 meses de desarrollo a jornada completa sería una
+estimación realista para implementar un sistema con el alcance definido en este
+proyecto.
+2.6. Comparación y discusión de los valores obtenidos
+60
+
+-- 48 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+En este apartado se recogen y analizan de forma conjunta los resultados obtenidos tras
+aplicar las diferentes técnicas de estimación descritas en los puntos anteriores. La
+siguiente tabla resume las estimaciones de esfuerzo (expresado en personas‑mes) y
+coste económico (en euros) para los dos supuestos contemplados a lo largo del
+documento: el escenario académico, donde el equipo son seis estudiantes con
+dedicación parcial, y el escenario empresarial, que considera un equipo profesional de
+seis personas trabajando a jornada completa durante cuatro meses.
+Tabla comparativa de las técnicas de estimación de costes
+Técnica 	Académico 	Empresa
+Esfuerzo
+(pers/mes)
+Dinero (€) Esfuerzo
+(pers/mes)
+Dinero (€)
+Componentes
+de Coste
+- 	4027,80€ 	- 	81.901,91 €
+Ley de
+parkinson
+12 	- 	24 	74.688,00 €
+Pricing to
+win
+- 	4.027,80€ 	- 	81.901,91€
+Puntos
+Objeto
+25 	- 	25 	77.794,00€
+*- La técnica de Pricing to Win no proporciona una estimación de esfuerzo, sino que
+parte del precio de mercado y utiliza los costes calculados en Componentes de Coste
+para determinar la viabilidad comercial.*
+*- El Juicio de Experto aporta una valoración cualitativa sobre la duración que no se
+traduce directamente a personas‑mes ni a coste monetario, pero nos resulta útil para
+contextualizar las demás estimaciones.*
+Análisis comparativo de las técnicas
+Una vez obtenidos los valores de las distintas técnicas de estimación, resulta necesario
+contrastarlos para identificar convergencias y divergencias que permitan tomar una
+decisión fundamentada sobre el coste final del proyecto.
+60
+
+-- 49 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+En el escenario académico, la Ley de Parkinson estima un esfuerzo de 12
+personas-mes, mientras que los Puntos de Objeto arrojan 25 personas-mes. Esta
+diferencia tan notable se explica principalmente por la naturaleza de cada técnica: la
+Ley de Parkinson se limita a distribuir el trabajo disponible en el tiempo dado (4 meses
+× 6 personas con dedicación parcial), sin evaluar la carga funcional real del sistema. Los
+Puntos de Objeto, en cambio, analizan el sistema desde una perspectiva funcional,
+contabilizando pantallas, informes y módulos de lógica de negocio, lo que produce una
+estimación más ajustada a la complejidad real del proyecto. El resultado de 25
+personas-mes con una productividad nominal de PROD = 13 resulta coherente con el
+alcance definido, aunque como se apunta en las notas metodológicas, aplicando un
+valor más conservador de PROD = 7 (perfil junior), el esfuerzo escalaría hasta 46
+personas-mes, lo que evidencia que el margen de riesgo es considerable para un equipo
+de estudiantes.
+En el escenario empresarial, la convergencia entre técnicas es mayor: la Ley de
+Parkinson estima 24 personas-mes con un coste de 74.688 €, y los Puntos de Objeto
+estiman 25 personas-mes con un coste de 77.794 €. Ambas cifras son notablemente
+similares, lo que aporta confianza en la estimación del esfuerzo para este escenario. La
+diferencia respecto a los Componentes de Coste (81.901,91 €) se debe a que esta última
+técnica incorpora también gastos indirectos como oficina, infraestructura, electricidad
+e internet, que las otras dos no recogen directamente.
+El Juicio Experto respalda cualitativamente estos resultados: estima entre 5 y 7 meses
+en el escenario académico y entre 5 y 6 meses en el empresarial, lo cual es coherente
+con los 4,17 meses que resultan de los Puntos de Objeto con PROD nominal, y alerta de
+que con un equipo junior el plazo real podría superarse fácilmente.
+Por su parte, el Pricing to Win no aporta una estimación de esfuerzo propia, sino que
+valida la viabilidad comercial del proyecto: en el escenario académico bastarían 12
+usuarios activos el primer año para recuperar la inversión, mientras que en el
+60
+
+-- 50 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+empresarial serían necesarios aproximadamente 228, lo cual es perfectamente
+alcanzable en un mercado con competidores como Holded o Quipu que ya cuentan con
+miles de clientes.
+60
+
+-- 51 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Decisión del coste final
+Tras analizar los resultados de todas las técnicas, el equipo ha decidido adoptar como
+estimación de referencia los valores obtenidos mediante Componentes de Coste, por
+ser la técnica más detallada y la única que recoge de forma explícita todos los gastos
+reales del proyecto, tanto directos como indirectos.
+En el escenario académico, el coste total estimado asciende a 4.027,80 €, lo que
+representa una estimación conservadora y ajustada a la realidad del equipo: materiales,
+herramientas, infraestructura básica y amortización de equipos propios.
+En el escenario empresarial, el coste total estimado es de 81.901,91 €, cifra que incluye
+salarios, oficina, infraestructura profesional y todos los servicios necesarios para un
+desarrollo de calidad comercial.
+No obstante, consideramos prudente tener en cuenta la estimación por Puntos de
+Objeto como señal de alerta: si el equipo no alcanza la productividad nominal asumida
+(PROD = 13), el esfuerzo real podría ser significativamente mayor al planificado, lo que
+podría traducirse en desviaciones de plazo o en la necesidad de reducir el alcance
+funcional del sistema. Por ello, se recomienda revisar periódicamente el avance real
+frente a la planificación y aplicar los planes de contingencia definidos en el apartado de
+análisis de riesgos si se detectan desviaciones tempranas.
+60
+
+-- 52 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+2.7. Bibliografía
+Supuesto Académico
+Universidad de Alicante. (2026). Doble grado en Ingeniería Informática y
+Administración y Dirección de Empresas (I2ADE).
+https://web.ua.es/es/grados/grado-en-i2ade/doble-grado-en-ingenieria-informatica-adm
+inistracion-y-direccion-de-empresas-i2ade.html
+Hostinger. (2026). Precios de hosting web. Recuperado el 02 de marzo de 2026, de
+https://www.hostinger.com/es/precios
+ONOS. (2026). Registro de dominios y precios. Recuperado el 02 de marzo de 2026,
+de https://www.ionos.es/domainshop
+Amazon Web Services. (2026). Amazon RDS Free Tier. Recuperado el 02 de marzo
+de 2026, de https://aws.amazon.com/es/rds/free/
+OpenAI. (2026). ChatGPT pricing. Recuperado el 02 de marzo de 2026, de
+https://chatgpt.com/pricing/
+Anthropic. (2026). Elegir un plan de Claude. Recuperado el 02 de marzo de 2026, de
+https://support.claude.com/es/articles/11049762-elegir-un-plan-de-claude
+Google Cloud. (2026). Precios de Identity Platform. Recuperado el 02 de marzo de
+2026, de https://cloud.google.com/identity-platform/pricing?hl=es
+Grafana Labs. (2026). Grafana Cloud pricing. Recuperado el 02 de marzo de 2026, de
+https://grafana.com/pricing/
+Phone House. (2026). Comparativa de tarifas convergentes (móvil + fibra).
+Recuperado el 02 de marzo de 2026, de
+https://www.phonehouse.es/movil-adsl/comparativa-tarifas-fusion.html
+GitHub. (2026). Pricing. Recuperado el 03 de marzo de 2026, de
+https://github.com/pricing
+FolioJS. (2025, 30 de agosto). PDFKit (versión más reciente). GitHub.
+https://github.com/foliojs/pdfkit
+Fleet. (2026). Amortización de ordenadores: cómo calcularla y cuánto dura un equipo
+informático. Recuperado el 02 de marzo de 2026, de
+https://fleet.co/es/blog/amortizacion-ordenadores
+Naturgy. (2025). ¿Cuánto consume un ordenador?. Recuperado el 02 de marzo de
+2026, de https://www.naturgy.es/hogar/blog/cuanto_consume_un_ordenador
+60
+
+-- 53 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Supuesto empresa.
+Indeed. (1016, 19 de febrero). Salario de Desarrollador/a junior en España.
+https://es.indeed.com/career/desarrollador-junior/salaries
+Instituto Nacional de Estadística. (2025, 16 de diciembre). Encuesta Trimestral de
+Coste Laboral (ETCL). Tercer trimestre 2025.
+https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=12547360450
+53&menu=ultiDatos&idp=1254735976596
+Idealista. (2026). Alquiler de oficinas en Alicante.
+https://www.idealista.com/alquiler-oficinas/alicante/con-tipo-edificio_solo-oficina/
+Amazon Web Services. (2026). Amazon EC2 pricing. Recuperado el 03 de marzo de
+2026, de https://aws.amazon.com/ec2/pricing/
+IONOS. (2026). Registro de dominios y precios. Recuperado el 03 de marzo de 2026,
+de https://www.ionos.es/domainshop
+DigiCert. (2026). SSL certificate pricing. Recuperado el 03 de marzo de 2026, de
+https://www.digicert.com/tls-ssl/pricing
+Amazon Web Services. (2026). Amazon RDS pricing. Recuperado el 03 de marzo de
+2026, de https://aws.amazon.com/rds/pricing/
+Amazon Web Services. (2026). Amazon S3 pricing. Recuperado el 03 de marzo de
+2026, de https://aws.amazon.com/s3/pricing/
+PDF Generator API. (2026). Pricing. Recuperado el 03 de marzo de 2026, de
+https://pdfgeneratorapi.com/pricing
+Dell Technologies. (2026). Portátiles empresariales. Recuperado el 03 de marzo de
+2026, de https://www.dell.com/es-es/work/shop
+Red Eléctrica de España. (2026). Precio medio de la electricidad en España.
+Recuperado el 03 de marzo de 2026, de https://www.ree.es
+Movistar Empresas. (2026). Fibra para empresas. Recuperado el 03 de marzo de
+2026, de https://www.movistar.es/empresas
+Grafana Labs. (2026). Grafana Cloud pricing. Recuperado el 03 de marzo de 2026, de
+https://grafana.com/pricing/
+60
+
+-- 54 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+2. Análisis de riesgos
+2.1. 	Identificación de riesgo
+Identificador 	Riesgo 	Descripción
+Categoría 1. Tecnología.
+Identificador 	Riesgo 	Descripción
+Categoría 2. Personas.
+60
+
+-- 55 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Identificador 	Riesgo 	Descripción
+Categoría 3. Herramientas.
+Identificador 	Riesgo 	Descripción
+Categoría 4. Organización.
+Identificador 	Riesgo 	Descripción
+60
+
+-- 56 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+Categoría 5. Requerimientos.
+Identificador 	Riesgo 	Descripción
+Categoría 6. Estimación.
+2.2. 	Prioridades de los riesgos
+2.3. 	Planes de contingencia
+60
+
+-- 57 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+En la parte de monitorización pone mínimo 2-3 por categoría. El profe dice que lo
+mejor sería tener 1 indicador (identificador) por cada riesgo analizado.
+2.4. 	Mecanismos de seguimiento y control
+60
+
+-- 58 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+3. Organización de recursos humanos.
+En este apartado estableceros y justificaremos la estructura organizativa de los
+recursos humanos del proyecto (DD, DC, CC). Se puede complementar con otras
+técnicas de las vistas en clase.
+60
+
+-- 59 of 60 --
+
+DOCUMENTO DE PLANIFICACIÓN
+4. Agenda del proyecto
+Aquí explicaréis el modelo de proceso que se va a seguir.
+4.1. 	Relación de actividades y precedencias
+4.2. 	Hitos del proyecto
+4.3. 	Asignación de tiempo y recursos a actividades
+4.4. 	Asignación de recursos humanos
+4.5. 	Cálculo de holguras y duración del proyecto
+4.6. 	Agenda con fechas tempranas y tardías (actividades)
+4.7. 	Agenda según recursos
+60
+
+-- 60 of 60 --
+

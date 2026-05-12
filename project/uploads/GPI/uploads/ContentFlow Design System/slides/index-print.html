@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>ContentFlow — Presentación J11-4</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  /* ===========================================================
+     PALETTE OVERRIDE — Editorial navy + warm gold
+     (replaces the original coral/cream system for the deck only)
+     =========================================================== */
+  :root {
+    --brand:        #1A2A6C;
+    --brand-deep:   #0F1A4A;
+    --brand-soft:   #DCE2F5;
+    --gold:         #FFD23F;
+    --gold-deep:    #C49A0A;
+    --gold-soft:    #FFF0BD;
+    --paper:        #F8F4EC;
+    --paper-deep:   #EFE8D6;
+    --paper-line:   #E2D9C4;
+    --ink:          #0A0F1F;
+    --slate:        #5B6378;
+    --line:         color-mix(in srgb, var(--ink) 10%, transparent);
+    --line-strong:  color-mix(in srgb, var(--ink) 18%, transparent);
+    --alert:        #D43F3A;
+    --alert-soft:   #F4D2D0;
+    --amber:        #E8A33C;
+    --amber-soft:   #FAE3BD;
+    --lime:         #6B9B3A;
+    --lime-soft:    #DDEBC1;
+  }
+
+  /* Stage / slide chrome */
+  deck-stage { background: var(--ink); }
+  section {
+    position: relative;
+    width: 1920px; height: 1080px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    overflow: hidden;
+    padding: 100px 120px;
+    box-sizing: border-box;
+  }
+  section.dark { background: var(--brand); color: #fff; }
+  section.dark h1, section.dark h2, section.dark h3, section.dark p { color: #fff; }
+  section.gold { background: var(--gold); color: var(--ink); }
+
+  /* Frame chrome */
+  .frame-eyebrow { position: absolute; top: 60px; left: 120px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--brand); }
+  section.dark .frame-eyebrow { color: var(--gold); }
+  section.gold .frame-eyebrow { color: var(--brand); }
+  .frame-counter { position: absolute; top: 60px; right: 120px; font-family: var(--font-mono); font-size: 14px; color: var(--slate); letter-spacing: .04em; }
+  section.dark .frame-counter { color: rgba(255,255,255,.55); }
+  section.gold .frame-counter { color: var(--brand-deep); }
+  .frame-foot { position: absolute; bottom: 60px; left: 120px; right: 120px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--slate); }
+  section.dark .frame-foot { color: rgba(255,255,255,.55); }
+  .frame-foot .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-family: var(--font-display); font-size: 16px; color: var(--ink); letter-spacing: -.01em; }
+  section.dark .frame-foot .logo { color: #fff; }
+
+  /* Type helpers */
+  .hero { font-family: var(--font-display); font-weight: 800; line-height:.92; letter-spacing:-.04em; font-size: 200px; }
+  .h1 { font-family: var(--font-display); font-weight: 700; line-height: 1.0; letter-spacing: -.025em; font-size: 88px; margin: 0; }
+  .h2 { font-family: var(--font-display); font-weight: 600; line-height: 1.05; letter-spacing: -.02em; font-size: 60px; margin: 0; }
+  .h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.18; letter-spacing: -.015em; font-size: 36px; margin: 0; }
+  .body { font-size: 26px; line-height: 1.5; max-width: 1100px; }
+  .body-lg { font-size: 32px; line-height: 1.4; max-width: 1200px; }
+  .lead { font-size: 22px; line-height: 1.5; color: var(--slate); }
+  section.dark .lead { color: rgba(255,255,255,.7); }
+  .mono { font-family: var(--font-mono); }
+
+  /* Layout */
+  .stack { display:flex; flex-direction:column; gap: 40px; }
+  .row { display:flex; gap: 60px; }
+  .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .grid-3 { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+  .grid-4 { display:grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+  /* Cards */
+  .card {
+    background: #fff; border-radius: 18px; padding: 36px;
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 12px rgba(15,23,41,.04);
+  }
+  .card.brand { background: var(--brand); color: #fff; border:none; }
+  .card.gold  { background: var(--gold); color: var(--ink); border:none; }
+  .card.outline { background: transparent; border: 1.5px solid var(--brand); }
+  .card-title { font-family: var(--font-display); font-weight:600; font-size: 28px; letter-spacing:-.01em; margin: 0 0 14px; }
+  .card-num { font-family: var(--font-display); font-weight:700; font-size: 80px; letter-spacing:-.03em; line-height:1; font-variant-numeric: tabular-nums; }
+  .card-num .unit { font-size: 32px; font-weight:500; color: var(--slate); margin-left: 6px; }
+  .card-eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing:.14em; color: var(--brand); font-weight:700; margin-bottom: 18px; }
+  .card.brand .card-eyebrow { color: var(--gold); }
+  .card.gold  .card-eyebrow { color: var(--brand); }
+  .card-foot { font-size: 17px; color: var(--slate); margin-top: 16px; line-height:1.5; }
+  .card.brand .card-foot { color: rgba(255,255,255,.7); }
+  .card.gold  .card-foot { color: var(--brand-deep); }
+
+  /* Bullets */
+  ul.bullets { list-style: none; padding:0; margin:0; display:flex; flex-direction:column; gap: 18px; }
+  ul.bullets li { font-size: 26px; line-height: 1.45; padding-left: 36px; position: relative; max-width: 1300px; }
+  ul.bullets li::before { content:""; position:absolute; left: 0; top: 14px; width: 18px; height: 2px; background: var(--gold); }
+
+  /* Tables */
+  table.t { width:100%; border-collapse: collapse; font-size: 21px; }
+  table.t th { text-align:left; padding: 16px 18px; border-bottom: 2px solid var(--ink); font-weight:700; font-size: 13px; text-transform:uppercase; letter-spacing:.1em; color: var(--slate); }
+  table.t td { padding: 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.t .num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  table.t .id { font-family: var(--font-mono); font-size: 16px; color: var(--slate); }
+  table.t tr.total td { background: var(--paper-deep); font-weight:700; }
+
+  /* Tags */
+  .tag { display:inline-flex; align-items:center; gap:6px; padding: 5px 12px; border-radius: 999px; font-size: 14px; font-weight:600; }
+  .tag.ok   { background: var(--lime-soft);  color: var(--lime); }
+  .tag.warn { background: var(--amber-soft); color: var(--amber); }
+  .tag.err  { background: var(--alert-soft); color: var(--alert); }
+  .tag.info { background: var(--brand-soft); color: var(--brand); }
+
+  /* Cover */
+  .cover-wordmark { font-family: var(--font-display); font-size: 220px; font-weight: 800; line-height:.9; letter-spacing:-.05em; }
+  .cover-wordmark .accent { color: var(--gold); }
+
+  /* Section divider */
+  .divider-num { font-family: var(--font-display); font-weight:800; font-size: 320px; line-height:.85; letter-spacing:-.05em; color: var(--gold); }
+  .divider-label { font-size: 18px; text-transform:uppercase; letter-spacing:.18em; color: rgba(255,255,255,.6); margin-bottom: 30px; }
+  .divider-title { font-family: var(--font-display); font-weight:700; font-size: 100px; line-height:1; letter-spacing:-.025em; }
+
+  /* Risk apartado layout */
+  .risk-step {
+    display:grid; grid-template-columns: 80px 1fr; gap: 28px;
+    padding: 24px 0; border-bottom: 1px solid var(--line);
+  }
+  .risk-step:last-child { border-bottom: none; }
+  .risk-step .step-n { font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1; color: var(--gold-deep); font-variant-numeric: tabular-nums; }
+  .risk-step .step-label { font-size: 13px; text-transform: uppercase; letter-spacing:.14em; color: var(--brand); font-weight:700; }
+  .risk-step .step-body { font-size: 20px; line-height: 1.45; margin-top: 8px; max-width: 1500px; }
+
+  .risk-card {
+    background: #fff; border-radius: 14px; padding: 22px;
+    border: 1px solid var(--line);
+  }
+  .risk-card .rid { font-family: var(--font-mono); font-size: 12px; color: var(--brand); font-weight:700; letter-spacing: .04em; }
+  .risk-card .rname { font-family: var(--font-display); font-weight: 600; font-size: 22px; line-height: 1.2; margin-top: 6px; letter-spacing:-.01em; }
+  .risk-card .rdesc { font-size: 15px; color: var(--slate); margin-top: 10px; line-height: 1.45; }
+
+  /* Matrix */
+  .matrix { display: grid; grid-template-columns: 100px repeat(3, 1fr); grid-template-rows: 60px repeat(3, 1fr); gap: 8px; height: 600px; }
+  .matrix .axis { display:flex; align-items:center; justify-content:center; font-size: 14px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; color: var(--slate); }
+  .matrix .cell { background: var(--paper-deep); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+  .matrix .cell.lo { background: var(--lime-soft); }
+  .matrix .cell.md { background: var(--amber-soft); }
+  .matrix .cell.hi { background: var(--alert-soft); }
+  .matrix .cell .id { font-family: var(--font-mono); font-size: 13px; font-weight:700; color: var(--brand); }
+  .matrix .cell .name { font-size: 15px; font-weight: 500; line-height: 1.3; }
+
+  /* Plan placeholder */
+  .placeholder {
+    background: repeating-linear-gradient(135deg, var(--paper-deep) 0 16px, var(--paper) 16px 32px);
+    border: 2px dashed var(--line-strong);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--slate);
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .pat-bg { position: absolute; bottom: 0; right: 0; width: 360px; height: 360px; background-image: url(../assets/pattern-flow.svg); background-size: 240px; opacity: .25; pointer-events: none; filter: brightness(0) invert(1) sepia(1) saturate(8) hue-rotate(15deg); }
+
+  /* ===========================================================
+     ANIMATIONS — entry only, triggered on slide activation
+     =========================================================== */
+  .anim {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .7s cubic-bezier(.22,.7,.2,1), transform .7s cubic-bezier(.22,.7,.2,1);
+    transition-delay: var(--d, 0ms);
+  }
+  section[data-deck-active] .anim { opacity: 1; transform: translateY(0); }
+  .anim.fade { transform: none; }
+  .anim.scale-in { transform: scale(.94); }
+  section[data-deck-active] .anim.scale-in { transform: scale(1); }
+  .anim.slide-r { transform: translateX(-32px); }
+  section[data-deck-active] .anim.slide-r { transform: translateX(0); }
+  .anim.cover-rise { transform: translateY(60px) scale(.98); }
+  section[data-deck-active] .anim.cover-rise { transform: translateY(0) scale(1); }
+
+  /* Reveal a thin gold underline below H1 of each slide */
+  .h1::after {
+    content: ""; display: block;
+    width: 0; height: 4px; background: var(--gold);
+    margin-top: 18px; border-radius: 4px;
+    transition: width .9s cubic-bezier(.22,.7,.2,1) .35s;
+  }
+  section[data-deck-active] .h1.rule::after { width: 120px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .anim, .h1::after { transition: none !important; }
+    .anim { opacity: 1 !important; transform: none !important; }
+    .h1.rule::after { width: 120px !important; }
+  }
+</style>
+<script type="application/json" id="speaker-notes">
+[
+"Portada. Bienvenida y presentación del equipo J11-4.",
+"Apertura del bloque 01: Introducción.",
+"Agenda general: cuatro bloques.",
+"Objetivos generales del sistema y por qué la especialización sectorial.",
+"Resumen de los 75 requerimientos funcionales agrupados en 5 bloques.",
+"Tres requerimientos clave: VERIFACTU, motor de alertas, dashboard creator.",
+"Requerimientos no funcionales: rendimiento, seguridad, fiabilidad, usabilidad.",
+"Principales restricciones: personal, tiempo, presupuesto, legales.",
+"Apertura del bloque 02: Estimación de costes.",
+"Componentes de coste — escenario académico vs empresarial.",
+"Resultado destacado: 81.901,91 € escenario empresa.",
+"Cuatro técnicas aplicadas y comparativa entre ellas.",
+"Pricing to Win — tres planes para llegar al mercado.",
+"Apertura del bloque 03: Análisis de riesgos.",
+"3.1 Identificación: riesgos específicos del dominio creador de contenido.",
+"3.2 Prioridades: matriz probabilidad × impacto.",
+"3.3 Planes de contingencia para los riesgos críticos.",
+"3.4 Mecanismos de seguimiento y control: indicadores por riesgo.",
+"Apertura del bloque 04: Planificación.",
+"Plantilla del proyecto — captura pendiente.",
+"Plan general — captura pendiente.",
+"Plan detallado — captura pendiente.",
+"Cierre y agradecimientos."
+]
+</script>
+</head>
+<body style="background-color: rgb(240, 240, 240)">
+
+<deck-stage>
+
+<!-- 01 · Cover -->
+<section class="dark" data-screen-label="01 Portada">
+  <div class="pat-bg"></div>
+  <div class="anim slide-r" style="--d:120ms; position:absolute; top: 100px; left: 120px; display:flex; align-items:center; gap: 18px;">
+    <img src="../assets/logo-mark.svg" width="60" height="60" alt="">
+    <span style="font-family:var(--font-display);font-weight:700;font-size:24px;letter-spacing:-.01em;">ContentFlow</span>
+  </div>
+  <div style="position:absolute; bottom: 220px; left: 120px;">
+    <div class="anim" style="--d:200ms; font-size:18px; text-transform:uppercase; letter-spacing:.18em; color: var(--gold); font-weight:700; margin-bottom: 36px;">Documento de Planificación · v2</div>
+    <div class="cover-wordmark anim cover-rise" style="--d:300ms;">Content<span class="accent">Flow</span>.</div>
+    <div class="body-lg anim" style="--d:600ms; margin-top: 40px; max-width: 1100px; color: rgba(255,255,255,.85);">
+      Gestión económica, fiscal y administrativa para autónomos creadores de contenido digital.
+    </div>
+  </div>
+  <div class="anim fade" style="--d:900ms; position:absolute; bottom: 100px; left: 120px; right: 120px; display:flex; justify-content:space-between; align-items:flex-end;">
+    <div style="font-size:15px; line-height:1.7; color: rgba(255,255,255,.7);">
+      Nayara Cortés · Santiago Redondo · Enrique Cuesta<br>
+      Adrián Guerra · Christian Campello · Francisco Navarro
+    </div>
+    <div style="text-align:right; font-size:15px; line-height:1.7; color: rgba(255,255,255,.7);">
+      Grupo <b style="color:#fff;">J11-4</b> · GPI 2025-26<br>
+      Universidad de Alicante · I²ADE
+    </div>
+  </div>
+</section>
+
+<!-- 02 · Section divider 01 -->
+<section class="dark" data-screen-label="02 Sección 01">
+  <div style="position:absolute;top:50%;left:120px;transform:translateY(-50%);display:flex;align-items:center;gap:80px;">
+    <div class="divider-num anim cover-rise" style="--d:100ms;">01</div>
+    <div>
+      <div class="divider-label anim" style="--d:300ms;">Bloque uno</div>
+      <div class="divider-title anim" style="--d:400ms;">Introducción.</div>
+      <div class="body anim" style="--d:600ms; margin-top: 30px; max-width: 700px; color: rgba(255,255,255,.7);">
+        Objetivos generales, requerimientos clave y restricciones que delimitan el alcance.
+      </div>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 03 · Agenda -->
+<section data-screen-label="03 Agenda">
+  <div class="frame-eyebrow">Agenda</div>
+  <div class="frame-counter">03 / 23</div>
+  <div style="margin-top: 80px;">
+    <h1 class="h1 rule anim" style="--d:100ms;">Lo que vamos a contar.</h1>
+    <div class="grid-2" style="margin-top: 70px;">
+      <div class="card anim" style="--d:300ms;">
+        <div class="card-eyebrow"><span class="mono">01</span> · Introducción</div>
+        <div class="card-title">Objetivos &amp; requerimientos</div>
+        <div class="card-foot">Qué problema resuelve ContentFlow, qué tiene que hacer y dónde están los límites.</div>
+      </div>
+      <div class="card anim" style="--d:400ms;">
+        <div class="card-eyebrow"><span class="mono">02</span> · Estimación</div>
+        <div class="card-title">Costes del proyecto</div>
+        <div class="card-foot">Componentes, Parkinson, Pricing to Win y Puntos Objeto. Cuatro lecturas, una decisión.</div>
+      </div>
+      <div class="card anim" style="--d:500ms;">
+        <div class="card-eyebrow"><span class="mono">03</span> · Riesgos</div>
+        <div class="card-title">Identificación, prioridad, contingencia, control</div>
+        <div class="card-foot">Cuatro apartados de análisis aplicados a los riesgos específicos del sector creador.</div>
+      </div>
+      <div class="card anim" style="--d:600ms;">
+        <div class="card-eyebrow"><span class="mono">04</span> · Planificación</div>
+        <div class="card-title">Plantilla, plan general &amp; detallado</div>
+        <div class="card-foot">Modelo de proceso, hitos, asignación de recursos y cálculo de holguras.</div>
+      </div>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 04 · Objetivos -->
+<section data-screen-label="04 Objetivos">
+  <div class="frame-eyebrow">01 · Introducción · 1.1</div>
+  <div class="frame-counter">04 / 23</div>
+  <div style="margin-top: 70px; display:grid; grid-template-columns: 5fr 4fr; gap: 100px;">
+    <div>
+      <h1 class="h1 rule anim" style="--d:100ms;">Diseñar la app que falta para los <span style="color:var(--brand);">creadores de contenido</span>.</h1>
+      <p class="lead anim" style="--d:400ms; margin-top:36px; max-width:760px;">Especialización sectorial: clientes son marcas, agencias y suscriptores; proveedores son plataformas digitales. ContentFlow se adapta a esa realidad en lugar de forzar el modelo contable genérico.</p>
+    </div>
+    <ul class="bullets">
+      <li class="anim" style="--d:300ms;">Centralizar marcas, patrocinadores y colaboradores</li>
+      <li class="anim" style="--d:380ms;">Gestionar presupuestos y facturación con <span class="mono">VERIFACTU</span></li>
+      <li class="anim" style="--d:460ms;">Registrar y controlar ingresos, gastos, cobros y pagos</li>
+      <li class="anim" style="--d:540ms;">Generar informes económicos y fiscales</li>
+      <li class="anim" style="--d:620ms;">Incorporar métricas de rendimiento del creador</li>
+      <li class="anim" style="--d:700ms;">Garantizar la seguridad de la información</li>
+    </ul>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 05 · Requerimientos funcionales (resumen tabla) -->
+<section data-screen-label="05 Requerimientos resumen">
+  <div class="frame-eyebrow">01 · Introducción · 1.2</div>
+  <div class="frame-counter">05 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 70px;">Requerimientos funcionales.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top: 14px;">5 bloques · 75 sub-funcionalidades documentadas en el Anexo A.</p>
+  <table class="t anim" style="--d:500ms; margin-top: 50px;">
+    <thead><tr><th style="width:22%;">Bloque</th><th style="width:22%;">Identificador</th><th>Resumen</th><th class="num" style="width:14%;">Sub-func.</th></tr></thead>
+    <tbody>
+      <tr><td><b>Usuarios &amp; roles</b></td><td class="id">USR · PERFIL · ROL</td><td>Registro, login, recuperación, perfil, control de acceso por rol.</td><td class="num">11</td></tr>
+      <tr><td><b>Clientes</b></td><td class="id">CLI · PAYCLI · ALERT · HISCLI</td><td>Alta/edición, cobros, alertas de vencimiento, historial de colaboraciones.</td><td class="num">15</td></tr>
+      <tr><td><b>Proveedores</b></td><td class="id">PROV · PAYPROV · INF</td><td>Gestión, condiciones de pago, importación CSV/Excel, listados.</td><td class="num">9</td></tr>
+      <tr><td><b>Finanzas</b></td><td class="id">PRES · FACT_E · FACT_R · COBPAG · LIB · EJERC</td><td>Presupuestos, facturas (VERIFACTU), libros contables, ejercicios.</td><td class="num">21</td></tr>
+      <tr><td><b>Análisis &amp; fiscal</b></td><td class="id">ANL · IVA · RET · EXP</td><td>Dashboard, KPIs, IVA repercutido/soportado, retenciones IRPF, exportación.</td><td class="num">19</td></tr>
+      <tr class="total"><td>Total</td><td></td><td></td><td class="num">75</td></tr>
+    </tbody>
+  </table>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 06 · Requerimientos clave (3 ejemplos destacados) -->
+<section data-screen-label="06 Requerimientos clave">
+  <div class="frame-eyebrow">01 · Introducción · 1.2 — ejemplos</div>
+  <div class="frame-counter">06 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 70px;">Tres requerimientos que <span style="color:var(--brand);">definen el producto</span>.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top: 14px;">De los 75 documentados, estos tres marcan la diferencia frente a un ERP genérico.</p>
+  <div class="grid-3" style="margin-top: 50px;">
+
+    <div class="card anim" style="--d:450ms;">
+      <div class="card-eyebrow"><span class="mono">FACT_E_VER</span></div>
+      <div class="card-title">Verificación VERIFACTU</div>
+      <p class="card-foot">Cada factura emitida valida integridad fiscal antes del registro definitivo, conforme al RD 1007/2023. Sin este módulo el sistema no es legalmente utilizable.</p>
+      <div style="margin-top: 20px; padding: 14px 16px; background: var(--paper-deep); border-radius: 10px; font-size: 14px; color: var(--brand);">
+        <b>Criterio:</b> 0 facturas registradas sin verificación.<br>
+        <b>Norma:</b> Ley 11/2021 + RD 1007/2023.
+      </div>
+    </div>
+
+    <div class="card brand anim" style="--d:550ms;">
+      <div class="card-eyebrow">ALERT_PAGO &middot; ALERT_CONT</div>
+      <div class="card-title" style="color:#fff;">Motor de alertas</div>
+      <p class="card-foot">Cobros vencidos, contratos próximos a expirar, declaraciones trimestrales. El creador no pierde un patrocinio ni un plazo fiscal por descuido.</p>
+      <div style="margin-top: 20px; padding: 14px 16px; background: rgba(255,255,255,.08); border-radius: 10px; font-size: 14px; color: var(--gold);">
+        <b>Reglas configurables</b> por usuario · ejecución diaria · canal email + in-app.
+      </div>
+    </div>
+
+    <div class="card anim" style="--d:650ms;">
+      <div class="card-eyebrow"><span class="mono">ANL · KPI_CRT</span></div>
+      <div class="card-title">Dashboard creator</div>
+      <p class="card-foot">KPIs específicos del sector: top de marcas por facturación, ingresos por plataforma (Twitch, YouTube, Patreon), evolución mensual de patrocinios y suscripciones.</p>
+      <div style="margin-top: 20px; padding: 14px 16px; background: var(--gold-soft); border-radius: 10px; font-size: 14px; color: var(--brand);">
+        <b>Diferencial sectorial:</b> ningún ERP genérico ofrece estos cortes.
+      </div>
+    </div>
+
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 07 · No funcionales -->
+<section data-screen-label="07 No funcionales">
+  <div class="frame-eyebrow">01 · Introducción · 1.3</div>
+  <div class="frame-counter">07 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 70px;">No funcionales: <span style="color:var(--brand);">qué garantizamos</span>.</h1>
+  <div class="grid-3" style="margin-top: 70px;">
+    <div class="card anim" style="--d:300ms;"><div class="card-eyebrow">REND</div><div class="card-title">Rendimiento</div><p class="card-foot">Interfaces &lt; 3 s · CRUD &lt; 2 s · informes 12 meses &lt; 5 s.</p></div>
+    <div class="card anim" style="--d:380ms;"><div class="card-eyebrow">ESC</div><div class="card-title">Escalabilidad</div><p class="card-foot">5 años de historial · 50 usuarios concurrentes &lt; 5 s · módulos sin degradar el resto.</p></div>
+    <div class="card anim" style="--d:460ms;"><div class="card-eyebrow">SECU</div><div class="card-title">Seguridad</div><p class="card-foot">Hash + JWT · HTTPS/TLS · RBAC · logs de auditoría · sesión con expiración.</p></div>
+    <div class="card anim" style="--d:540ms;"><div class="card-eyebrow">FIAB</div><div class="card-title">Fiabilidad</div><p class="card-foot">Backups automáticos · 99,5 % operaciones sin intervención manual · 0 inconsistencias.</p></div>
+    <div class="card anim" style="--d:620ms;"><div class="card-eyebrow">DISP</div><div class="card-title">Disponibilidad</div><p class="card-foot">Uptime 99 % · operación 24/7 · ventanas de mantenimiento informadas.</p></div>
+    <div class="card anim" style="--d:700ms;"><div class="card-eyebrow">USA</div><div class="card-title">Usabilidad</div><p class="card-foot">WCAG 2.1 AA · alta + factura + informe en 30 min sin formación previa.</p></div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 08 · Restricciones -->
+<section data-screen-label="08 Restricciones">
+  <div class="frame-eyebrow">01 · Introducción · 1.4</div>
+  <div class="frame-counter">08 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 70px;">Lo que <span style="color:var(--brand);">limita el proyecto</span>.</h1>
+  <div class="grid-4" style="margin-top: 80px;">
+    <div class="anim" style="--d:300ms;">
+      <div class="card-num"><span style="color:var(--brand);">6</span></div>
+      <div class="h3" style="margin-top:18px;">Personas</div>
+      <p class="card-foot">Estudiantes con dedicación parcial. Curva de aprendizaje en stack profesional.</p>
+    </div>
+    <div class="anim" style="--d:400ms;">
+      <div class="card-num"><span style="color:var(--brand);">14</span><span class="unit">may 2026</span></div>
+      <div class="h3" style="margin-top:18px;">Tiempo</div>
+      <p class="card-foot">Calendario académico. Deadline rígido del curso 2025-26.</p>
+    </div>
+    <div class="anim" style="--d:500ms;">
+      <div class="card-num"><span style="color:var(--brand);">€</span></div>
+      <div class="h3" style="margin-top:18px;">Presupuesto</div>
+      <p class="card-foot">Modelo SaaS competitivo. Compatible con suscripción dirigida a autónomos.</p>
+    </div>
+    <div class="anim" style="--d:600ms;">
+      <div class="card-num"><span style="color:var(--brand);">⚖</span></div>
+      <div class="h3" style="margin-top:18px;">Legales</div>
+      <p class="card-foot">RGPD · LOPDGDD · LSSI-CE · Ley 58/2003 · RD 1619/2012 · Ley 37/1992 · VERIFACTU.</p>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 09 · Section divider 02 -->
+<section class="dark" data-screen-label="09 Sección 02">
+  <div style="position:absolute;top:50%;left:120px;transform:translateY(-50%);display:flex;align-items:center;gap:80px;">
+    <div class="divider-num anim cover-rise" style="--d:100ms;">02</div>
+    <div>
+      <div class="divider-label anim" style="--d:300ms;">Bloque dos</div>
+      <div class="divider-title anim" style="--d:400ms;">Estimación de costes.</div>
+      <div class="body anim" style="--d:600ms; margin-top: 30px; max-width: 800px; color: rgba(255,255,255,.7);">
+        Cuatro técnicas, dos escenarios y una cifra final que sostendremos con datos.
+      </div>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 10 · Componentes de coste -->
+<section data-screen-label="10 Componentes coste">
+  <div class="frame-eyebrow">02 · Estimación · 2.1</div>
+  <div class="frame-counter">10 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top:70px;">Componentes de coste.</h1>
+  <div class="grid-2" style="margin-top: 70px;">
+    <div class="card anim" style="--d:350ms;">
+      <div class="card-eyebrow">Supuesto académico</div>
+      <div class="card-num num">4.027,80<span class="unit">€</span></div>
+      <p class="card-foot">14 conceptos · 4 meses · 6 estudiantes. Materiales, herramientas, infraestructura básica y amortización de equipos propios.</p>
+      <div style="margin-top: 24px; display:flex; flex-wrap:wrap; gap:8px;">
+        <span class="tag info">Matrícula GPI</span>
+        <span class="tag info">Hosting compartido</span>
+        <span class="tag info">IA · plan individual</span>
+        <span class="tag info">Equipos amortizados</span>
+      </div>
+    </div>
+    <div class="card brand anim" style="--d:500ms;">
+      <div class="card-eyebrow">Supuesto empresa</div>
+      <div class="card-num num" style="color: #fff;">81.901,91<span class="unit" style="color: rgba(255,255,255,.6);">€</span></div>
+      <p class="card-foot">14 conceptos · 4 meses · equipo profesional a jornada completa. Salarios INE 3T 2025 + oficina + cloud profesional.</p>
+      <div style="margin-top: 24px; display:flex; flex-wrap:wrap; gap:8px;">
+        <span class="tag" style="background: var(--gold); color: var(--brand);">Salarios 74.682 €</span>
+        <span class="tag" style="background: rgba(255,255,255,.1); color: #fff;">Oficina 3.200 €</span>
+        <span class="tag" style="background: rgba(255,255,255,.1); color: #fff;">EC2 + RDS + S3</span>
+        <span class="tag" style="background: rgba(255,255,255,.1); color: #fff;">GitHub Team</span>
+      </div>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 11 · KPI hero -->
+<section class="gold" data-screen-label="11 Cifra hero">
+  <div class="frame-eyebrow">Decisión adoptada · escenario empresa</div>
+  <div class="frame-counter">11 / 23</div>
+  <div style="position:absolute;top:50%;left:120px;transform:translateY(-50%);max-width:1500px;">
+    <div class="hero anim cover-rise" style="--d:200ms; font-size:240px; color:var(--brand);">81.901,91 €</div>
+    <div class="body-lg anim" style="--d:550ms; margin-top:40px; color:var(--brand-deep); max-width:1100px;">Coste total estimado para el desarrollo profesional de ContentFlow durante 4 meses. <b>Componentes de Coste</b> es la técnica de referencia: incorpora gastos directos e indirectos.</div>
+  </div>
+  <div class="frame-foot"><div class="logo">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 12 · Comparativa de técnicas -->
+<section data-screen-label="12 Comparativa técnicas">
+  <div class="frame-eyebrow">02 · Estimación · 2.6</div>
+  <div class="frame-counter">12 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 70px;">Cuatro técnicas, una decisión.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top:14px;">Las cifras convergen en el escenario empresarial; en el académico, los Puntos Objeto alertan de la posible desviación.</p>
+  <table class="t anim" style="--d:450ms; margin-top: 50px;">
+    <thead><tr>
+      <th style="width:30%;">Técnica</th>
+      <th class="num" style="width:17%;">Acad. esfuerzo</th>
+      <th class="num" style="width:17%;">Acad. coste</th>
+      <th class="num" style="width:17%;">Empresa esfuerzo</th>
+      <th class="num" style="width:19%;">Empresa coste</th>
+    </tr></thead>
+    <tbody>
+      <tr><td><b>Componentes de Coste</b><div class="lead" style="font-size:15px;margin-top:4px;">Conceptos directos + indirectos · referencia adoptada</div></td><td class="num">—</td><td class="num">4.027,80 €</td><td class="num">—</td><td class="num">81.901,91 €</td></tr>
+      <tr><td><b>Ley de Parkinson</b><div class="lead" style="font-size:15px;margin-top:4px;">Trabajo se expande al tiempo disponible</div></td><td class="num">12 PM</td><td class="num">—</td><td class="num">24 PM</td><td class="num">74.688,00 €</td></tr>
+      <tr><td><b>Pricing to Win</b><div class="lead" style="font-size:15px;margin-top:4px;">Mercado SaaS · 30 €/mes promedio</div></td><td class="num">—</td><td class="num">12 lic.</td><td class="num">—</td><td class="num">228 lic.</td></tr>
+      <tr><td><b>Puntos Objeto · COCOMO 2</b><div class="lead" style="font-size:15px;margin-top:4px;">325 NOP · PROD = 13</div></td><td class="num">25 PM</td><td class="num">—</td><td class="num">25 PM</td><td class="num">77.794,00 €</td></tr>
+      <tr><td><b>Juicio Experto</b><div class="lead" style="font-size:15px;margin-top:4px;">Gonzalo Redondo · COO Necomplus</div></td><td class="num">5–7 m</td><td class="num">—</td><td class="num">5–6 m</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 13 · Pricing to Win -->
+<section data-screen-label="13 Pricing">
+  <div class="frame-eyebrow">02 · Estimación · 2.3</div>
+  <div class="frame-counter">13 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 70px;">Tres planes para llegar al mercado.</h1>
+  <div class="grid-3" style="margin-top: 70px;">
+    <div class="card anim" style="--d:350ms;">
+      <div class="card-eyebrow">Standard</div>
+      <div class="card-num num">14,99<span class="unit">€/mes</span></div>
+      <p class="card-foot">Hasta 500 facturas/año · clientes y proveedores · ingresos/gastos · dashboard básico · IVA simple.</p>
+    </div>
+    <div class="card brand anim" style="--d:450ms;">
+      <div class="card-eyebrow">PRO · destacado</div>
+      <div class="card-num num" style="color: #fff;">49,99<span class="unit" style="color: rgba(255,255,255,.6);">€/mes</span></div>
+      <p class="card-foot">Hasta 3.000 facturas/año · proyectos y colaboraciones · informes fiscales detallados · soporte prioritario.</p>
+    </div>
+    <div class="card anim" style="--d:550ms;">
+      <div class="card-eyebrow">Enterprise</div>
+      <div class="card-num num">129,99<span class="unit">€/mes</span></div>
+      <p class="card-foot">Facturación ilimitada · multiusuario · informes completos · exportación avanzada · soporte dedicado.</p>
+    </div>
+  </div>
+  <div class="anim" style="--d:700ms; margin-top:60px; padding: 28px 36px; background: var(--paper-deep); border-radius: 16px; display:flex; align-items:center; justify-content:space-between;">
+    <div class="body" style="margin:0;font-size: 22px;">Distribución estimada de mercado · 70/20/10</div>
+    <div style="display:flex; gap: 24px; font-family: var(--font-mono); font-size: 18px;">
+      <span><b style="font-family:var(--font-display);font-size:24px;">10</b> Standard</span>
+      <span><b style="font-family:var(--font-display);font-size:24px;">3</b> PRO</span>
+      <span><b style="font-family:var(--font-display);font-size:24px;">2</b> Enterprise</span>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 14 · Section divider 03 -->
+<section class="dark" data-screen-label="14 Sección 03">
+  <div style="position:absolute;top:50%;left:120px;transform:translateY(-50%);display:flex;align-items:center;gap:80px;">
+    <div class="divider-num anim cover-rise" style="--d:100ms;">03</div>
+    <div>
+      <div class="divider-label anim" style="--d:300ms;">Bloque tres</div>
+      <div class="divider-title anim" style="--d:400ms;">Análisis de riesgos.</div>
+      <div class="body anim" style="--d:600ms; margin-top: 30px; max-width: 900px; color: rgba(255,255,255,.7);">
+        Cuatro apartados — identificación, prioridad, contingencia y control — aplicados a los riesgos específicos del sector creador.
+      </div>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 15 · 3.1 Identificación -->
+<section data-screen-label="15 Riesgos identificación">
+  <div class="frame-eyebrow">03 · Riesgos · 3.1 Identificación</div>
+  <div class="frame-counter">15 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 60px;">Riesgos del <span style="color:var(--brand);">sector creator</span>.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top: 14px;">Cinco riesgos específicos del dominio — los que un ERP genérico no tendría.</p>
+  <div class="grid-3" style="margin-top: 40px;">
+    <div class="risk-card anim" style="--d:400ms;">
+      <div class="rid">REQ-CRT-01 · Requerimientos</div>
+      <div class="rname">Cambios en VERIFACTU / IRPF</div>
+      <p class="rdesc">La AEAT modifica formato o calendario de la facturación electrónica. Obliga a re-trabajar el módulo <span class="mono">FACT_E_VER</span> mientras se desarrolla.</p>
+    </div>
+    <div class="risk-card anim" style="--d:480ms;">
+      <div class="rid">TEC-CRT-02 · Tecnología</div>
+      <div class="rname">APIs de plataformas (Twitch · YouTube · Patreon)</div>
+      <p class="rdesc">Cambios o cuotas en APIs externas usadas para importar ingresos. Si Twitch corta el endpoint de payouts, el dashboard creator queda incompleto.</p>
+    </div>
+    <div class="risk-card anim" style="--d:560ms;">
+      <div class="rid">REQ-CRT-03 · Requerimientos</div>
+      <div class="rname">Diversidad del sector</div>
+      <p class="rdesc">El creador hace stream + merch + cursos + eventos. El alcance se ensancha más allá del MVP: cada vertical pide su propia tipología de factura.</p>
+    </div>
+    <div class="risk-card anim" style="--d:640ms;">
+      <div class="rid">PER-CRT-04 · Personas</div>
+      <div class="rname">Sin acceso a creadores reales</div>
+      <p class="rdesc">El equipo no tiene un panel de usuarios de validación. Riesgo de construir features que ningún influencer pediría — divergencia entre intuición y realidad.</p>
+    </div>
+    <div class="risk-card anim" style="--d:720ms;">
+      <div class="rid">EST-CRT-05 · Estimación</div>
+      <div class="rname">Variabilidad de ingresos del creador</div>
+      <p class="rdesc">Modelar ingresos esporádicos (donaciones, spikes virales, sponsorships puntuales) sin que el cierre fiscal trimestral genere falsos positivos en alertas.</p>
+    </div>
+    <div class="risk-card anim" style="--d:800ms; background: var(--brand); color: #fff; border-color: transparent;">
+      <div class="rid" style="color: var(--gold);">ORG-CRT-06 · Organización</div>
+      <div class="rname" style="color:#fff;">Calendario académico</div>
+      <p class="rdesc" style="color: rgba(255,255,255,.7);">Solapamiento con otras asignaturas y exámenes. La capacidad real del equipo cae en mayo. Hay que blindar planning con holguras pre-deadline.</p>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 16 · 3.2 Prioridades -->
+<section data-screen-label="16 Riesgos prioridades">
+  <div class="frame-eyebrow">03 · Riesgos · 3.2 Prioridades</div>
+  <div class="frame-counter">16 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 60px;">Matriz probabilidad × impacto.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top:14px;">Indicador único por riesgo según criterio del profesor.</p>
+  <div class="matrix anim" style="--d:450ms; margin-top: 40px;">
+    <div></div>
+    <div class="axis">Impacto bajo</div>
+    <div class="axis">Impacto medio</div>
+    <div class="axis">Impacto alto</div>
+
+    <div class="axis" style="writing-mode: vertical-rl; transform: rotate(180deg);">Prob. alta</div>
+    <div class="cell md"><div class="id">EST-CRT-05</div><div class="name">Variabilidad de ingresos del creador</div></div>
+    <div class="cell hi"><div class="id">REQ-CRT-03</div><div class="name">Diversidad del sector creator</div></div>
+    <div class="cell hi"><div class="id">REQ-CRT-01</div><div class="name">Cambios en VERIFACTU/IRPF</div></div>
+
+    <div class="axis" style="writing-mode: vertical-rl; transform: rotate(180deg);">Prob. media</div>
+    <div class="cell lo"><div class="id">HER-01</div><div class="name">Bloqueos en plan free de cloud</div></div>
+    <div class="cell md"><div class="id">PER-CRT-04</div><div class="name">Sin acceso a creadores reales</div></div>
+    <div class="cell hi"><div class="id">ORG-CRT-06</div><div class="name">Calendario académico — mayo</div></div>
+
+    <div class="axis" style="writing-mode: vertical-rl; transform: rotate(180deg);">Prob. baja</div>
+    <div class="cell lo"><div class="id">TEC-01</div><div class="name">Caída temporal de APIs externas</div></div>
+    <div class="cell md"><div class="id">TEC-CRT-02</div><div class="name">Cambios en APIs de plataformas</div></div>
+    <div class="cell md"><div class="id">PER-01</div><div class="name">Baja inesperada de un miembro</div></div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 17 · 3.3 Planes de contingencia -->
+<section data-screen-label="17 Riesgos contingencia">
+  <div class="frame-eyebrow">03 · Riesgos · 3.3 Contingencia</div>
+  <div class="frame-counter">17 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 60px;">Planes de contingencia.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top:14px;">Para cada riesgo crítico, una respuesta concreta documentada.</p>
+  <div style="margin-top: 30px;">
+    <div class="risk-step anim" style="--d:400ms;">
+      <div class="step-n">01</div>
+      <div>
+        <div class="step-label">REQ-CRT-01 · Cambios en VERIFACTU / IRPF</div>
+        <div class="step-body">Aislar la lógica fiscal en un servicio independiente con interfaz versionada. Suscripción al boletín BOE-AEAT y revisión quincenal del calendario normativo. Pruebas regresivas automáticas sobre facturas tipo.</div>
+      </div>
+    </div>
+    <div class="risk-step anim" style="--d:480ms;">
+      <div class="step-n">02</div>
+      <div>
+        <div class="step-label">TEC-CRT-02 · APIs de plataformas</div>
+        <div class="step-body">Capa de adaptadores por plataforma con fallback a importación manual CSV. Si Twitch/YouTube/Patreon cambian o tarifican, el creador sigue pudiendo introducir ingresos sin esperar al desarrollo del adaptador.</div>
+      </div>
+    </div>
+    <div class="risk-step anim" style="--d:560ms;">
+      <div class="step-n">03</div>
+      <div>
+        <div class="step-label">REQ-CRT-03 · Diversidad del sector</div>
+        <div class="step-body">Tipologías de factura modeladas como configuración, no como código. MVP cubre stream + sponsorship; merch, eventos y formaciones quedan en backlog priorizado tras validación.</div>
+      </div>
+    </div>
+    <div class="risk-step anim" style="--d:640ms;">
+      <div class="step-n">04</div>
+      <div>
+        <div class="step-label">PER-CRT-04 · Sin acceso a creadores reales</div>
+        <div class="step-body">Captación de 3-5 creadores para pruebas de usabilidad antes del cierre del MVP. Validación con Gonzalo Redondo (Necomplus) como sustituto experto en gestión económica de proyectos.</div>
+      </div>
+    </div>
+    <div class="risk-step anim" style="--d:720ms;">
+      <div class="step-n">05</div>
+      <div>
+        <div class="step-label">ORG-CRT-06 · Calendario académico</div>
+        <div class="step-body">Holgura del 15 % en las dos últimas iteraciones. Congelación de scope a 3 semanas de la entrega: nada se añade después del 24 de abril, sólo se estabiliza.</div>
+      </div>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 18 · 3.4 Mecanismos de seguimiento -->
+<section data-screen-label="18 Riesgos seguimiento">
+  <div class="frame-eyebrow">03 · Riesgos · 3.4 Seguimiento &amp; control</div>
+  <div class="frame-counter">18 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 60px;">Indicadores y disparadores.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top:14px;">Un indicador por riesgo. Si se dispara, se activa el plan de contingencia.</p>
+  <table class="t anim" style="--d:450ms; margin-top: 40px;">
+    <thead><tr>
+      <th style="width:18%;">Riesgo</th>
+      <th style="width:30%;">Indicador (KPI)</th>
+      <th style="width:22%;">Disparador</th>
+      <th style="width:20%;">Frecuencia</th>
+      <th style="width:10%;">Estado</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="id">REQ-CRT-01</td><td>N.º de cambios normativos publicados / mes</td><td>≥ 1 cambio que afecte FACT_E_VER</td><td>Quincenal · BOE</td><td><span class="tag warn">vigilancia</span></td></tr>
+      <tr><td class="id">TEC-CRT-02</td><td>Tasa de fallos del adaptador de APIs</td><td>&gt; 5 % en 7 días</td><td>Diaria · CI</td><td><span class="tag ok">ok</span></td></tr>
+      <tr><td class="id">REQ-CRT-03</td><td>N.º de tickets &laquo;tipo de factura no soportado&raquo;</td><td>&gt; 3 en una iteración</td><td>Iteración · 2 sem.</td><td><span class="tag ok">ok</span></td></tr>
+      <tr><td class="id">PER-CRT-04</td><td>Sesiones de validación con creadores</td><td>&lt; 1 sesión / mes</td><td>Mensual</td><td><span class="tag err">crítico</span></td></tr>
+      <tr><td class="id">ORG-CRT-06</td><td>Horas/persona efectivas vs. estimadas</td><td>desviación &gt; 20 %</td><td>Semanal · standup</td><td><span class="tag warn">vigilancia</span></td></tr>
+      <tr><td class="id">EST-CRT-05</td><td>N.º de falsos positivos en alertas de cobros</td><td>&gt; 5 % de alertas emitidas</td><td>Mensual · QA</td><td><span class="tag ok">ok</span></td></tr>
+    </tbody>
+  </table>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 19 · Section divider 04 -->
+<section class="dark" data-screen-label="19 Sección 04">
+  <div style="position:absolute;top:50%;left:120px;transform:translateY(-50%);display:flex;align-items:center;gap:80px;">
+    <div class="divider-num anim cover-rise" style="--d:100ms;">04</div>
+    <div>
+      <div class="divider-label anim" style="--d:300ms;">Bloque cuatro</div>
+      <div class="divider-title anim" style="--d:400ms;">Planificación.</div>
+      <div class="body anim" style="--d:600ms; margin-top: 30px; max-width: 800px; color: rgba(255,255,255,.7);">
+        Plantilla del proyecto, plan general y plan detallado.
+      </div>
+    </div>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 20 · Plantilla -->
+<section data-screen-label="20 Plantilla">
+  <div class="frame-eyebrow">04 · Planificación · 4.1 Plantilla</div>
+  <div class="frame-counter">20 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 70px;">Plantilla del proyecto.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top:14px;">Modelo de proceso, fases, roles y responsabilidades del equipo.</p>
+  <div class="placeholder anim scale-in" style="--d:450ms; margin-top: 50px; height: 620px;">
+    Plantilla — captura pendiente.<br><span style="font-size: 16px; color: var(--slate); margin-top: 8px; display:inline-block;">Sustituir por imagen del documento.</span>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 21 · Plan general -->
+<section data-screen-label="21 Plan general">
+  <div class="frame-eyebrow">04 · Planificación · 4.2 Plan general</div>
+  <div class="frame-counter">21 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 70px;">Plan general.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top:14px;">Hitos macro del proyecto y duración estimada por fase.</p>
+  <div class="placeholder anim scale-in" style="--d:450ms; margin-top: 50px; height: 620px;">
+    Plan general — captura pendiente.<br><span style="font-size: 16px; color: var(--slate); margin-top: 8px; display:inline-block;">Sustituir por diagrama Gantt resumen.</span>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 22 · Plan detallado -->
+<section data-screen-label="22 Plan detallado">
+  <div class="frame-eyebrow">04 · Planificación · 4.3 Plan detallado</div>
+  <div class="frame-counter">22 / 23</div>
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 70px;">Plan detallado.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top:14px;">Asignación de recursos, dependencias y cálculo de holguras.</p>
+  <div class="placeholder anim scale-in" style="--d:450ms; margin-top: 50px; height: 620px;">
+    Plan detallado — captura pendiente.<br><span style="font-size: 16px; color: var(--slate); margin-top: 8px; display:inline-block;">Sustituir por Gantt de tareas + recursos.</span>
+  </div>
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+<!-- 23 · Closing -->
+<section class="dark" data-screen-label="23 Cierre">
+  <div class="pat-bg"></div>
+  <div style="position:absolute;top:50%;left:120px;right:120px;transform:translateY(-50%);">
+    <div class="anim" style="--d:200ms; font-size:18px; text-transform:uppercase; letter-spacing:.18em; color: var(--gold); font-weight:700; margin-bottom: 36px;">Fin de la presentación</div>
+    <div class="hero anim cover-rise" style="--d:300ms; font-size:200px;">Gracias.</div>
+    <div class="body-lg anim" style="--d:600ms; margin-top: 40px; color: rgba(255,255,255,.85); max-width: 1200px;">¿Preguntas, dudas o un cambio de alcance que se nos haya escapado? Este es el momento.</div>
+  </div>
+  <div class="frame-foot">
+    <div class="logo" style="color: #fff;"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div>
+    <div>J11-4 · GPI 2025-26 · UA · I²ADE</div>
+  </div>
+</section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+<script>
+(async () => {
+  try { await customElements.whenDefined('deck-stage'); } catch (e) {}
+  const ds = document.querySelector('deck-stage');
+  if (ds) {
+    // Weigh only slide children — same filter as deck-stage.length. Skipping
+    // slotted script/style/template keeps inline Babel/CSS from registering
+    // as stable "content" before the framework has mounted anything.
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of ds.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll('img,svg,canvas,video').length;
+      }
+      return text + media * 100;
+    };
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      if (n > 0 && n === last) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  try { await document.fonts.ready; } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

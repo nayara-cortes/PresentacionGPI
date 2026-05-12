@@ -1,0 +1,15 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>body{margin:0;padding:32px;background:var(--cream);font-family:var(--font-body);display:flex;flex-direction:column;gap:14px;}
+.field{display:flex;flex-direction:column;gap:6px;}
+label{font-size:12px;font-weight:600;color:var(--slate);text-transform:uppercase;letter-spacing:.06em;}
+input,select{font-family:var(--font-body);font-size:15px;padding:11px 14px;border-radius:8px;border:1px solid var(--line-strong);background:#fff;color:var(--ink);outline:none;}
+input:focus{border-color:var(--coral);box-shadow:0 0 0 3px var(--coral-15);}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+</style></head>
+<body><div class="row">
+<div class="field"><label>NIF/CIF</label><input value="B86415570"></div>
+<div class="field"><label>Tipo de cliente</label><select><option>Marca</option><option>Agencia</option></select></div>
+</div>
+<div class="field"><label>Razón social</label><input placeholder="ContentFlow Marketing S.L."></div>
+</body></html>

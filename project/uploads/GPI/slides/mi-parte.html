@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>ContentFlow — Mi parte (6 diapositivas)</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  /* ===========================================================
+     PALETTE OVERRIDE — idéntica a la presentación de mi compañero
+     (editorial navy + warm gold sobre paper)
+     =========================================================== */
+  :root {
+    --brand:        #1A2A6C;
+    --brand-deep:   #0F1A4A;
+    --brand-soft:   #DCE2F5;
+    --gold:         #FFD23F;
+    --gold-deep:    #C49A0A;
+    --gold-soft:    #FFF0BD;
+    --paper:        #F8F4EC;
+    --paper-deep:   #EFE8D6;
+    --paper-line:   #E2D9C4;
+    --ink:          #0A0F1F;
+    --slate:        #5B6378;
+    --line:         color-mix(in srgb, var(--ink) 10%, transparent);
+    --line-strong:  color-mix(in srgb, var(--ink) 18%, transparent);
+    --alert:        #D43F3A;
+    --alert-soft:   #F4D2D0;
+    --amber:        #E8A33C;
+    --amber-soft:   #FAE3BD;
+    --lime:         #6B9B3A;
+    --lime-soft:    #DDEBC1;
+  }
+
+  /* Stage / slide chrome */
+  deck-stage { background: var(--ink); }
+  section {
+    position: relative;
+    width: 1920px; height: 1080px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    overflow: hidden;
+    padding: 100px 120px;
+    box-sizing: border-box;
+  }
+  section.dark { background: var(--brand); color: #fff; }
+  section.dark h1, section.dark h2, section.dark h3, section.dark p { color: #fff; }
+  section.gold { background: var(--gold); color: var(--ink); }
+
+  /* Frame chrome */
+  .frame-eyebrow { position: absolute; top: 60px; left: 120px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--brand); }
+  section.dark .frame-eyebrow { color: var(--gold); }
+  section.gold .frame-eyebrow { color: var(--brand); }
+  .frame-counter { position: absolute; top: 60px; right: 120px; font-family: var(--font-mono); font-size: 14px; color: var(--slate); letter-spacing: .04em; }
+  section.dark .frame-counter { color: rgba(255,255,255,.55); }
+  section.gold .frame-counter { color: var(--brand-deep); }
+  .frame-foot { position: absolute; bottom: 60px; left: 120px; right: 120px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--slate); }
+  section.dark .frame-foot { color: rgba(255,255,255,.55); }
+  .frame-foot .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-family: var(--font-display); font-size: 16px; color: var(--ink); letter-spacing: -.01em; }
+  section.dark .frame-foot .logo { color: #fff; }
+
+  /* Type helpers */
+  .hero { font-family: var(--font-display); font-weight: 800; line-height:.92; letter-spacing:-.04em; font-size: 200px; }
+  .h1 { font-family: var(--font-display); font-weight: 700; line-height: 1.0; letter-spacing: -.025em; font-size: 88px; margin: 0; }
+  .h2 { font-family: var(--font-display); font-weight: 600; line-height: 1.05; letter-spacing: -.02em; font-size: 60px; margin: 0; }
+  .h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.18; letter-spacing: -.015em; font-size: 36px; margin: 0; }
+  .body { font-size: 26px; line-height: 1.5; max-width: 1100px; }
+  .body-lg { font-size: 32px; line-height: 1.4; max-width: 1200px; }
+  .lead { font-size: 22px; line-height: 1.5; color: var(--slate); }
+  section.dark .lead { color: rgba(255,255,255,.7); }
+  .mono { font-family: var(--font-mono); }
+
+  /* Layout */
+  .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .grid-3 { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+  .grid-4 { display:grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+  /* Cards */
+  .card {
+    background: #fff; border-radius: 18px; padding: 36px;
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 12px rgba(15,23,41,.04);
+  }
+  .card.brand { background: var(--brand); color: #fff; border:none; }
+  .card.gold  { background: var(--gold); color: var(--ink); border:none; }
+  .card.outline { background: transparent; border: 1.5px solid var(--brand); }
+  .card-title { font-family: var(--font-display); font-weight:600; font-size: 28px; letter-spacing:-.01em; margin: 0 0 14px; }
+  .card-num { font-family: var(--font-display); font-weight:700; font-size: 80px; letter-spacing:-.03em; line-height:1; font-variant-numeric: tabular-nums; }
+  .card-num .unit { font-size: 32px; font-weight:500; color: var(--slate); margin-left: 6px; }
+  .card-eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing:.14em; color: var(--brand); font-weight:700; margin-bottom: 18px; }
+  .card.brand .card-eyebrow { color: var(--gold); }
+  .card.gold  .card-eyebrow { color: var(--brand); }
+  .card-foot { font-size: 17px; color: var(--slate); margin-top: 16px; line-height:1.5; }
+  .card.brand .card-foot { color: rgba(255,255,255,.7); }
+  .card.gold  .card-foot { color: var(--brand-deep); }
+
+  .pat-bg { position: absolute; bottom: 0; right: 0; width: 360px; height: 360px; background-image: url(../assets/pattern-flow.svg); background-size: 240px; opacity: .25; pointer-events: none; filter: brightness(0) invert(1) sepia(1) saturate(8) hue-rotate(15deg); }
+
+  /* ===========================================================
+     ENTRY ANIMATIONS — same as compañero
+     =========================================================== */
+  .anim {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .7s cubic-bezier(.22,.7,.2,1), transform .7s cubic-bezier(.22,.7,.2,1);
+    transition-delay: var(--d, 0ms);
+  }
+  section[data-deck-active] .anim { opacity: 1; transform: translateY(0); }
+  .anim.fade { transform: none; }
+  .anim.scale-in { transform: scale(.94); }
+  section[data-deck-active] .anim.scale-in { transform: scale(1); }
+  .anim.slide-r { transform: translateX(-32px); }
+  section[data-deck-active] .anim.slide-r { transform: translateX(0); }
+  .anim.cover-rise { transform: translateY(60px) scale(.98); }
+  section[data-deck-active] .anim.cover-rise { transform: translateY(0) scale(1); }
+  .h1::after {
+    content: ""; display: block;
+    width: 0; height: 4px; background: var(--gold);
+    margin-top: 18px; border-radius: 4px;
+    transition: width .9s cubic-bezier(.22,.7,.2,1) .35s;
+  }
+  section[data-deck-active] .h1.rule::after { width: 120px; }
+  @media (prefers-reduced-motion: reduce) {
+    .anim, .h1::after { transition: none !important; }
+    .anim { opacity: 1 !important; transform: none !important; }
+    .h1.rule::after { width: 120px !important; }
+  }
+
+  /* ===========================================================
+     BLOQUES PROPIOS DE ESTAS DIAPOSITIVAS
+     =========================================================== */
+
+  /* S1 — Restricciones (4 tarjetas con icono + título + microcopy) */
+  .res-card {
+    background: #fff; border-radius: 18px; padding: 40px 36px;
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 12px rgba(15,23,41,.04);
+    display: flex; flex-direction: column; gap: 24px;
+    min-height: 460px;
+  }
+  .res-card .icon-box {
+    width: 76px; height: 76px; border-radius: 16px;
+    background: var(--brand-soft); color: var(--brand);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .res-card .icon-box svg { width: 40px; height: 40px; }
+  .res-card .label { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brand); }
+  .res-card .h3 { letter-spacing: -.015em; }
+  .res-card .head-num { font-family: var(--font-display); font-weight: 800; font-size: 64px; letter-spacing: -.03em; line-height: 1; color: var(--brand); font-variant-numeric: tabular-nums; }
+  .res-card .head-num .unit { font-size: 22px; font-weight: 500; color: var(--slate); margin-left: 6px; letter-spacing: 0; }
+  .res-card p { font-size: 18px; line-height: 1.5; color: var(--slate); margin: 0; }
+  .res-card .meta { margin-top: auto; font-family: var(--font-mono); font-size: 13px; color: var(--brand); letter-spacing: .04em; padding-top: 18px; border-top: 1px solid var(--line); }
+
+  /* S2 — Restricciones legales y técnicas (3 sellos normativos) */
+  .seal-card {
+    background: #fff; border-radius: 18px; padding: 32px 32px 28px;
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 12px rgba(15,23,41,.04);
+    display: flex; flex-direction: column; gap: 18px;
+    min-height: 500px;
+  }
+  .seal { width: 110px; height: 110px; }
+  .seal-card .h3 { font-size: 30px; }
+  .seal-card p { font-size: 16px; }
+  .seal-card.brand { background: var(--brand); color: #fff; border-color: transparent; }
+  .seal {
+    width: 130px; height: 130px; border-radius: 50%;
+    background: var(--paper-deep); color: var(--brand);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: 800; letter-spacing: -.01em;
+    border: 3px solid var(--brand);
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .seal .big { font-size: 26px; line-height: 1; }
+  .seal .small { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-top: 4px; color: var(--slate); }
+  .seal-card.brand .seal { background: rgba(255,255,255,.06); color: var(--gold); border-color: var(--gold); }
+  .seal-card.brand .seal .small { color: rgba(255,255,255,.55); }
+  .seal-card .label { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brand); }
+  .seal-card.brand .label { color: var(--gold); }
+  .seal-card .h3 { letter-spacing: -.015em; }
+  .seal-card p { font-size: 17px; line-height: 1.55; color: var(--slate); margin: 0; }
+  .seal-card.brand p { color: rgba(255,255,255,.78); }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+  .badge {
+    font-family: var(--font-mono); font-size: 13px;
+    padding: 6px 12px; border-radius: 999px;
+    background: var(--paper-deep); color: var(--brand);
+    font-weight: 600; letter-spacing: .02em;
+  }
+  .seal-card.brand .badge { background: rgba(255,255,255,.1); color: var(--gold); }
+
+  /* S3 — Dual scenario transition */
+  .dual {
+    display: grid; grid-template-columns: 1fr 80px 1fr; gap: 0;
+    align-items: stretch;
+    margin-top: 70px;
+    height: 620px;
+  }
+  .dual-card {
+    border-radius: 24px; padding: 56px 48px;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .dual-card.acad { background: #fff; border: 1px solid var(--line); }
+  .dual-card.emp { background: var(--brand); color: #fff; }
+  .dual-card .eyebrow {
+    font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--brand); margin-bottom: 18px;
+  }
+  .dual-card.emp .eyebrow { color: var(--gold); }
+  .dual-card .title {
+    font-family: var(--font-display); font-weight: 700; font-size: 64px;
+    letter-spacing: -.025em; line-height: 1; margin-bottom: 28px;
+  }
+  .dual-card .subtitle { font-size: 22px; line-height: 1.45; color: var(--slate); margin-bottom: 32px; max-width: 520px; }
+  .dual-card.emp .subtitle { color: rgba(255,255,255,.78); }
+  .dual-list { display: flex; flex-direction: column; gap: 14px; margin-top: auto; }
+  .dual-list li {
+    list-style: none;
+    display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: baseline;
+    font-size: 19px; line-height: 1.4;
+  }
+  .dual-list li::before {
+    content: ""; display: block; width: 16px; height: 2px; background: var(--gold);
+    transform: translateY(-6px);
+  }
+  .dual-vs {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: 800; font-size: 80px;
+    color: var(--gold-deep); letter-spacing: -.04em;
+  }
+  .dual-card .ribbon {
+    position: absolute; top: 32px; right: 32px;
+    background: var(--paper-deep); color: var(--brand);
+    font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+    padding: 6px 12px; border-radius: 999px; letter-spacing: .08em;
+  }
+  .dual-card.emp .ribbon { background: rgba(255,255,255,.1); color: var(--gold); }
+
+  /* S4/S5 — Bar breakdown */
+  .breakdown { display: grid; grid-template-columns: 5fr 4fr; gap: 80px; margin-top: 50px; align-items: start; }
+  .total-card {
+    background: var(--brand); color: #fff;
+    border-radius: 24px; padding: 48px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .total-card.gold { background: var(--gold); color: var(--ink); }
+  .total-card .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+  .total-card.gold .eyebrow { color: var(--brand); }
+  .total-card .num {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 124px; letter-spacing: -.04em; line-height: .9;
+    font-variant-numeric: tabular-nums;
+    color: #fff;
+  }
+  .total-card.gold .num { color: var(--brand); }
+  .total-card .num .unit { font-size: 56px; font-weight: 500; opacity: .6; margin-left: 4px; }
+  .total-card .meta { font-family: var(--font-mono); font-size: 14px; color: rgba(255,255,255,.6); padding-top: 20px; border-top: 1px solid rgba(255,255,255,.15); margin-top: 8px; }
+  .total-card.gold .meta { color: var(--brand-deep); border-color: rgba(15,26,74,.2); }
+  .total-card .desc { font-size: 18px; line-height: 1.5; color: rgba(255,255,255,.78); }
+  .total-card.gold .desc { color: var(--brand-deep); }
+
+  .bar-list { display: flex; flex-direction: column; gap: 22px; }
+  .bar-row { display: grid; grid-template-columns: 220px 1fr 140px; gap: 24px; align-items: center; }
+  .bar-row .lbl { font-size: 19px; font-weight: 600; color: var(--ink); }
+  .bar-row .lbl .sub { display: block; font-size: 13px; font-weight: 500; color: var(--slate); margin-top: 2px; font-family: var(--font-mono); letter-spacing: .04em; }
+  .bar-track { position: relative; height: 48px; background: var(--paper-deep); border-radius: 8px; overflow: hidden; }
+  .bar-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: var(--brand); border-radius: 8px;
+    width: 0%;
+    transition: width 1s cubic-bezier(.22,.7,.2,1) .25s;
+  }
+  section[data-deck-active] .bar-fill { width: var(--w, 0%); }
+  .bar-fill.dom { background: var(--gold); }
+  .bar-row .val { font-family: var(--font-display); font-weight: 700; font-size: 28px; text-align: right; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+  .bar-row .val .pct { display: block; font-family: var(--font-mono); font-size: 13px; color: var(--slate); font-weight: 500; margin-top: 2px; letter-spacing: .04em; }
+
+  /* S6 — Parkinson formula */
+  .pk-def {
+    background: var(--brand); color: #fff;
+    border-radius: 18px; padding: 32px 40px;
+    margin-top: 50px;
+    display: flex; align-items: center; gap: 28px;
+  }
+  .pk-def .quote {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 96px; line-height: .8; color: var(--gold);
+  }
+  .pk-def .text { font-size: 24px; line-height: 1.45; color: rgba(255,255,255,.95); max-width: 1500px; }
+  .pk-def .text em { color: var(--gold); font-style: normal; font-weight: 700; }
+
+  .pk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+  .pk-card {
+    background: #fff; border-radius: 18px; padding: 36px 40px;
+    border: 1px solid var(--line);
+    display: flex; flex-direction: column; gap: 20px;
+    min-height: 420px;
+    max-height: 540px;
+  }
+  .pk-card.emp { background: var(--paper-deep); border-color: var(--paper-line); }
+  .pk-card .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brand); }
+  .pk-card .scenario { font-family: var(--font-display); font-weight: 700; font-size: 40px; letter-spacing: -.02em; line-height: 1; }
+  .pk-eq { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 1; letter-spacing: -.015em; color: var(--ink); margin-top: 4px; }
+  .pk-eq .term { display: flex; flex-direction: column; gap: 4px; }
+  .pk-eq .term .v { font-size: 44px; font-variant-numeric: tabular-nums; color: var(--brand); }
+  .pk-eq .term .u { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: .14em; color: var(--slate); text-transform: uppercase; }
+  .pk-eq .op { font-weight: 500; color: var(--slate); font-size: 36px; }
+  .pk-eq .res { display: flex; flex-direction: column; gap: 4px; padding: 12px 18px; background: var(--gold); color: var(--brand); border-radius: 12px; }
+  .pk-eq .res .v { font-size: 48px; font-variant-numeric: tabular-nums; color: var(--brand); }
+  .pk-eq .res .u { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--brand-deep); text-transform: uppercase; }
+  .pk-foot { margin-top: auto; font-size: 17px; line-height: 1.45; color: var(--slate); padding-top: 16px; border-top: 1px solid var(--line); }
+  .pk-cost {
+    margin-top: 10px;
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--brand); color: #fff;
+    padding: 12px 20px; border-radius: 12px;
+    font-family: var(--font-display); font-weight: 700; font-size: 28px;
+    letter-spacing: -.015em; font-variant-numeric: tabular-nums;
+  }
+  .pk-cost .lbl { font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: .14em; color: var(--gold); text-transform: uppercase; }
+
+</style>
+<script type="application/json" id="speaker-notes">
+[
+"Restricciones del proyecto. Cuatro frenos que han condicionado todo lo demás: el equipo, el calendario, el modelo de negocio y la heterogeneidad del sector. Seis personas, junior y a tiempo parcial, lo que limita la velocidad y obliga a una curva de aprendizaje en stack profesional. Deadline rígido el 14 de mayo. Presupuesto aún por estimar pero con la decisión clara de modelo SaaS para que sea sostenible a medio plazo. Y un sector creator muchísimo más amplio de lo que parece: streaming, merchandising, eventos, formaciones — eso ensancha el alcance funcional.",
+"Restricciones legales y técnicas. Tres frentes. Protección de datos: RGPD y LOPDGDD nos obligan a cifrado, derechos ARSULIPO, registro de actividad y notificación de brechas. Fiscalidad: VERIFACTU es la columna vertebral del módulo de facturación, junto con la Ley General Tributaria, el reglamento de facturación y la ley del IVA. Y técnicas: aplicación web responsive sobre los principales navegadores, con un stack que el equipo ya conoce — no es momento de aprender desde cero un framework nuevo.",
+"Componentes de coste — enfoque dual. La técnica de Componentes de Coste se ha aplicado en dos escenarios paralelos para tener dos lecturas distintas: el académico, que refleja lo que realmente nos cuesta el proyecto a nosotros como estudiantes, y el empresarial, que refleja lo que costaría desarrollar exactamente lo mismo en una empresa real. La idea es que el cliente y el tribunal puedan leer las dos cifras una al lado de la otra y decidir desde qué óptica mirar el proyecto.",
+"Coste académico — cuatro mil veintisiete con ochenta euros. Lo que realmente nos cuesta a las seis personas del equipo durante los cuatro meses. Aquí domina el transporte: dos mil cuarenta euros, más de la mitad del total, simplemente por desplazarnos a la universidad. Después matrícula, herramientas de IA usadas durante el desarrollo, y la amortización de los equipos propios. Ningún salario en este escenario — somos estudiantes.",
+"Coste empresa — ochenta y un mil novecientos uno con noventa y un euros. La misma aplicación, mismas funcionalidades, mismos cuatro meses, pero con un equipo profesional a jornada completa. Y aquí salta a la vista lo importante: los salarios son setenta y cuatro mil seiscientos ochenta y dos euros, el noventa y uno por ciento del total. Todo lo demás — oficina, cloud, herramientas, licencias — es marginal frente al coste de las personas. Ese es el mensaje.",
+"Ley de Parkinson. La fórmula es simple: el trabajo se expande hasta llenar el tiempo disponible. Aplicada a los dos escenarios: en el académico, seis estudiantes a media jornada durante cuatro meses son aproximadamente mil novecientas veinte horas, equivalente a doce personas-mes. En el empresarial, ese mismo equipo a jornada completa serían tres mil ochocientas cuarenta horas — veinticuatro personas-mes — y aplicando el coste salarial nos da setenta y cuatro mil seiscientos ochenta y ocho euros. Coincide casi exactamente con el coste salarial del cálculo anterior, lo que valida el orden de magnitud."
+]
+</script>
+</head>
+<body style="background-color: rgb(240, 240, 240)">
+
+<deck-stage>
+
+<!-- =====================================================================
+     DIAPOSITIVA 1  ·  Restricciones del proyecto
+     Inserción sugerida: sustituye / amplía la slide 08 de la presentación
+     ===================================================================== -->
+<section data-screen-label="01 Restricciones proyecto">
+  <div class="frame-eyebrow">01 · Introducción · 1.4 Restricciones</div>
+  <div class="frame-counter">Mi parte · 1 / 6</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 60px;">Cuatro frenos que <span style="color:var(--brand);">marcan el alcance</span>.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top: 14px;">Personal, tiempo, presupuesto y diversidad del sector. Cualquier desviación obliga a renegociar scope.</p>
+
+  <div class="grid-4" style="margin-top: 60px;">
+
+    <div class="res-card anim" style="--d:380ms;">
+      <div class="icon-box" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="14" cy="14" r="5"></circle>
+          <path d="M4 32c1.5-5.5 5.5-8 10-8s8.5 2.5 10 8"></path>
+          <circle cx="28" cy="11" r="4"></circle>
+          <path d="M24 21c4-1 9 1.5 12 8"></path>
+        </svg>
+      </div>
+      <div class="label">1.4.1 · Personal</div>
+      <div class="head-num">6<span class="unit">estudiantes</span></div>
+      <p>Junior, dedicación parcial. Compatible con asignaturas. Curva de aprendizaje en stack profesional y en el dominio fiscal.</p>
+      <div class="meta">jornada parcial · perfiles GII</div>
+    </div>
+
+    <div class="res-card anim" style="--d:480ms;">
+      <div class="icon-box" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="20" cy="22" r="13"></circle>
+          <path d="M20 14v8l5 4"></path>
+          <path d="M14 4h12"></path>
+          <path d="M20 4v4"></path>
+        </svg>
+      </div>
+      <div class="label">1.4.2 · Tiempo</div>
+      <div class="head-num">14<span class="unit">may 2026</span></div>
+      <p>Deadline rígido del calendario académico 2025-26. La fecha condiciona el alcance funcional y exige holguras pre-entrega.</p>
+      <div class="meta">curso 2025/26 · ~16 semanas</div>
+    </div>
+
+    <div class="res-card anim" style="--d:580ms;">
+      <div class="icon-box" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="11" width="30" height="20" rx="3"></rect>
+          <path d="M5 17h30"></path>
+          <circle cx="28" cy="24" r="2.5"></circle>
+        </svg>
+      </div>
+      <div class="label">1.4.3 · Presupuesto</div>
+      <div class="head-num">SaaS<span class="unit">por estimar</span></div>
+      <p>Modelo de suscripción dirigido a autónomos. Debe equilibrar coste de desarrollo, mantenimiento y precio asumible para el creador.</p>
+      <div class="meta">viabilidad a medio/largo plazo</div>
+    </div>
+
+    <div class="res-card anim" style="--d:680ms;">
+      <div class="icon-box" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="12" r="4"></circle>
+          <circle cx="29" cy="12" r="4"></circle>
+          <circle cx="11" cy="28" r="4"></circle>
+          <circle cx="29" cy="28" r="4"></circle>
+          <path d="M15 12h10M15 28h10M11 16v8M29 16v8"></path>
+        </svg>
+      </div>
+      <div class="label">1.4.4 · Alcance</div>
+      <div class="head-num">+4<span class="unit">verticales</span></div>
+      <p>El creador hace stream, sponsorship, merch, eventos y formaciones. El sector es heterogéneo: cada vertical pide su propia lógica.</p>
+      <div class="meta">sector creator · MVP focalizado</div>
+    </div>
+
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+
+<!-- =====================================================================
+     DIAPOSITIVA 2  ·  Restricciones legales y técnicas
+     Inserción sugerida: justo después de la diapositiva 1
+     ===================================================================== -->
+<section data-screen-label="02 Restricciones legales-técnicas">
+  <div class="frame-eyebrow">01 · Introducción · 1.4 Restricciones — legales &amp; técnicas</div>
+  <div class="frame-counter">Mi parte · 2 / 6</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 40px;">Lo que <span style="color:var(--brand);">la ley y la técnica</span> nos imponen.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top: 12px;">Tres bloques no negociables. Sin estos, el sistema no es legalmente utilizable ni técnicamente operativo.</p>
+
+  <div class="grid-3" style="margin-top: 36px;">
+
+    <div class="seal-card anim" style="--d:380ms;">
+      <div class="seal" aria-hidden="true">
+        <div class="big">RGPD</div>
+        <div class="small">UE 2016/679</div>
+      </div>
+      <div class="label">Protección de datos</div>
+      <h3 class="h3">Privacidad y derechos del usuario.</h3>
+      <p>Cifrado de datos sensibles, registro de actividad del tratamiento, derechos <b>ARSULIPO</b>, eliminación segura de cuentas, notificación de brechas y política de privacidad accesible desde la propia app.</p>
+      <div class="badges">
+        <span class="badge">RGPD</span>
+        <span class="badge">LOPDGDD</span>
+        <span class="badge">LSSI-CE</span>
+      </div>
+    </div>
+
+    <div class="seal-card brand anim" style="--d:480ms;">
+      <div class="seal" aria-hidden="true">
+        <div class="big">VERI<br>FACTU</div>
+        <div class="small">RD 1007/2023</div>
+      </div>
+      <div class="label">Fiscalidad &amp; facturación</div>
+      <h3 class="h3" style="color:#fff;">Sistema de facturación verificable.</h3>
+      <p>Validación de integridad fiscal antes del registro definitivo. Numeración correlativa, IVA repercutido y soportado, retenciones IRPF y libros contables conforme al ordenamiento español.</p>
+      <div class="badges">
+        <span class="badge">VERIFACTU</span>
+        <span class="badge">Ley 11/2021</span>
+        <span class="badge">RD 1619/2012</span>
+        <span class="badge">Ley 37/1992 IVA</span>
+        <span class="badge">Ley 58/2003 LGT</span>
+      </div>
+    </div>
+
+    <div class="seal-card anim" style="--d:580ms;">
+      <div class="seal" aria-hidden="true">
+        <div class="big">WEB</div>
+        <div class="small">stack conocido</div>
+      </div>
+      <div class="label">Restricciones técnicas</div>
+      <h3 class="h3">Plataforma, navegadores, stack.</h3>
+      <p>Aplicación <b>web responsive</b> compatible con los principales navegadores. Tecnologías ya conocidas por el equipo para evitar curvas de aprendizaje que comprometan el deadline.</p>
+      <div class="badges">
+        <span class="badge">Web responsive</span>
+        <span class="badge">Chrome · Firefox · Safari · Edge</span>
+        <span class="badge">HTTPS / TLS</span>
+        <span class="badge">Stack conocido</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+
+<!-- =====================================================================
+     DIAPOSITIVA 3  ·  Componentes de coste — enfoque dual (transición)
+     Inserción sugerida: abre el bloque 2 (estimación) — sustituye o
+     precede a la slide 10 «Componentes de coste» original.
+     ===================================================================== -->
+<section data-screen-label="03 Componentes coste — dual">
+  <div class="frame-eyebrow">02 · Estimación · 2.1 Componentes de coste</div>
+  <div class="frame-counter">Mi parte · 3 / 6</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 60px;">Dos lecturas <span style="color:var(--brand);">en paralelo</span>.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top: 14px;">Misma aplicación, mismo alcance, mismos cuatro meses. Cambia quién paga y cómo se mide el esfuerzo.</p>
+
+  <div class="dual">
+
+    <div class="dual-card acad anim" style="--d:400ms;">
+      <div class="ribbon">ESCENARIO A</div>
+      <div class="eyebrow">Supuesto académico</div>
+      <div class="title">Estudiantes,<br>tiempo parcial.</div>
+      <div class="subtitle">Lo que cuesta el proyecto a las seis personas del equipo durante el curso 2025-26.</div>
+      <ul class="dual-list">
+        <li><span>Matrícula, transporte y logística</span></li>
+        <li><span>Herramientas de IA · plan individual</span></li>
+        <li><span>Equipos propios amortizados</span></li>
+        <li><span>Hosting compartido / plan free</span></li>
+        <li><span style="color:var(--slate);"><b>Sin salarios</b> imputados</span></li>
+      </ul>
+    </div>
+
+    <div class="dual-vs anim fade" style="--d:550ms;">VS</div>
+
+    <div class="dual-card emp anim" style="--d:700ms;">
+      <div class="ribbon">ESCENARIO B</div>
+      <div class="eyebrow">Supuesto empresa</div>
+      <div class="title" style="color:#fff;">Equipo profesional,<br>jornada completa.</div>
+      <div class="subtitle">Lo que costaría desarrollar exactamente lo mismo en una empresa real, contratando perfiles del mercado.</div>
+      <ul class="dual-list">
+        <li><span style="color:rgba(255,255,255,.92);">Salarios INE 3T 2025 · 6 perfiles</span></li>
+        <li><span style="color:rgba(255,255,255,.92);">Oficina + suministros</span></li>
+        <li><span style="color:rgba(255,255,255,.92);">Cloud profesional · EC2 + RDS + S3</span></li>
+        <li><span style="color:rgba(255,255,255,.92);">Licencias · GitHub Team, herramientas</span></li>
+        <li><span style="color:var(--gold);"><b>Salarios = componente dominante</b></span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+
+<!-- =====================================================================
+     DIAPOSITIVA 4  ·  Coste académico — 4.027,80 €
+     ===================================================================== -->
+<section data-screen-label="04 Coste académico">
+  <div class="frame-eyebrow">02 · Estimación · 2.1 — escenario académico</div>
+  <div class="frame-counter">Mi parte · 4 / 6</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 60px;">Escenario académico.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top: 14px;">Cinco partidas. El transporte concentra la mitad del coste; los salarios no entran.</p>
+
+  <div class="breakdown">
+
+    <div class="bar-list">
+      <div class="bar-row anim" style="--d:400ms;">
+        <div class="lbl">Transporte<span class="sub">desplazamientos UA · 6 pers.</span></div>
+        <div class="bar-track"><div class="bar-fill dom" style="--w: 100%;"></div></div>
+        <div class="val">2.040 €<span class="pct">50,6 %</span></div>
+      </div>
+      <div class="bar-row anim" style="--d:480ms;">
+        <div class="lbl">Matrícula GPI<span class="sub">tasas curso 2025-26</span></div>
+        <div class="bar-track"><div class="bar-fill" style="--w: 30.6%;"></div></div>
+        <div class="val">624 €<span class="pct">15,5 %</span></div>
+      </div>
+      <div class="bar-row anim" style="--d:560ms;">
+        <div class="lbl">Herramientas IA<span class="sub">planes individuales · 4 m</span></div>
+        <div class="bar-track"><div class="bar-fill" style="--w: 25.2%;"></div></div>
+        <div class="val">515 €<span class="pct">12,8 %</span></div>
+      </div>
+      <div class="bar-row anim" style="--d:640ms;">
+        <div class="lbl">Equipos propios<span class="sub">amortización · 4 m</span></div>
+        <div class="bar-track"><div class="bar-fill" style="--w: 22.1%;"></div></div>
+        <div class="val">450 €<span class="pct">11,2 %</span></div>
+      </div>
+      <div class="bar-row anim" style="--d:720ms;">
+        <div class="lbl">Resto<span class="sub">hosting, suministros, varios</span></div>
+        <div class="bar-track"><div class="bar-fill" style="--w: 19.5%;"></div></div>
+        <div class="val">398,80 €<span class="pct">9,9 %</span></div>
+      </div>
+    </div>
+
+    <div class="total-card anim scale-in" style="--d:550ms;">
+      <div class="eyebrow">Total · 14 conceptos · 4 meses</div>
+      <div class="num">4.027,80<span class="unit">€</span></div>
+      <p class="desc">Lo que el proyecto le cuesta al equipo durante el curso. Sin salarios imputados — los estudiantes son el «recurso» propio.</p>
+      <div class="meta">6 estudiantes · jornada parcial · sin salarios</div>
+    </div>
+
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+
+<!-- =====================================================================
+     DIAPOSITIVA 5  ·  Coste empresa — 81.901,91 €
+     ===================================================================== -->
+<section data-screen-label="05 Coste empresa">
+  <div class="frame-eyebrow">02 · Estimación · 2.1 — escenario empresarial</div>
+  <div class="frame-counter">Mi parte · 5 / 6</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 60px;">Escenario empresa.</h1>
+  <p class="lead anim" style="--d:300ms; margin-top: 14px;">Mismo perímetro funcional. Aquí los <b style="color:var(--brand);">salarios dominan</b>: 91 % del total.</p>
+
+  <div class="breakdown">
+
+    <div class="bar-list">
+      <div class="bar-row anim" style="--d:400ms;">
+        <div class="lbl">Salarios<span class="sub">6 perfiles · INE 3T 2025 · 4 m</span></div>
+        <div class="bar-track"><div class="bar-fill dom" style="--w: 100%;"></div></div>
+        <div class="val">74.682 €<span class="pct">91,2 %</span></div>
+      </div>
+      <div class="bar-row anim" style="--d:480ms;">
+        <div class="lbl">Oficina<span class="sub">alquiler + suministros · 4 m</span></div>
+        <div class="bar-track"><div class="bar-fill" style="--w: 4.3%;"></div></div>
+        <div class="val">3.200 €<span class="pct">3,9 %</span></div>
+      </div>
+      <div class="bar-row anim" style="--d:560ms;">
+        <div class="lbl">Cloud profesional<span class="sub">EC2 + RDS + S3</span></div>
+        <div class="bar-track"><div class="bar-fill" style="--w: 3.1%;"></div></div>
+        <div class="val">2.300 €<span class="pct">2,8 %</span></div>
+      </div>
+      <div class="bar-row anim" style="--d:640ms;">
+        <div class="lbl">Licencias<span class="sub">GitHub Team, herramientas</span></div>
+        <div class="bar-track"><div class="bar-fill" style="--w: 1.5%;"></div></div>
+        <div class="val">1.100 €<span class="pct">1,3 %</span></div>
+      </div>
+      <div class="bar-row anim" style="--d:720ms;">
+        <div class="lbl">Resto<span class="sub">equipos, asesoría, varios</span></div>
+        <div class="bar-track"><div class="bar-fill" style="--w: 0.9%;"></div></div>
+        <div class="val">619,91 €<span class="pct">0,8 %</span></div>
+      </div>
+    </div>
+
+    <div class="total-card gold anim scale-in" style="--d:550ms;">
+      <div class="eyebrow">Total · 14 conceptos · 4 meses</div>
+      <div class="num" style="color:var(--brand);">81.901,91<span class="unit" style="color:var(--brand-deep);">€</span></div>
+      <p class="desc"><b>Coste de personas ≈ 20× coste de infraestructura.</b> Cualquier ahorro relevante se mueve sobre la línea «Salarios».</p>
+      <div class="meta">6 perfiles · jornada completa · INE 3T 2025</div>
+    </div>
+
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+
+<!-- =====================================================================
+     DIAPOSITIVA 6  ·  Ley de Parkinson
+     ===================================================================== -->
+<section data-screen-label="06 Ley de Parkinson">
+  <div class="frame-eyebrow">02 · Estimación · 2.1 — Ley de Parkinson</div>
+  <div class="frame-counter">Mi parte · 6 / 6</div>
+
+  <h1 class="h1 rule anim" style="--d:100ms; margin-top: 60px;">Ley de Parkinson.</h1>
+
+  <div class="pk-def anim" style="--d:280ms; padding: 24px 36px; margin-top: 36px;">
+    <div class="quote" style="font-size: 72px;">“</div>
+    <div class="text" style="font-size: 22px;">El trabajo se expande hasta llenar <em>todo el tiempo disponible</em> para su realización. Sirve para acotar el esfuerzo a partir del calendario fijo, no al revés.</div>
+  </div>
+
+  <div class="pk-grid" style="margin-top: 28px;">
+
+    <div class="pk-card anim" style="--d:480ms;">
+      <div class="eyebrow">Escenario académico</div>
+      <div class="scenario">6 estudiantes · ½ jornada · 4 meses</div>
+      <div class="pk-eq">
+        <div class="term"><span class="v">6</span><span class="u">personas</span></div>
+        <span class="op">×</span>
+        <div class="term"><span class="v">20 h</span><span class="u">/semana</span></div>
+        <span class="op">×</span>
+        <div class="term"><span class="v">16</span><span class="u">semanas</span></div>
+        <span class="op">=</span>
+        <div class="res"><span class="v">1.920 h</span><span class="u">esfuerzo total</span></div>
+      </div>
+      <div class="pk-foot">
+        ≈ <b style="color:var(--brand);">12 personas-mes</b> a 160 h/PM. Coincide con el esfuerzo asumible por el equipo dentro del calendario académico.
+      </div>
+    </div>
+
+    <div class="pk-card emp anim" style="--d:600ms;">
+      <div class="eyebrow">Escenario empresa</div>
+      <div class="scenario">6 profesionales · jornada completa · 4 m</div>
+      <div class="pk-eq">
+        <div class="term"><span class="v">6</span><span class="u">personas</span></div>
+        <span class="op">×</span>
+        <div class="term"><span class="v">40 h</span><span class="u">/semana</span></div>
+        <span class="op">×</span>
+        <div class="term"><span class="v">16</span><span class="u">semanas</span></div>
+        <span class="op">=</span>
+        <div class="res"><span class="v">3.840 h</span><span class="u">esfuerzo total</span></div>
+      </div>
+      <div class="pk-foot">
+        ≈ <b style="color:var(--brand);">24 personas-mes</b> · al coste salarial medio del INE:
+        <div class="pk-cost"><span class="lbl">Coste</span> 74.688,00 €</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="frame-foot"><div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div><div>J11-4 · GPI 2025-26</div></div>
+</section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>

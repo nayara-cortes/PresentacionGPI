@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <pattern id="flow" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M0 40 Q20 20 40 40 T80 40" stroke="#F25C3F" stroke-width="1.2" fill="none" opacity="0.5"></path>
+      <path d="M0 60 Q20 40 40 60 T80 60" stroke="#F25C3F" stroke-width="1.2" fill="none" opacity="0.3"></path>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="url(#flow)"></rect>
+</svg>
