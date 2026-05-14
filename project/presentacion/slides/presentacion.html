@@ -5,7 +5,7 @@
 
 
   <meta charset="utf-8">
-  <title>ContentFlow — Presentación J11-4 · v2</title>
+  <title>ContentFlow — Presentación J11-4</title>
   <link rel="stylesheet" href="../colors_and_type.css">
   <style>
     /* ===========================================================
@@ -2143,8 +2143,8 @@
   <script type="application/json" id="speaker-notes">
 [
   "Portada. Bienvenida y presentación del equipo J11-4.",
-  "Apertura del bloque 01: Introducción.",
   "Agenda general: cuatro bloques.",
+  "Apertura del bloque 01: Introducción.",
   "Objetivos generales del sistema y por qué la especialización sectorial.",
   "Resumen de los 75 requerimientos funcionales agrupados en 5 bloques.",
   "Restricciones del proyecto. Cuatro frenos que han condicionado todo lo demás: el equipo, el calendario, el modelo de negocio y la heterogeneidad del sector. Seis personas, junior y a tiempo parcial, lo que limita la velocidad y obliga a una curva de aprendizaje en stack profesional. Deadline rígido el 14 de mayo. Presupuesto aún por estimar pero con la decisión clara de modelo SaaS para que sea sostenible a medio plazo. Y un sector creator muchísimo más amplio de lo que parece: streaming, merchandising, eventos, formaciones — eso ensancha el alcance funcional.",
@@ -2191,7 +2191,7 @@
       <div style="position:absolute; bottom: 220px; left: 120px;">
         <div class="anim"
           style="--d:200ms; font-size:18px; text-transform:uppercase; letter-spacing:.18em; color: var(--gold); font-weight:700; margin-bottom: 36px;">
-          Documento de Planificación · v2</div>
+          Presentación</div>
         <div class="cover-wordmark anim cover-rise" style="--d:300ms;">Content<span class="accent">Flow</span>.</div>
         <div class="body-lg anim" style="--d:600ms; margin-top: 40px; max-width: 1100px; color: rgba(255,255,255,.85);">
           Gestión económica, fiscal y administrativa para autónomos creadores de contenido digital.
@@ -2210,27 +2210,9 @@
       </div>
     </section>
 
-    <section class="dark">
-      <div
-        style="position:absolute;top:50%;left:120px;transform:translateY(-50%);display:flex;align-items:center;gap:80px;">
-        <div class="divider-num anim cover-rise" style="--d:100ms;">01</div>
-        <div>
-          <div class="divider-label anim" style="--d:300ms;">Bloque uno</div>
-          <div class="divider-title anim" style="--d:400ms;">Introducción.</div>
-          <div class="body anim" style="--d:600ms; margin-top: 30px; max-width: 700px; color: rgba(255,255,255,.7);">
-            Objetivos generales, requerimientos clave y restricciones que delimitan el alcance.
-          </div>
-        </div>
-      </div>
-      <div class="frame-foot">
-        <div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div>
-        <div>J11-4 · GPI 2025-26</div>
-      </div>
-    </section>
-
     <section>
       <div class="frame-eyebrow">Agenda</div>
-      <div class="frame-counter">03 / 27</div>
+      <div class="frame-counter">02 / 27</div>
       <div style="margin-top: 80px;">
         <h1 class="h1 rule anim" style="--d:100ms;">Lo que vamos a contar.</h1>
         <div class="grid-2" style="margin-top: 70px;">
@@ -2256,6 +2238,24 @@
             <div class="card-eyebrow"><span class="mono">04</span> · Planificación</div>
             <div class="card-title">Plantilla, plan general y detallado</div>
             <div class="card-foot">Modelo de proceso, hitos, asignación de recursos y cálculo de holguras.</div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-foot">
+        <div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div>
+        <div>J11-4 · GPI 2025-26</div>
+      </div>
+    </section>
+
+    <section class="dark">
+      <div
+        style="position:absolute;top:50%;left:120px;transform:translateY(-50%);display:flex;align-items:center;gap:80px;">
+        <div class="divider-num anim cover-rise" style="--d:100ms;">01</div>
+        <div>
+          <div class="divider-label anim" style="--d:300ms;">Bloque uno</div>
+          <div class="divider-title anim" style="--d:400ms;">Introducción.</div>
+          <div class="body anim" style="--d:600ms; margin-top: 30px; max-width: 700px; color: rgba(255,255,255,.7);">
+            Objetivos generales, requerimientos clave y restricciones que delimitan el alcance.
           </div>
         </div>
       </div>
@@ -2302,57 +2302,257 @@
     <section>
       <div class="frame-eyebrow">01 · Introducción · 1.2</div>
       <div class="frame-counter">05 / 27</div>
-      <h1 class="h1 rule anim" style="--d:100ms; margin-top: 70px;">Requerimientos funcionales.</h1>
-      <p class="lead anim" style="--d:300ms; margin-top: 14px;">5 bloques · 75 sub-funcionalidades documentadas en el
+      <h1 class="h1 rule anim" style="--d:100ms; margin-top: 58px; font-size: 72px;">Requerimientos funcionales.</h1>
+      <p class="lead anim" style="--d:300ms; margin-top: 10px;">5 bloques · 75 sub-funcionalidades documentadas en el
         Anexo A.</p>
-      <table class="t anim" style="--d:500ms; margin-top: 50px;">
-        <thead>
-          <tr>
-            <th style="width:22%;">Bloque</th>
-            <th style="width:22%;">Identificador</th>
-            <th>Resumen</th>
-            <th class="num" style="width:14%;">Sub-func.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><b style="font-size: 30px;">Gestión de Usuarios</b></td>
-            <td class="id">USR · PERFIL · ROL</td>
-            <td>Registro, login, recuperación, perfil, control de acceso por rol.</td>
-            <td class="num">11</td>
-          </tr>
-          <tr>
-            <td><b style="font-size: 30px;">Clientes</b></td>
-            <td class="id">CLI · PAYCLI · ALERT · HISCLI</td>
-            <td>Alta/edición, cobros, alertas de vencimiento, historial de colaboraciones.</td>
-            <td class="num">15</td>
-          </tr>
-          <tr>
-            <td style="font-size: 30px;"><b style="font-size: 30px;">Proveedores</b></td>
-            <td class="id">PROV · PAYPROV · INF</td>
-            <td>Gestión, condiciones de pago, importación CSV/Excel, listados.</td>
-            <td class="num">9</td>
-          </tr>
-          <tr>
-            <td><b style="font-size: 30px;">Finanzas y Facturación</b></td>
-            <td class="id">PRES · FACT_E · FACT_R · COBPAG · LIB · EJERC</td>
-            <td>Presupuestos, facturas (VERIFACTU), libros contables, ejercicios.</td>
-            <td class="num">21</td>
-          </tr>
-          <tr>
-            <td><b style="font-size: 30px;">Análisis de Datos</b></td>
-            <td class="id">ANL · IVA · RET · EXP</td>
-            <td>Dashboard, KPIs, IVA repercutido/soportado, retenciones IRPF, exportación.</td>
-            <td class="num">19</td>
-          </tr>
-          <tr class="total">
-            <td>Total</td>
-            <td></td>
-            <td></td>
-            <td class="num">75</td>
-          </tr>
-        </tbody>
-      </table>
+
+      <div class="grid-3 anim" style="--d:420ms; margin-top: 32px; gap: 22px;">
+
+        <!-- GESTIÓN DE USUARIOS -->
+        <div class="card" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="margin-bottom: 6px;">USR · PERFIL · ROL</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em;">
+            Gestión de Usuarios</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Registro, login y
+                recuperación de contraseña</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Gestión de perfil de
+                usuario</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Control de acceso por
+                rol</span></div>
+          </div>
+          <div
+            style="margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 13px; color: var(--slate);">
+            11 sub-func.</div>
+        </div>
+
+        <!-- CLIENTES -->
+        <div class="card" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="margin-bottom: 6px;">CLI · PAYCLI · ALERT · HISCLI</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em;">
+            Clientes</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Alta, edición y gestión de
+                clientes</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Cobros y alertas de
+                vencimiento</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Historial de
+                colaboraciones</span></div>
+          </div>
+          <div
+            style="margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 13px; color: var(--slate);">
+            15 sub-func.</div>
+        </div>
+
+        <!-- PROVEEDORES -->
+        <div class="card" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="margin-bottom: 6px;">PROV · PAYPROV · INF</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em;">
+            Proveedores</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Gestión y condiciones de
+                pago</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Importación CSV/Excel</span>
+            </div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Listados e informes de
+                proveedores</span></div>
+          </div>
+          <div
+            style="margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 13px; color: var(--slate);">
+            9 sub-func.</div>
+        </div>
+
+        <!-- FINANZAS Y FACTURACIÓN -->
+        <div class="card brand" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="margin-bottom: 6px;">PRES · FACT_E · FACT_R · COBPAG · LIB · EJERC</div>
+          <div
+            style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em; color: #fff;">
+            Finanzas y Facturación</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: rgba(255,255,255,.9);">Presupuestos y facturas con VERIFACTU</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: rgba(255,255,255,.9);">Cobros, pagos y libros contables</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: rgba(255,255,255,.9);">Gestión de ejercicios fiscales</span></div>
+          </div>
+          <div
+            style="margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.2); font-family: var(--font-mono); font-size: 13px; color: rgba(255,255,255,.6);">
+            21 sub-func.</div>
+        </div>
+
+        <!-- ANÁLISIS DE DATOS -->
+        <div class="card gold" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="color: var(--brand); margin-bottom: 6px;">ANL · IVA · RET · EXP</div>
+          <div
+            style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em; color: var(--brand-deep);">
+            Análisis de Datos</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--brand); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: var(--brand-deep);">Dashboard y KPIs del creador</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--brand); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: var(--brand-deep);">Evolución de ingresos y gastos</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--brand); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: var(--brand-deep);">Exportación de informes</span></div>
+          </div>
+          <div
+            style="margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(0,0,0,.1); font-family: var(--font-mono); font-size: 13px; color: var(--brand);">
+            19 sub-func.</div>
+        </div>
+
+        <!-- TOTAL -->
+        <div class="card"
+          style="padding: 26px 28px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; text-align: center;">
+          <div class="card-eyebrow" style="margin-bottom: 6px;">Total</div>
+          <div
+            style="font-family: var(--font-display); font-weight: 800; font-size: 64px; letter-spacing: -.04em; line-height: 1; color: var(--brand);">
+            75</div>
+          <div style="font-size: 18px; color: var(--slate); line-height: 1.4;">sub-funcionalidades<br>en 5 bloques</div>
+        </div>
+
+      </div>
+
+      <div class="frame-foot">
+        <div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div>
+        <div>J11-4 · GPI 2025-26</div>
+      </div>
+    </section>
+
+    <!-- ===================== SLIDE 05b — Reqs No Funcionales 1.3 ===================== -->
+    <section>
+      <div class="frame-eyebrow">01 · Introducción · 1.3</div>
+      <div class="frame-counter">05b / 27</div>
+      <h1 class="h1 rule anim" style="--d:100ms; margin-top: 58px; font-size: 72px;">Requerimientos no funcionales.</h1>
+      <p class="lead anim" style="--d:300ms; margin-top: 10px;">6 categorías · 30 sub-requerimientos que definen la
+        calidad y el comportamiento del sistema.</p>
+
+      <div class="grid-3 anim" style="--d:420ms; margin-top: 32px; gap: 22px;">
+
+        <!-- RENDIMIENTO -->
+        <div class="card" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="margin-bottom: 6px;">REND · Rendimiento</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em;">
+            Rendimiento</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Interfaz carga en &lt;3
+                s</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Informes (12 meses) en &lt;5
+                s</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>CRUD en &lt;2 s</span></div>
+          </div>
+        </div>
+
+        <!-- ESCALABILIDAD -->
+        <div class="card" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="margin-bottom: 6px;">ESC · Escalabilidad</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em;">
+            Escalabilidad</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>5 años de historial sin
+                degradación</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>≥ 50 usuarios concurrentes
+                (&lt;5 s)</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Escalado vertical/horizontal
+                sin corte</span></div>
+          </div>
+        </div>
+
+        <!-- SEGURIDAD -->
+        <div class="card brand" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="margin-bottom: 6px;">SECU · Seguridad</div>
+          <div
+            style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em; color: #fff;">
+            Seguridad</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: rgba(255,255,255,.9);">Auth. usuario + contraseña hash</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: rgba(255,255,255,.9);">Control de acceso por roles</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: rgba(255,255,255,.9);">HTTPS/TLS · sesiones con expiración · auditoría</span></div>
+          </div>
+        </div>
+
+        <!-- DISPONIBILIDAD -->
+        <div class="card" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="margin-bottom: 6px;">DISP · Disponibilidad</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em;">
+            Disponibilidad</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Uptime ≥ 99 % (excl.
+                mantenimiento)</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Servicio 24/7</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Notificación de incidencias
+                al usuario</span></div>
+          </div>
+        </div>
+
+        <!-- FIABILIDAD -->
+        <div class="card" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="margin-bottom: 6px;">FIAB · Fiabilidad</div>
+          <div style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em;">
+            Fiabilidad</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Integridad total de datos (0
+                corrupción)</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>Backups automáticos ante
+                fallos</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--gold); font-weight: 700; flex-shrink: 0;">—</span><span>99,5 % operaciones sin
+                intervención manual</span></div>
+          </div>
+        </div>
+
+        <!-- USABILIDAD -->
+        <div class="card gold" style="padding: 26px 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="card-eyebrow" style="color: var(--brand); margin-bottom: 6px;">USA · Usabilidad</div>
+          <div
+            style="font-family: var(--font-display); font-weight: 600; font-size: 22px; letter-spacing: -.01em; color: var(--brand-deep);">
+            Usabilidad</div>
+          <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 4px;">
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--brand); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: var(--brand-deep);">Interfaz intuitiva · WCAG 2.1 nivel AA</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--brand); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: var(--brand-deep);">Aprendizaje en &lt;30 min sin formación previa</span></div>
+            <div style="display: flex; gap: 10px; font-size: 17px; line-height: 1.4;"><span
+                style="color: var(--brand); font-weight: 700; flex-shrink: 0;">—</span><span
+                style="color: var(--brand-deep);">Responsive: escritorio · tablet · móvil</span></div>
+          </div>
+        </div>
+
+      </div>
+
       <div class="frame-foot">
         <div class="logo"><img src="../assets/logo-mark.svg" width="26" height="26" alt="">ContentFlow</div>
         <div>J11-4 · GPI 2025-26</div>
